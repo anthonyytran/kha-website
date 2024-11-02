@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./Navbar.css"; // Import the CSS file
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,12 +8,9 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav
-      className="navbar"
-      style={{ backgroundColor: "black", color: "white" }}
-    >
+    <nav className="navbar">
       <div className="navbar-container">
-        <h1 className="logo">Boxer Name</h1>
+        <h1 className="logo">Kha Lu</h1>
         <div
           className={`hamburger ${isOpen ? "open" : ""}`}
           onClick={toggleMenu}
