@@ -11,7 +11,7 @@ import Record from "./pages/Record/Record";
 const App = () => {
   return (
     <Router>
-      <div style={{ backgroundColor: "black", color: "white" }}>
+      <div>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
