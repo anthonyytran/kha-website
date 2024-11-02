@@ -1,10 +1,10 @@
 import React from "react";
-import "./Home.css"; // Import the CSS file
+import "./Home.css";
 
 const Home = () => {
   return (
     <div className="home-container">
-      <h1>Welcome to Boxer Name's Official Website</h1>
+      <h1>Home</h1>
     </div>
   );
 };

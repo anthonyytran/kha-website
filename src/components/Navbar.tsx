@@ -1,51 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"; // Import the CSS file
+import "./Navbar.css";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <h1 className="logo">Kha Lu</h1>
-        <div
-          className={`hamburger ${isOpen ? "open" : ""}`}
-          onClick={toggleMenu}
-        >
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
-        </div>
-        <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+        <ul className="nav-links">
           <li>
-            <Link to="/" onClick={() => setIsOpen(false)}>
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about" onClick={() => setIsOpen(false)}>
-              About
-            </Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/sponsors" onClick={() => setIsOpen(false)}>
-              Sponsors
-            </Link>
+            <Link to="/sponsors">Sponsors</Link>
           </li>
           <li>
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              Contact
-            </Link>
+            <Link to="/contact">Contact</Link>
           </li>
           <li>
-            <Link to="/record" onClick={() => setIsOpen(false)}>
-              Record
-            </Link>
+            <Link to="/record">Record</Link>
           </li>
-          {/* Add more links as necessary */}
         </ul>
       </div>
     </nav>
