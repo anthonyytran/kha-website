@@ -7,7 +7,7 @@
   .about-container {
     flex: 1;
     padding: 2rem;
-    padding-top: 10vh; /* Adjust this to match the navbar height */
+    padding-top: 10vh; 
     background-color: var(--color-white);
     color: var(--color-black);
     text-align: center;

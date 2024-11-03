@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 
+/* Global Styling */
 :root {
   /* Font and rendering settings */
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -18,19 +20,15 @@
   color: rgba(255, 255, 255, 0.87);
 
   /* Default color palette */
-  --color-primary: #f1ee27; 
-  --color-secondary: #383737; 
+  --color-primary: #f1ee27;
+  --color-secondary: #383737;
   --color-background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(24, 24, 24, 0.95) 30%, rgba(44, 43, 44, 0.85) 60%, rgba(20, 20, 20, 1) 100%);
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-grey: #d3d3d3; 
-
-  /* Optional variations for dark and light modes */
-  --color-primary-light: #5ba8ff;
-  --color-secondary-light: #ff8b6a;
-  --color-grey-dark: #a9a9a9;
+  --color-grey: #d3d3d3;
 }
 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -45,4 +43,5 @@ html, body {
   background-attachment: fixed;
   background-position: center;
   color: var(--color-white);
+  font-family: 'Montserrat', sans-serif; 
 }

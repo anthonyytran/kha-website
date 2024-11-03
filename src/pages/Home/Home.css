@@ -21,13 +21,18 @@
   padding: 1rem;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 8px;
-  transform: translateY(-80%); /* Initial position */
+  transform: translateY(-80%);
 }
 
 @media (min-width: 769px) {
-  /* Move the overlay-text slightly down for web screens */
   .overlay-text {
-    transform: translateY(-30%); /* Adjust this value as needed */
+    transform: translateY(-30%);
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-text {
+    transform: translateY(-20%); 
   }
 }
 
@@ -59,6 +64,38 @@
   color: var(--color-primary);
 }
 
+.home-container-1 .overlay-text .subtext {
+  font-family: 'Dancing Script', cursive;
+}
+
+.subtext {
+  font-size: 1.5rem;
+  font-family: 'Dancing Script', cursive; 
+  font-weight: 500;
+  margin-top: 1rem;
+  color: var(--color-white); 
+}
+
+.find-out-more-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  border: 2px solid transparent;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.find-out-more-button:hover {
+  border-color: var(--color-black);
+  background-color: transparent;
+  color: var(--color-white);
+}
+
 .home-container-2 {
   width: 100%;
   height: 50vh;
@@ -87,6 +124,14 @@
   letter-spacing: 2px;
   color: var(--color-black);
 }
+
+.flag-icon {
+  width: 120px; /* Adjust width as needed */
+  height: auto;
+  margin: 0 8px; 
+  vertical-align: middle; /* Align it with the text */
+}
+
 
 @media (max-width: 768px) {
   .overlay-text h1 {
