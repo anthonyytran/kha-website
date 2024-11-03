@@ -1,23 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-import facebookIcon from "../assets/images/facebook.png";
 import instagramIcon from "../assets/images/instagram.png";
 import tiktokIcon from "../assets/images/tiktok.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(true);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
   const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // Detect scroll direction to toggle navbar visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop) {
+        setIsScrollingUp(false); // Scrolling down, hide navbar
+      } else {
+        setIsScrollingUp(true); // Scrolling up, show navbar
+      }
+
+      setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); // Reset scroll position at top of page
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollTop]);
+
   return (
-    <nav className="navbar">
+    <nav
+      className={`navbar ${isScrollingUp ? "navbar-visible" : "navbar-hidden"}`}
+    >
       <div className="navbar-container">
         <h1 className="logo">Kha Lu</h1>
-        {/* Hamburger Menu Icon */}
         <div
           className={`hamburger ${isOpen ? "open" : ""}`}
           onClick={toggleMenu}
@@ -26,7 +50,6 @@ const Navbar = () => {
           <span className="line"></span>
           <span className="line"></span>
         </div>
-        {/* Navigation Links */}
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
           <li>
             <Link
@@ -73,7 +96,6 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          {/* Copyright and Social Links */}
           {isOpen && (
             <div className="mobile-footer">
               <p>&copy; {new Date().getFullYear()} Kha Lu</p>

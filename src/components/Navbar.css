@@ -1,8 +1,21 @@
 .navbar {
   background-color: var(--color-black);
   color: var(--color-white);
-  height: 8vh;
+  height: 10vh;
   padding: 0 2rem;
+  z-index: 10;
+  position: fixed; /* Fixed positioning to keep it on screen */
+  width: 100%;
+  top: 0;
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.navbar-visible {
+  transform: translateY(0); /* Fully visible */
+}
+
+.navbar-hidden {
+  transform: translateY(-100%); /* Hidden by translating upwards */
 }
 
 .navbar-container {
@@ -28,15 +41,25 @@
 .nav-links li a {
   color: var(--color-white);
   text-decoration: none;
+  font-size: 1.8rem; /* Increased font size */
+  letter-spacing: 2px; /* Increased spacing between letters */
   padding: 0.5rem 1rem;
+  font-family: 'Bebas Neue', sans-serif; 
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
   color: var(--color-black);
-  background-color: var(--color-white);
+  background-color: var(--color-primary);
   border-radius: 4px;
+}
+
+/* Larger font size for desktop */
+@media (min-width: 769px) {
+  .nav-links li a {
+    font-size: 1.2rem; /* Adjust size as desired for larger screens */
+  }
 }
 
 .hamburger {
@@ -71,13 +94,14 @@
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: var(--color-black);
+    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
     width: 100%;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
     padding: 1rem 0;
     display: none;
+    z-index: 20; /* Ensure nav-links are above background */
   }
 
   .nav-links.open {
@@ -93,6 +117,7 @@
     color: var(--color-grey);
     margin-top: 1rem;
     font-size: 0.85rem;
+    z-index: 20; /* Ensure footer is above background */
   }
 
   .social-links {
