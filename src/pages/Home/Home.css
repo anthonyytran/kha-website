@@ -28,7 +28,6 @@
 .overlay-text h1 {
   font-size: 12rem;
   font-weight: 900;
-  margin-bottom: 0.5rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-family: 'Bebas Neue', sans-serif;
@@ -37,17 +36,17 @@
 }
 
 .overlay-text h2 {
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 1px;
   color: var(--color-white);
-  margin-top: 0.5rem;
 }
 
 .overlay-text h3 {
-  font-size: 1.5rem;
-  font-family: 'Rye', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
   color: var(--color-white);
   margin-top: 1rem;
 }
@@ -77,31 +76,24 @@
   color: var(--color-black);
 }
 
-/* Record container styling */
-.home-container-2 {
+/* Record Title Container */
+.record-title-container {
   width: 100%;
-  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 2rem 0;
   background-color: var(--color-white);
-  color: var(--color-black);
-  padding: 2rem;
 }
 
-.record-text {
-  text-align: center;
-}
-
-.record-text h2 {
+.record-title-container h2 {
   font-size: 7rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
   color: var(--color-secondary);
 }
 
-.record-summary {
+.record-title-container .record-summary {
   font-size: 5rem;
   font-weight: 900;
   font-family: 'Bebas Neue', sans-serif;
@@ -110,11 +102,66 @@
   margin-bottom: 2rem;
 }
 
+/* Record container styling */
+.home-container-2 {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../assets/images/record-bg3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--color-black);
+  padding: 2rem;
+  position: relative;
+}
+
 .last-three-text {
-  font-size: 2rem;
+  font-size: 6rem;
   font-weight: 700;
-  color: var(--color-secondary);
+  font-family: 'Bebas Neue', sans-serif; 
+  color: var(--color-white); 
   margin-bottom: 1rem;
+  text-align: center;
+}
+
+.record-summary {
+  display: flex;
+  gap: 2rem;
+}
+
+.record-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 5rem;
+  font-weight: 900;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--color-black);
+  letter-spacing: 2px;
+}
+
+.record-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.record-label.win {
+  color: #28a745; 
+}
+
+.record-label.loss {
+  color: #dc3545; 
+}
+
+.record-label.draw {
+  color: #6c757d; 
 }
 
 /* Fight history container and card layout */
@@ -196,17 +243,20 @@
   padding: 2rem 0;
 }
 
+/* Standardize sponsor slide container */
 .sponsor-slide {
+  padding: 1rem;
   display: flex !important;
   justify-content: center;
   align-items: center;
-  padding: 0 1.5rem;
+  height: 300px !important; /* Fixed height for all slides */
 }
 
 /* Updated Sponsor Image Styling */
 .sponsor-slide img {
   width: 100%;
-  height: 300px;
+  max-width: 400px; /* Set maximum width for consistency */
+  height: 100%;
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -227,19 +277,17 @@
 }
 
 .slick-slide {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  height: auto !important;
+  height: inherit !important;
 }
 
 .slick-slide > div {
-  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Updated Navigation Button Styling */
 .slick-prev,
 .slick-next {
   width: 40px;
@@ -258,7 +306,7 @@
 .slick-prev:before,
 .slick-next:before {
   font-size: 40px;
-  color: var(--color-secondary);
+  color: var(--color-black);
   opacity: 0.75;
 }
 
@@ -268,28 +316,17 @@
 
 .slick-dots li button:before {
   font-size: 12px;
-  color: #888;
+  color: var(--color-black);
 }
 
 .slick-dots li.slick-active button:before {
-  color: var(--color-secondary);
-}
-
-/* Sponsor Button Styling */
-.sponsor-button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
+  color: var(--color-black);
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .overlay-text h1 {
     font-size: 10rem;
-  }
-  
-  .sponsor-slide img {
-    height: 250px;
   }
 }
 
@@ -302,34 +339,41 @@
     font-size: 2rem;
   }
 
-  .fight-history {
-    flex-direction: column;
-    align-items: center;
+  .overlay-text h3 {
+    font-size: 1.5rem;
   }
-
-  .fight-card {
-    flex: 1 1 100%;
+  
+  .sponsor-slide {
+    height: 200px !important;
   }
   
   .sponsor-slide img {
-    height: 200px;
+    max-width: 300px;
   }
 }
 
 @media (max-width: 480px) {
   .overlay-text h1 {
-    font-size: 7rem;
+    font-size: 6rem; 
   }
 
   .overlay-text h2 {
-    font-size: 1.8rem;
+    font-size: 3rem;
+  }
+
+  .overlay-text h3 {
+    font-size: 1.5rem;
   }
 
   .flag-icon {
     width: 60px;
   }
   
+  .sponsor-slide {
+    height: 150px !important;
+  }
+  
   .sponsor-slide img {
-    height: 150px;
+    max-width: 250px;
   }
 }

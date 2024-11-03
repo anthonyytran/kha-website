@@ -69,15 +69,7 @@ const Navbar = () => {
               About
             </Link>
           </li>
-          <li>
-            <Link
-              to="/sponsors"
-              onClick={() => setIsOpen(false)}
-              className={location.pathname === "/sponsors" ? "active" : ""}
-            >
-              Sponsors
-            </Link>
-          </li>
+
           <li>
             <Link
               to="/record"
@@ -85,6 +77,15 @@ const Navbar = () => {
               className={location.pathname === "/record" ? "active" : ""}
             >
               Record
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/sponsors"
+              onClick={() => setIsOpen(false)}
+              className={location.pathname === "/sponsors" ? "active" : ""}
+            >
+              Sponsors
             </Link>
           </li>
           <li>
