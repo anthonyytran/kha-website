@@ -1,3 +1,6 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 :root {
   /* Font and rendering settings */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,8 +17,9 @@
 
   /* Default color palette */
   --color-primary: #1e90ff; 
-  --color-secondary: #ff6347; 
+  --color-secondary: #383737; 
   --color-background: #252424; 
+  --color-footer: #f8f9fa;
   --color-black: #000000;
   --color-white: #ffffff;
   --color-grey: #d3d3d3; 
