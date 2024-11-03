@@ -1,9 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
 import australianFlag from "../../assets/images/flag-icon.png";
 
+// Sponsor images
+import sponsor1 from "../../assets/images/rephaze.png";
+import sponsor2 from "../../assets/images/sponsor2.png";
+import sponsor3 from "../../assets/images/theboxinglab.png";
+
 const Home = () => {
+  const sponsorSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div>
       <div className="home-container-1">
@@ -18,9 +48,7 @@ const Home = () => {
             Lu
           </h1>
           <h2>PROFESSIONAL BOXER</h2>
-          <h3 className="subtext">
-            Victorian Gold & Silver Light Flyweight Champion
-          </h3>
+          <h3 className="subtext">Victorian Light Flyweight Champion</h3>
           <Link to="/about" className="find-out-more-button">
             Find out more
           </Link>
@@ -72,6 +100,30 @@ const Home = () => {
               View All
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* New Sponsor Container */}
+      <div className="home-container-3">
+        <h2 className="sponsors-title">Our Sponsors</h2>
+        <div className="sponsor-carousel">
+          <Slider {...sponsorSettings}>
+            <div className="sponsor-slide">
+              <img src={sponsor1} alt="Sponsor 1" />
+            </div>
+            <div className="sponsor-slide">
+              <img src={sponsor2} alt="Sponsor 2" />
+            </div>
+            <div className="sponsor-slide">
+              <img src={sponsor3} alt="Sponsor 3" />
+            </div>
+            {/* Add more sponsors as needed */}
+          </Slider>
+        </div>
+        <div className="sponsor-button-container">
+          <Link to="/sponsors" className="sponsor-button">
+            View All
+          </Link>
         </div>
       </div>
     </div>

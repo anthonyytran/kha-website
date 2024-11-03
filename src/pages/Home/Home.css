@@ -54,11 +54,12 @@
 
 /* Button styling */
 .find-out-more-button,
-.view-all-button {
+.view-all-button,
+.sponsor-button {
   display: inline-block;
   margin-top: 1.5rem;
-  padding: 0.5rem 1rem; /* Smaller padding for a smaller button */
-  font-size: 1rem; /* Reduced font size */
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--color-black);
   background-color: var(--color-white);
@@ -68,10 +69,12 @@
   transition: all 0.3s ease;
 }
 
-.find-out-more-button:hover {
-  border-color: var(--color-black);
-  background-color: transparent;
-  color: var(--color-white);
+.find-out-more-button:hover,
+.view-all-button:hover,
+.sponsor-button:hover {
+  border-color: #FFD700;
+  background-color: #FFD700;
+  color: var(--color-black);
 }
 
 /* Record container styling */
@@ -129,7 +132,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  flex: 1 1 calc(33.33% - 1rem); 
+  flex: 1 1 calc(33.33% - 1rem);
   min-width: 300px;
   transition: transform 0.3s ease;
 }
@@ -144,7 +147,7 @@
 }
 
 .fight-card .win {
-  color: #28a745; /* Green color for wins */
+  color: #28a745;
   font-weight: bold;
 }
 
@@ -163,16 +166,136 @@
   vertical-align: middle;
 }
 
+/* Updated Sponsors Container Styling */
+.home-container-3 {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  padding: 3rem 2rem;
+  color: var(--color-black);
+}
+
+.sponsors-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--color-secondary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Updated Sponsor Carousel Styling */
+.sponsor-carousel {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.sponsor-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+/* Updated Sponsor Image Styling */
+.sponsor-slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.sponsor-slide img:hover {
+  transform: scale(1.05);
+}
+
+/* Enhanced Slick Carousel Styling */
+.slick-track {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: auto !important;
+}
+
+.slick-slide > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+
+.slick-prev {
+  left: -45px;
+}
+
+.slick-next {
+  right: -45px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 40px;
+  color: var(--color-secondary);
+  opacity: 0.75;
+}
+
+.slick-dots {
+  bottom: -40px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #888;
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--color-secondary);
+}
+
+/* Sponsor Button Styling */
+.sponsor-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .overlay-text h1 {
-    font-size: 10rem; /* Increase font size on medium screens */
+    font-size: 10rem;
+  }
+  
+  .sponsor-slide img {
+    height: 250px;
   }
 }
 
 @media (max-width: 768px) {
   .overlay-text h1 {
-    font-size: 8rem; /* Larger font on smaller screens */
+    font-size: 8rem;
   }
 
   .overlay-text h2 {
@@ -187,11 +310,15 @@
   .fight-card {
     flex: 1 1 100%;
   }
+  
+  .sponsor-slide img {
+    height: 200px;
+  }
 }
 
 @media (max-width: 480px) {
   .overlay-text h1 {
-    font-size: 7rem; 
+    font-size: 7rem;
   }
 
   .overlay-text h2 {
@@ -200,5 +327,9 @@
 
   .flag-icon {
     width: 60px;
+  }
+  
+  .sponsor-slide img {
+    height: 150px;
   }
 }
