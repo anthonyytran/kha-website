@@ -1,7 +1,8 @@
+/* Home container styles */
 .home-container-1 {
   position: relative;
   width: 100%;
-  height: 105vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,6 +13,7 @@
   background-repeat: no-repeat;
 }
 
+/* Overlay text and styling */
 .overlay-text {
   position: relative;
   z-index: 2;
@@ -19,66 +21,44 @@
   text-align: center;
   max-width: 90%;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 8px;
-  transform: translateY(-60%);
-}
-
-@media (min-width: 769px) {
-  .overlay-text {
-    transform: translateY(-30%);
-  }
-}
-
-@media (max-width: 480px) {
-  .overlay-text {
-    transform: translateY(-20%);
-  }
+  border-radius: 30px;
+  transform: translateY(-20%);
 }
 
 .overlay-text h1 {
-  font-size: 8rem;
+  font-size: 12rem;
   font-weight: 900;
-  
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
   color: var(--color-white);
   text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
-  transition: color 0.3s ease;
-}
-
-.overlay-text h1:hover {
-  color: var(--color-primary);
 }
 
 .overlay-text h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  font-family: 'Anton', sans-serif; /* Apply Anton font */
+  font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 1px;
-  margin-top: 0.5rem;
   color: var(--color-white);
-  transition: color 0.3s ease;
-}
-
-.overlay-text h2:hover {
-  color: var(--color-primary);
+  margin-top: 0.5rem;
 }
 
 .overlay-text h3 {
   font-size: 1.5rem;
-  font-family: 'Rye', serif; 
-  font-weight: 500;
-  margin-top: 1rem;
+  font-family: 'Rye', serif;
   color: var(--color-white);
+  margin-top: 1rem;
 }
 
-.find-out-more-button {
+/* Button styling */
+.find-out-more-button,
+.view-all-button {
   display: inline-block;
   margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.2rem;
+  padding: 0.5rem 1rem; /* Smaller padding for a smaller button */
+  font-size: 1rem; /* Reduced font size */
   font-weight: 700;
   color: var(--color-black);
   background-color: var(--color-white);
@@ -94,14 +74,17 @@
   color: var(--color-white);
 }
 
+/* Record container styling */
 .home-container-2 {
   width: 100%;
-  height: 50vh;
+  min-height: 60vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--color-white);
   color: var(--color-black);
+  padding: 2rem;
 }
 
 .record-text {
@@ -109,20 +92,70 @@
 }
 
 .record-text h2 {
-  font-size: 3rem;
+  font-size: 7rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-family: 'Bebas Neue', sans-serif;
   color: var(--color-secondary);
 }
 
-.record-text p {
-  font-size: 4rem;
+.record-summary {
+  font-size: 5rem;
   font-weight: 900;
   font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 2px;
   color: var(--color-black);
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
 }
 
+.last-three-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Fight history container and card layout */
+.fight-history {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.fight-card {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  flex: 1 1 calc(33.33% - 1rem); 
+  min-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.fight-card:hover {
+  transform: translateY(-5px);
+}
+
+.fight-card p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.fight-card .win {
+  color: #28a745; /* Green color for wins */
+  font-weight: bold;
+}
+
+/* Button positioning for consistent spacing */
+.view-all-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Flag icon styling */
 .flag-icon {
   width: 80px;
   height: auto;
@@ -130,23 +163,35 @@
   vertical-align: middle;
 }
 
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .overlay-text h1 {
+    font-size: 10rem; /* Increase font size on medium screens */
+  }
+}
+
 @media (max-width: 768px) {
   .overlay-text h1 {
-    font-size: 6rem;
+    font-size: 8rem; /* Larger font on smaller screens */
   }
 
   .overlay-text h2 {
     font-size: 2rem;
   }
 
-  .flag-icon {
-    width: 60px;
+  .fight-history {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fight-card {
+    flex: 1 1 100%;
   }
 }
 
 @media (max-width: 480px) {
   .overlay-text h1 {
-    font-size: 4rem;
+    font-size: 7rem; 
   }
 
   .overlay-text h2 {
@@ -154,6 +199,6 @@
   }
 
   .flag-icon {
-    width: 40px;
+    width: 60px;
   }
 }

@@ -77,6 +77,56 @@
   opacity: 0.8;
 }
 
+/* Card styling for fights */
+.fight-history {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fight-card {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.fight-card:hover {
+  transform: translateY(-5px);
+}
+
+.fight-card p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.fight-card .win {
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Button positioning for responsiveness */
+.view-all-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Media queries for responsive card layout */
+@media (min-width: 768px) {
+  .fight-history {
+    flex-direction: row;
+  }
+
+  .fight-card {
+    max-width: 250px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-content {
     padding: 0 1rem;
