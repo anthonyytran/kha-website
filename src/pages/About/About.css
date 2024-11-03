@@ -1,0 +1,25 @@
+.about-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .about-container {
+    flex: 1;
+    padding: 2rem;
+    padding-top: 10vh; /* Adjust this to match the navbar height */
+    background-color: var(--color-white);
+    color: var(--color-black);
+    text-align: center;
+  }
+  
+  .about-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  

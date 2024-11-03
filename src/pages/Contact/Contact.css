@@ -1,0 +1,24 @@
+.contact-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .contact-container {
+    flex: 1;
+    padding: 2rem;
+    padding-top: 10vh; /* Adjust this to match the navbar height */
+    background-color: var(--color-white);
+    color: var(--color-black);
+    text-align: center;
+  }
+  
+  .contact-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
