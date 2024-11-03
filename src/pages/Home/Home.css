@@ -21,7 +21,7 @@
   padding: 1rem;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 8px;
-  transform: translateY(-80%);
+  transform: translateY(-60%);
 }
 
 @media (min-width: 769px) {
@@ -32,13 +32,14 @@
 
 @media (max-width: 480px) {
   .overlay-text {
-    transform: translateY(-20%); 
+    transform: translateY(-20%);
   }
 }
 
 .overlay-text h1 {
   font-size: 8rem;
   font-weight: 900;
+  
   margin-bottom: 0.5rem;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -48,32 +49,29 @@
 }
 
 .overlay-text h1:hover {
-  color: var(--color-primary); 
-}
-
-.overlay-text p {
-  font-size: 2rem;
-  font-weight: 700;
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 1px;
-  margin-top: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.overlay-text p:hover {
   color: var(--color-primary);
 }
 
-.home-container-1 .overlay-text .subtext {
-  font-family: 'Dancing Script', cursive;
+.overlay-text h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: 'Anton', sans-serif; /* Apply Anton font */
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+  color: var(--color-white);
+  transition: color 0.3s ease;
 }
 
-.subtext {
+.overlay-text h2:hover {
+  color: var(--color-primary);
+}
+
+.overlay-text h3 {
   font-size: 1.5rem;
-  font-family: 'Dancing Script', cursive; 
+  font-family: 'Rye', serif; 
   font-weight: 500;
   margin-top: 1rem;
-  color: var(--color-white); 
+  color: var(--color-white);
 }
 
 .find-out-more-button {
@@ -126,20 +124,23 @@
 }
 
 .flag-icon {
-  width: 120px; /* Adjust width as needed */
+  width: 80px;
   height: auto;
-  margin: 0 8px; 
-  vertical-align: middle; /* Align it with the text */
+  margin: 0 8px;
+  vertical-align: middle;
 }
-
 
 @media (max-width: 768px) {
   .overlay-text h1 {
     font-size: 6rem;
   }
-  
-  .overlay-text p {
-    font-size: 2.5rem;
+
+  .overlay-text h2 {
+    font-size: 2rem;
+  }
+
+  .flag-icon {
+    width: 60px;
   }
 }
 
@@ -147,8 +148,12 @@
   .overlay-text h1 {
     font-size: 4rem;
   }
-  
-  .overlay-text p {
+
+  .overlay-text h2 {
     font-size: 1.8rem;
+  }
+
+  .flag-icon {
+    width: 40px;
   }
 }
