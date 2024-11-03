@@ -21,7 +21,14 @@
   padding: 1rem;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 8px;
-  transform: translateY(-80%);
+  transform: translateY(-80%); /* Initial position */
+}
+
+@media (min-width: 769px) {
+  /* Move the overlay-text slightly down for web screens */
+  .overlay-text {
+    transform: translateY(-30%); /* Adjust this value as needed */
+  }
 }
 
 .overlay-text h1 {
