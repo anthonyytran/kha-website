@@ -56,7 +56,6 @@
 .view-all-button,
 .sponsor-button {
   display: inline-block;
-  margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
   font-size: 1.2rem;
   font-weight: 700;
@@ -74,6 +73,15 @@
   border-color: #FFD700;
   background-color: #FFD700;
   color: var(--color-black);
+}
+
+/* Adjusted positioning for each button */
+.fights-button {
+  margin-top: 1rem; /* Adjusted closer to the fights container */
+}
+
+.sponsor-button-container {
+  margin-top: 3rem; /* Adjusted further below the sponsors carousel */
 }
 
 /* Record Title Container */
@@ -310,7 +318,7 @@
 .view-all-button-container {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 0rem;
 }
 
 /* Flag icon styling */
@@ -324,46 +332,46 @@
 /* Updated Sponsors Container Styling */
 .home-container-3 {
   width: 100%;
-  min-height: 70vh;
+  min-height: 50vh; /* Reduced from 70vh */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #f0f0f0;
-  padding: 3rem 2rem;
+  padding: 2rem 1.5rem; /* Reduced padding */
   color: var(--color-black);
 }
 
 .sponsors-title {
-  font-size: 3.5rem;
+  font-size: 3rem; /* Reduced from 3.5rem */
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
   color: var(--color-secondary);
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* Reduced margin */
 }
 
 /* Updated Sponsor Carousel Styling */
 .sponsor-carousel {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1200px; /* Reduced from 1600px */
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 1.5rem 0; /* Reduced padding */
 }
 
 /* Standardize sponsor slide container */
 .sponsor-slide {
-  padding: 1rem;
+  padding: 0.75rem; /* Reduced padding */
   display: flex !important;
   justify-content: center;
   align-items: center;
-  height: 300px !important; /* Fixed height for all slides */
+  height: 250px !important; /* Reduced from 300px */
 }
 
 /* Updated Sponsor Image Styling */
 .sponsor-slide img {
   width: 100%;
-  max-width: 400px; /* Set maximum width for consistency */
+  max-width: 350px; /* Reduced from 400px */
   height: 100%;
   object-fit: contain;
   display: block;
@@ -373,26 +381,22 @@
   transition: transform 0.3s ease;
 }
 
-.sponsor-slide img:hover {
-  transform: scale(1.05);
+/* Navigation buttons */
+.slick-prev {
+  left: -35px; 
 }
 
-/* Enhanced Slick Carousel Styling */
-.slick-track {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
+.slick-next {
+  right: -35px; 
 }
 
-.slick-slide {
-  height: inherit !important;
+.slick-prev:before,
+.slick-next:before {
+  font-size: 35px; 
 }
 
-.slick-slide > div {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.slick-dots {
+  bottom: -35px; 
 }
 
 /* Updated Navigation Button Styling */

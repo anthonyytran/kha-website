@@ -43,7 +43,7 @@
 
 .site-map h3 {
   color: var(--color-white);
-  font-size: 1.6rem; /* Increased font size */
+  font-size: 1.6rem; 
   margin-bottom: 0.5rem;
 }
 
@@ -63,7 +63,7 @@
   color: var(--color-grey);
   text-decoration: none;
   transition: color 0.3s ease;
-  font-size: 1.9rem; 
+  font-size: 1.5rem; 
 }
 
 .site-map-links li a:hover {
@@ -73,7 +73,7 @@
 .copyright {
   margin-top: 2rem;
   color: var(--color-white);
-  font-size: 1.2rem; 
+  font-size: 1rem; 
   opacity: 0.8;
 }
 

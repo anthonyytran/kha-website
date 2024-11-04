@@ -137,7 +137,6 @@ const Home: React.FC = () => {
             <p className="result win">Win</p>
             <p className="location">Melbourne Pavilion, Australia</p>
           </div>
-
           <div className="fight-card">
             <h4>Thoedkiad Weerachon</h4>
             <p className="date">December 2, 2023</p>
@@ -145,7 +144,6 @@ const Home: React.FC = () => {
             <p className="result win">Win</p>
             <p className="location">Melbourne Pavilion, Australia</p>
           </div>
-
           <div className="fight-card">
             <h4>Oatkowit Kamlangcharoey</h4>
             <p className="date">September 16, 2023</p>
@@ -155,7 +153,7 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="view-all-button-container">
+        <div className="view-all-button-container fights-button">
           <Link to="/record" className="view-all-button">
             View All
           </Link>
@@ -179,7 +177,7 @@ const Home: React.FC = () => {
           </Slider>
         </div>
         <div className="sponsor-button-container">
-          <Link to="/sponsors" className="sponsor-button">
+          <Link to="/sponsors" className="view-all-button sponsor-button">
             View All
           </Link>
         </div>
