@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -11,7 +11,44 @@ import sponsor1 from "../../assets/images/rephaze.png";
 import sponsor2 from "../../assets/images/sponsor2.png";
 import sponsor3 from "../../assets/images/theboxinglab.png";
 
-const Home = () => {
+// Countdown Timer Function
+const calculateTimeLeft = () => {
+  const eventDate = new Date("December 18, 2024 00:00:00").getTime();
+  const now = new Date().getTime();
+  const difference = eventDate - now;
+
+  let timeLeft = {
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  };
+
+  if (difference > 0) {
+    timeLeft = {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      ),
+      minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+      seconds: Math.floor((difference % (1000 * 60)) / 1000),
+    };
+  }
+
+  return timeLeft;
+};
+
+const Home: React.FC = () => {
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const sponsorSettings = {
     dots: true,
     infinite: true,
@@ -62,9 +99,11 @@ const Home = () => {
           <div className="record-number">
             7<div className="record-label win">Win</div>
           </div>
+          <span className="record-separator">-</span>
           <div className="record-number">
             0<div className="record-label loss">Loss</div>
           </div>
+          <span className="record-separator">-</span>
           <div className="record-number">
             0<div className="record-label draw">Draw</div>
           </div>
@@ -73,42 +112,49 @@ const Home = () => {
 
       {/* Record Details Container */}
       <div className="home-container-2">
-        <h3 className="last-three-text">Last 3 Fights</h3>
-        <div className="fight-history">
-          <div className="fight-card">
-            <p>
-              <strong>Opponent:</strong> John Doe
-            </p>
-            <p>
-              <strong>Date:</strong> June 12, 2023
-            </p>
-            <p className="win">
-              <strong>Result:</strong> Win
-            </p>
-          </div>
-          <div className="fight-card">
-            <p>
-              <strong>Opponent:</strong> Mark Smith
-            </p>
-            <p>
-              <strong>Date:</strong> March 9, 2023
-            </p>
-            <p className="win">
-              <strong>Result:</strong> Win
-            </p>
-          </div>
-          <div className="fight-card">
-            <p>
-              <strong>Opponent:</strong> Alex Brown
-            </p>
-            <p>
-              <strong>Date:</strong> January 15, 2023
-            </p>
-            <p className="win">
-              <strong>Result:</strong> Win
-            </p>
+        <h3 className="last-three-text">Fights</h3>
+
+        {/* Upcoming Fight Card with Countdown */}
+        <div className="fight-card upcoming">
+          <h4>Katsunari Takayama</h4>
+          <p className="date">December 18, 2024</p>
+          <p className="method upcoming-text">Upcoming</p>
+          <p className="location">Lagao Gymnasium, Phillipines</p>
+          <div className="countdown-timer">
+            <span className="countdown red">{timeLeft.days}d</span>{" "}
+            <span className="countdown red">{timeLeft.hours}h</span>{" "}
+            <span className="countdown red">{timeLeft.minutes}m</span>{" "}
+            <span className="countdown red">{timeLeft.seconds}s</span>
           </div>
         </div>
+
+        {/* Past Fights */}
+        <div className="fight-history">
+          <div className="fight-card">
+            <h4>Watcharin Buacharoen</h4>
+            <p className="date">March 16, 2024</p>
+            <p className="method">UD</p>
+            <p className="result win">Win</p>
+            <p className="location">Melbourne Pavilion, Australia</p>
+          </div>
+
+          <div className="fight-card">
+            <h4>Thoedkiad Weerachon</h4>
+            <p className="date">December 2, 2023</p>
+            <p className="method">TKO</p>
+            <p className="result win">Win</p>
+            <p className="location">Melbourne Pavilion, Australia</p>
+          </div>
+
+          <div className="fight-card">
+            <h4>Oatkowit Kamlangcharoey</h4>
+            <p className="date">September 16, 2023</p>
+            <p className="method">TKO</p>
+            <p className="result win">Win</p>
+            <p className="location">Melbourne Pavilion, Australia</p>
+          </div>
+        </div>
+
         <div className="view-all-button-container">
           <Link to="/record" className="view-all-button">
             View All
@@ -130,7 +176,6 @@ const Home = () => {
             <div className="sponsor-slide">
               <img src={sponsor3} alt="Sponsor 3" />
             </div>
-            {/* Add more sponsors as needed */}
           </Slider>
         </div>
         <div className="sponsor-button-container">
