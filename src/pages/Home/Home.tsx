@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
@@ -10,6 +12,8 @@ import australianFlag from "../../assets/images/flag-icon.png";
 import sponsor1 from "../../assets/images/rephaze.png";
 import sponsor2 from "../../assets/images/sponsor2.png";
 import sponsor3 from "../../assets/images/theboxinglab.png";
+import sponsor4 from "../../assets/images/dynamic-therapy.png";
+import sponsor5 from "../../assets/images/greeneflicks.png";
 
 // Countdown Timer Function
 const calculateTimeLeft = () => {
@@ -42,6 +46,16 @@ const Home: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+    });
+
+    // Scroll to top when component is mounted
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
@@ -53,19 +67,30 @@ const Home: React.FC = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
     responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
     ],
@@ -110,16 +135,15 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Record Details Container */}
       <div className="home-container-2">
-        <h3 className="last-three-text">Fights</h3>
+        <h3 className="fights-title">Fights</h3>
 
         {/* Upcoming Fight Card with Countdown */}
-        <div className="fight-card upcoming">
+        <div className="fight-card upcoming" data-aos="fade-up">
           <h4>Katsunari Takayama</h4>
           <p className="date">December 18, 2024</p>
           <p className="method upcoming-text">Upcoming</p>
-          <p className="location">Lagao Gymnasium, Phillipines</p>
+          <p className="location">Lagao Gymnasium, Philippines</p>
           <div className="countdown-timer">
             <span className="countdown red">{timeLeft.days}d</span>{" "}
             <span className="countdown red">{timeLeft.hours}h</span>{" "}
@@ -130,21 +154,21 @@ const Home: React.FC = () => {
 
         {/* Past Fights */}
         <div className="fight-history">
-          <div className="fight-card">
+          <div className="fight-card" data-aos="fade-up">
             <h4>Watcharin Buacharoen</h4>
             <p className="date">March 16, 2024</p>
             <p className="method">UD</p>
             <p className="result win">Win</p>
             <p className="location">Melbourne Pavilion, Australia</p>
           </div>
-          <div className="fight-card">
+          <div className="fight-card" data-aos="fade-up" data-aos-delay="100">
             <h4>Thoedkiad Weerachon</h4>
             <p className="date">December 2, 2023</p>
             <p className="method">TKO</p>
             <p className="result win">Win</p>
             <p className="location">Melbourne Pavilion, Australia</p>
           </div>
-          <div className="fight-card">
+          <div className="fight-card" data-aos="fade-up" data-aos-delay="200">
             <h4>Oatkowit Kamlangcharoey</h4>
             <p className="date">September 16, 2023</p>
             <p className="method">TKO</p>
@@ -166,13 +190,19 @@ const Home: React.FC = () => {
         <div className="sponsor-carousel">
           <Slider {...sponsorSettings}>
             <div className="sponsor-slide">
-              <img src={sponsor1} alt="Sponsor 1" />
+              <img src={sponsor1} alt="Rephaze" />
             </div>
             <div className="sponsor-slide">
               <img src={sponsor2} alt="Sponsor 2" />
             </div>
             <div className="sponsor-slide">
-              <img src={sponsor3} alt="Sponsor 3" />
+              <img src={sponsor3} alt="The Boxing Lab" />
+            </div>
+            <div className="sponsor-slide">
+              <img src={sponsor4} alt="Dynamic Therapy" />
+            </div>
+            <div className="sponsor-slide">
+              <img src={sponsor5} alt="Greene Flicks" />
             </div>
           </Slider>
         </div>
