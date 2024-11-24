@@ -7,8 +7,22 @@
   position: fixed;
   width: 100%;
   top: 0;
-  transition: transform 0.3s ease-in-out;
+  transform: translateY(-100%); /* Initially hidden by moving it up */
+  opacity: 0; /* Initially transparent */
+  animation: slideDown 1s ease-in-out forwards 1.5s; /* Delayed to start after background animation */
 }
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 
 .navbar-visible {
   transform: translateY(0);
@@ -26,12 +40,12 @@
 }
 
 .logo-icon {
-  height: 80%; /* Increase height slightly relative to the navbar */
-  max-height: 9vh; /* Prevent it from exceeding the navbar */
-  width: auto; /* Maintain aspect ratio */
-  margin-top: 0; /* Align vertically with the navbar */
+  height: 80%;
+  max-height: 9vh;
+  width: auto;
+  margin-top: 0;
   position: relative;
-  z-index: 10; /* Ensure it appears above other elements */
+  z-index: 10;
   transition: z-index 0.3s ease;
 }
 
