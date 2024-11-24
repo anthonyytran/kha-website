@@ -10,6 +10,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isInitialAnimationDone, setIsInitialAnimationDone] = useState(false);
+
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -17,6 +19,17 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    // Set initial animation as done after its duration
+    const timer = setTimeout(() => {
+      setIsInitialAnimationDone(true);
+    }, 1500); // Match this duration to your CSS animation delay
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!isInitialAnimationDone) return;
+
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
@@ -35,11 +48,17 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollTop]);
+  }, [lastScrollTop, isInitialAnimationDone]);
 
   return (
     <nav
-      className={`navbar ${isScrollingUp ? "navbar-visible" : "navbar-hidden"}`}
+      className={`navbar ${
+        isInitialAnimationDone
+          ? isScrollingUp
+            ? "navbar-visible"
+            : "navbar-hidden"
+          : "navbar-initial"
+      }`}
     >
       <div className="navbar-container">
         <Link to="/" className="logo">
@@ -53,7 +72,6 @@ const Navbar = () => {
           <span className="line"></span>
           <span className="line"></span>
         </div>
-
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
           <hr className="nav-divider" />
           <li>
@@ -101,9 +119,7 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          {/* Divider below Contact */}
           <hr className="nav-divider" />
-
           {isOpen && (
             <>
               <li className="lionsden-logo">
@@ -113,7 +129,6 @@ const Navbar = () => {
                   className="lionsden-logo-icon"
                 />
               </li>
-              {/* Divider below Lionsden logo */}
               <hr className="nav-divider" />
               <div className="mobile-footer">
                 <p className="copyright">
