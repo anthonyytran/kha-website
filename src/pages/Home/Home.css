@@ -7,11 +7,14 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: black; /* Start with a black background */
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('../../assets/images/kha-photo1.jpg');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
+  background-blend-mode: darken; /* Blend black with the background image initially */
+  animation: fadeInBackgroundColor 2s ease-in forwards 1s; /* Animate background color */
 }
 
 /* Overlay Text and Styling */
@@ -24,6 +27,29 @@
   padding: 1rem;
   border-radius: 30px;
   transform: translateY(-25%);
+  opacity: 0; /* Initially hidden */
+  animation: fadeInOverlay 1.5s ease-in-out forwards 0.5s; /* Overlay text fades in first */
+}
+
+/* Background and Overlay Animations */
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInBackgroundColor {
+  from {
+    background-color: black;
+    background-blend-mode: darken;
+  }
+  to {
+    background-color: transparent;
+    background-blend-mode: normal;
+  }
 }
 
 .overlay-text h2 {
