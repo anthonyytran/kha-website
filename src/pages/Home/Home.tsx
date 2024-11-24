@@ -51,7 +51,6 @@ const Home: React.FC = () => {
       easing: "ease-in-out",
     });
 
-    // Scroll to top when component is mounted
     window.scrollTo(0, 0);
   }, []);
 
@@ -100,15 +99,6 @@ const Home: React.FC = () => {
     <div>
       <div className="home-container-1">
         <div className="overlay-text">
-          <h1>
-            Kha{" "}
-            <img
-              src={australianFlag}
-              alt="Australian Flag"
-              className="flag-icon"
-            />{" "}
-            Lu
-          </h1>
           <h2>PROFESSIONAL BOXER</h2>
           <h3 className="subtext">Victorian Light Flyweight Champion</h3>
           <Link to="/about" className="find-out-more-button">
