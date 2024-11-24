@@ -26,11 +26,12 @@
 }
 
 .logo-icon {
-  width: 150px;
-  height: auto;
-  margin-top: 1.4em;
+  height: 80%; /* Increase height slightly relative to the navbar */
+  max-height: 9vh; /* Prevent it from exceeding the navbar */
+  width: auto; /* Maintain aspect ratio */
+  margin-top: 0; /* Align vertically with the navbar */
   position: relative;
-  z-index: 10; /* Ensure it's above other elements initially */
+  z-index: 10; /* Ensure it appears above other elements */
   transition: z-index 0.3s ease;
 }
 
@@ -62,7 +63,7 @@
 
 @media (min-width: 769px) {
   .nav-links li a {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 }
 

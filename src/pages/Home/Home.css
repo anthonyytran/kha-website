@@ -41,8 +41,8 @@
   font-family: 'Bebas Neue', sans-serif;
   color: var(--color-white);
   margin: 1rem 0;
-  opacity: 0; /* Initially hidden */
-  animation: fadeInChampion 1.5s ease-in-out forwards 0.5s; /* Delay for synchronization */
+  opacity: 0; 
+  animation: fadeInChampion 1.5s ease-in-out forwards 0.5s; 
 }
 
 .divider {
@@ -50,7 +50,7 @@
   border: 0;
   border-top: 3px solid var(--color-white);
   margin: 0.5rem auto;
-  opacity: 0; /* Initially hidden */
+  opacity: 0; 
 }
 
 .divider-top {
@@ -108,6 +108,66 @@
   }
 }
 
+/* Scroll Indicator Styling */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--color-white);
+  animation: fadeIn 2s ease-in-out infinite;
+}
+
+.scroll-text {
+  font-size: 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.arrow-down {
+  width: 24px;
+  height: 24px;
+  border-left: 3px solid var(--color-white);
+  border-bottom: 3px solid var(--color-white);
+  transform: rotate(-45deg);
+  margin: 0 auto;
+  animation: bounceArrow 1.5s infinite;
+}
+
+/* Arrow Pointing Animation */
+@keyframes pointDown {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-60deg); /* Tilt further down */
+  }
+  100% {
+    transform: rotate(-45deg); /* Back to original position */
+  }
+}
+
+.arrow-down {
+  width: 24px;
+  height: 24px;
+  border-left: 3px solid var(--color-white);
+  border-bottom: 3px solid var(--color-white);
+  transform: rotate(-45deg);
+  margin: 0 auto;
+  animation: pointDown 1.5s infinite;
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 /* Button Styling */
 .find-out-more-button,
