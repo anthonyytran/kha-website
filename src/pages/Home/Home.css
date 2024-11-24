@@ -7,14 +7,14 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: black; /* Start with a black background */
+  background-color: black; 
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('../../assets/images/kha-photo1.jpg');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  background-blend-mode: darken; /* Blend black with the background image initially */
-  animation: fadeInBackgroundColor 2s ease-in forwards 1s; /* Animate background color */
+  background-blend-mode: darken; 
+  animation: fadeInBackgroundColor 2s ease-in forwards 1s; 
 }
 
 /* Overlay Text and Styling */
@@ -27,8 +27,8 @@
   padding: 1rem;
   border-radius: 30px;
   transform: translateY(-25%);
-  opacity: 0; /* Initially hidden */
-  animation: fadeInOverlay 1.5s ease-in-out forwards 0.5s; /* Overlay text fades in first */
+  opacity: 0; 
+  animation: fadeInOverlay 1.5s ease-in-out forwards 0.5s; 
 }
 
 /* Background and Overlay Animations */
@@ -142,39 +142,18 @@
   transform: translateX(-50%);
   text-align: center;
   color: var(--color-white);
-  animation: fadeIn 2s ease-in-out infinite;
+  opacity: 0; 
+  animation: fadeInText 1.2s ease-in-out forwards 2.5s; 
 }
 
 .scroll-text {
   font-size: 1rem;
   font-family: 'Bebas Neue', sans-serif;
   margin-bottom: 0.5rem;
-  opacity: 0.8;
-}
-
-.arrow-down {
-  width: 24px;
-  height: 24px;
-  border-left: 3px solid var(--color-white);
-  border-bottom: 3px solid var(--color-white);
-  transform: rotate(-45deg);
-  margin: 0 auto;
-  animation: bounceArrow 1.5s infinite;
+  opacity: 1; 
 }
 
 /* Arrow Pointing Animation */
-@keyframes pointDown {
-  0% {
-    transform: rotate(-45deg);
-  }
-  50% {
-    transform: rotate(-60deg); /* Tilt further down */
-  }
-  100% {
-    transform: rotate(-45deg); /* Back to original position */
-  }
-}
-
 .arrow-down {
   width: 24px;
   height: 24px;
@@ -182,11 +161,12 @@
   border-bottom: 3px solid var(--color-white);
   transform: rotate(-45deg);
   margin: 0 auto;
-  animation: pointDown 1.5s infinite;
+  opacity: 0; 
+  animation: fadeInArrow 1.5s ease-in-out forwards 3.5s, pointUpAndDown 1.5s infinite 5s; 
 }
 
-/* Fade-In Animation */
-@keyframes fadeIn {
+/* Fade-In Animation for Text */
+@keyframes fadeInText {
   from {
     opacity: 0;
   }
@@ -195,13 +175,36 @@
   }
 }
 
+/* Fade-In Animation for Arrow */
+@keyframes fadeInArrow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Smooth Up-and-Down Animation for Arrow */
+@keyframes pointUpAndDown {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-45deg); 
+  }
+  100% {
+    transform: translateY(0) rotate(-45deg); 
+  }
+}
+
 /* Button Styling */
 .find-out-more-button,
 .view-all-button,
 .sponsor-button {
   display: inline-block;
-  padding: 0.5rem 1rem; /* Smaller padding */
-  font-size: 1rem; /* Smaller font size */
+  padding: 0.5rem 1rem; 
+  font-size: 1rem; 
   font-weight: 700;
   color: var(--color-white);
   background-color: transparent;
@@ -252,7 +255,7 @@
   width: 100%;
   height: 100%;
   background-image: url('../../assets/images/boxing-glove.png');
-  background-size: contain; /* Ensures the image fits within the container without repeating */
+  background-size: contain; 
   background-position: center;
   background-repeat: no-repeat; 
   opacity: 0.1;
@@ -393,7 +396,7 @@
 }
 
 .fight-card:hover {
-  transform: scale(1.55); /* Slightly increase the scale */
+  transform: scale(1.55); 
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
   background: var(--color-grey);
 }
@@ -411,7 +414,7 @@
 }
 
 .fight-card:hover::after {
-  opacity: 1; /* Optional: Darken the card on hover */
+  opacity: 1; 
 }
 
 .fight-card h4 {
