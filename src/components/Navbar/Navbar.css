@@ -113,7 +113,7 @@
   }
 
   .nav-links.open ~ .logo-icon {
-    z-index: -1; /* Move the logo behind the navigation background */
+    z-index: -1;
   }
 
   .hamburger {
@@ -123,7 +123,7 @@
   .mobile-footer {
     text-align: center;
     color: var(--color-grey);
-    margin-top: -2rem;
+    margin-top: -2rem; 
     font-size: 0.85rem;
     z-index: 20;
   }
@@ -132,7 +132,7 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 0.3rem;
+    margin-top: 1.3rem; 
   }
 
   .social-link {
