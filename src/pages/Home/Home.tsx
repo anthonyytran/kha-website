@@ -99,8 +99,14 @@ const Home: React.FC = () => {
     <div>
       <div className="home-container-1">
         <div className="overlay-text">
-          <h2>PROFESSIONAL BOXER</h2>
-          <h3 className="subtext">Victorian Light Flyweight Champion</h3>
+          <hr className="divider divider-top" />
+          <h2 className="fade-in-text" data-aos="fade-in">
+            PROFESSIONAL BOXER
+          </h2>
+          <hr className="divider divider-bottom" />
+          <h3 className="fade-in-champion subtext">
+            Victorian Light Flyweight Champion
+          </h3>
           <Link to="/about" className="find-out-more-button">
             Find out more
           </Link>

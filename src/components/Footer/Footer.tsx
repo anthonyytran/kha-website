@@ -48,8 +48,7 @@ const Footer = () => {
           </ul>
         </div>
         <p className="copyright">
-          &copy; {new Date().getFullYear()} Kha Lu | Official website of Kha Lu
-          | All rights reserved
+          &copy; {new Date().getFullYear()} Kha Lu | All rights reserved
         </p>
       </div>
     </footer>

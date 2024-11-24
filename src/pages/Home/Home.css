@@ -26,31 +26,88 @@
   transform: translateY(-25%);
 }
 
-.overlay-text h1 {
-  font-size: 12rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-family: 'Bebas Neue', sans-serif;
-  color: var(--color-white);
-  text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.7);
-}
-
 .overlay-text h2 {
   font-size: 4rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 1px;
   color: var(--color-white);
+  margin: 1rem 0;
 }
 
 .overlay-text h3 {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   font-family: 'Bebas Neue', sans-serif;
   color: var(--color-white);
-  margin-top: 1rem;
+  margin: 1rem 0;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInChampion 1.5s ease-in-out forwards 0.5s; /* Delay for synchronization */
 }
+
+.divider {
+  width: 100%;
+  border: 0;
+  border-top: 3px solid var(--color-white);
+  margin: 0.5rem auto;
+  opacity: 0; /* Initially hidden */
+}
+
+.divider-top {
+  animation: fadeInLeft 1.5s ease-in-out forwards;
+}
+
+.divider-bottom {
+  animation: fadeInRight 1.5s ease-in-out forwards;
+}
+
+.fade-in-text {
+  animation: fadeInText 1.5s ease-in-out forwards;
+}
+
+/* Keyframes for animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInChampion {
+  from {
+    opacity: 0;
+    transform: translateY(20px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* Button Styling */
 .find-out-more-button,
@@ -62,14 +119,14 @@
   font-weight: 700;
   color: var(--color-white);
   background-color: transparent;
-  border: 1.5px solid var(--color-white); /* Slightly thinner border */
+  border: 1.5px solid var(--color-white); 
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.3s ease;
 }
 
 .find-out-more-button {
-  margin-top: 2.5rem; /* Move the find-out-more button down */
+  margin-top: 2.5rem; 
 }
 
 .find-out-more-button:hover,

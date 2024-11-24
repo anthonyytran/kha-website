@@ -53,7 +53,9 @@ const Navbar = () => {
           <span className="line"></span>
           <span className="line"></span>
         </div>
+
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+          <hr className="nav-divider" />
           <li>
             <Link
               to="/"
@@ -102,13 +104,6 @@ const Navbar = () => {
           {/* Divider below Contact */}
           <hr className="nav-divider" />
 
-          <li className="mobile-logo">
-            <img
-              src={logoIcon}
-              alt="Kha Lu Logo"
-              className="mobile-logo-icon"
-            />
-          </li>
           {isOpen && (
             <>
               <li className="lionsden-logo">
