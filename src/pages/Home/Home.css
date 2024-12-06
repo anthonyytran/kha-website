@@ -7,14 +7,14 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: black; 
+  background-color: black;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('../../assets/images/kha-photo1.jpg');
-  background-size: cover;
-  background-position: center top;
+    url('../../assets/images/background.jpg');
+  background-size: 120%; /* Zoomed out for higher resolution */
+  background-position: center 15%; /* Crops the top and centers horizontally */
   background-repeat: no-repeat;
-  background-blend-mode: darken; 
-  animation: fadeInBackgroundColor 3s ease-in forwards 3s; 
+  background-blend-mode: darken;
+  animation: fadeInBackgroundColor 3s ease-in forwards 3s;
 }
 
 /* Overlay Text and Styling */
