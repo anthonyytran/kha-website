@@ -7,6 +7,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
 
+// Fighter images
+import fighter1 from "../../assets/images/buacharoen.jpg";
+import fighter2 from "../../assets/images/weerachon.jpg";
+import fighter3 from "../../assets/images/kamlangcharoey.jpg";
+
 // Sponsor images
 import sponsor1 from "../../assets/images/rephaze.png";
 import sponsor2 from "../../assets/images/sponsor2.png";
@@ -141,7 +146,11 @@ const Home: React.FC = () => {
 
         {/* Upcoming Fight Card with Countdown */}
         <div className="fight-card upcoming" data-aos="fade-up">
-          <h4>Katsunari Takayama</h4>
+          <h4>
+            <span className="first-name">Katsunari</span>
+            <span className="last-name">Takayama</span>
+          </h4>
+          <p className="title">IBO Minimum Weight Title</p>
           <p className="date">December 18, 2024</p>
           <p className="method upcoming-text">Upcoming</p>
           <p className="location">Lagao Gymnasium, Philippines</p>
@@ -153,28 +162,62 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Past Fights */}
         <div className="fight-history">
+          {/* Fight card for Watcharin Buacharoen */}
           <div className="fight-card" data-aos="fade-up">
-            <h4>Watcharin Buacharoen</h4>
-            <p className="date">March 16, 2024</p>
-            <p className="method">UD</p>
-            <p className="result win">Win</p>
-            <p className="location">Melbourne Pavilion, Australia</p>
+            <h4>
+              <span className="first-name">Watcharin</span>
+              <span className="last-name">Buacharoen</span>
+            </h4>
+            <img
+              src={fighter1}
+              alt="Watcharin Buacharoen"
+              className="fighter-image"
+            />
+            <div className="fight-details">
+              <p className="date">March 16, 2024</p>
+              <p className="method">UD</p>
+              <p className="location">Melbourne Pavilion, Australia</p>
+              <p className="result win">Win</p>
+            </div>
           </div>
+
+          {/* Fight card for Thoedkiad Weerachon */}
           <div className="fight-card" data-aos="fade-up" data-aos-delay="100">
-            <h4>Thoedkiad Weerachon</h4>
-            <p className="date">December 2, 2023</p>
-            <p className="method">TKO</p>
-            <p className="result win">Win</p>
-            <p className="location">Melbourne Pavilion, Australia</p>
+            <h4>
+              <span className="first-name">Thoedkiad</span>
+              <span className="last-name">Weerachon</span>
+            </h4>
+            <img
+              src={fighter2}
+              alt="Thoedkiad Weerachon"
+              className="fighter-image"
+            />
+            <div className="fight-details">
+              <p className="date">December 2, 2023</p>
+              <p className="method">TKO</p>
+              <p className="location">Melbourne Pavilion, Australia</p>
+              <p className="result win">Win</p>
+            </div>
           </div>
+
+          {/* Fight card for Oatkowit Kamlangcharoey */}
           <div className="fight-card" data-aos="fade-up" data-aos-delay="200">
-            <h4>Oatkowit Kamlangcharoey</h4>
-            <p className="date">September 16, 2023</p>
-            <p className="method">TKO</p>
-            <p className="result win">Win</p>
-            <p className="location">Melbourne Pavilion, Australia</p>
+            <h4>
+              <span className="first-name">Oatkowit</span>
+              <span className="last-name">Kamlangcharoey</span>
+            </h4>
+            <img
+              src={fighter3}
+              alt="Oatkowit Kamlangcharoey"
+              className="fighter-image"
+            />
+            <div className="fight-details">
+              <p className="date">September 16, 2023</p>
+              <p className="method">TKO</p>
+              <p className="location">Melbourne Pavilion, Australia</p>
+              <p className="result win">Win</p>
+            </div>
           </div>
         </div>
 
