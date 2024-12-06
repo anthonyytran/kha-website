@@ -1,25 +1,86 @@
 .sponsors-page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.sponsors-container {
+  flex: 1;
+  padding: 2rem;
+  padding-top: 10vh; /* Adjust this to match the navbar height */
+  background-color: var(--color-white);
+  color: var(--color-black);
+  text-align: center;
+}
+
+.sponsors-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.sponsors-container p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.gold-sponsors-section,
+.silver-sponsors-section {
+  margin: 2rem 0;
+}
+
+.gold-sponsors-section h2,
+.silver-sponsors-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.gold-sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  margin-bottom: 2rem;
+}
+
+.silver-sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  margin-bottom: 2rem;
+}
+
+.sponsor-logo {
+  width: 150px; /* Adjust size as needed */
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sponsor-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gold-sponsors-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
   }
-  
-  .sponsors-container {
-    flex: 1;
-    padding: 2rem;
-    padding-top: 10vh; /* Adjust this to match the navbar height */
-    background-color: var(--color-white);
-    color: var(--color-black);
-    text-align: center;
+
+  .silver-sponsors-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
   }
-  
-  .sponsors-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  .gold-sponsors-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile */
   }
-  
-  .sponsors-container p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+
+  .silver-sponsors-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile */
   }
-  
+
+  .sponsor-logo {
+    width: 120px; /* Reduce logo size on mobile */
+  }
+}

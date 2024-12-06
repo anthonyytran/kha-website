@@ -14,7 +14,7 @@
   background-position: center top;
   background-repeat: no-repeat;
   background-blend-mode: darken; 
-  animation: fadeInBackgroundColor 2s ease-in forwards 1s; 
+  animation: fadeInBackgroundColor 3s ease-in forwards 3s; 
 }
 
 /* Overlay Text and Styling */
@@ -33,23 +33,39 @@
 
 /* Background and Overlay Animations */
 @keyframes fadeInOverlay {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  50% {
+    opacity: 0.5; /* Gradual build-up */
+  }
+  100% {
     opacity: 1;
   }
 }
 
 @keyframes fadeInBackgroundColor {
-  from {
+  0% {
     background-color: black;
     background-blend-mode: darken;
   }
-  to {
+  50% {
+    background-color: rgba(0, 0, 0, 0.5); /* Intermediate stage */
+    background-blend-mode: darken;
+  }
+  100% {
     background-color: transparent;
     background-blend-mode: normal;
   }
+}
+
+/* Example Application */
+.fade-in-overlay {
+  animation: fadeInOverlay 1.5s ease-in-out;
+}
+
+.fade-in-background {
+  animation: fadeInBackgroundColor 2s ease-in-out;
 }
 
 .overlay-text h2 {
