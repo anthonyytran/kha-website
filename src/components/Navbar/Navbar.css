@@ -10,11 +10,11 @@
 }
 
 .navbar.transparent {
-  background-color: transparent; /* Transparent navbar */
+  background-color: transparent; 
 }
 
 .navbar.scrolled {
-  background-color: var(--color-black); /* Black navbar */
+  background-color: var(--color-black); 
 }
 
 .navbar-visible {
@@ -46,10 +46,31 @@
   }
 }
 
-/* Initial animation */
+/* Initially hide the navbar */
 .navbar-initial {
+  transform: translateY(-100%);
+  opacity: 0;
   animation: slideDown 1s ease-in-out forwards;
-  animation-delay: 1.5s; /* Match background animation duration */
+  animation-delay: 1.5s; /* Start after 1.5 seconds */
+}
+
+/* Slide-in animation */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+    background-color: transparent;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    background-color: transparent; /* Navbar stays transparent */
+  }
+}
+
+/* Navbar styles when scrolled */
+.navbar.scrolled {
+  background-color: var(--color-black); /* Change to black when scrolled */
 }
 
 .navbar-visible {
@@ -212,7 +233,7 @@
 
 .nav-divider {
   width: 60%;
-  margin: 0.5rem auto; /* Equal spacing above and below the divider */
+  margin: 0.5rem auto; 
   border: 0;
   border-top: 1px solid var(--color-grey);
   opacity: 0.7;
@@ -252,7 +273,7 @@
 .lionsden-logo-icon {
   width: 150px;
   height: auto;
-  margin-top: -2rem; /* Reduced spacing above the divider */
+  margin-top: -2rem; 
 }
 
 @media (max-width: 768px) {

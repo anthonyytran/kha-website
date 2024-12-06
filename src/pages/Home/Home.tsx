@@ -147,25 +147,29 @@ const Home: React.FC = () => {
 
       <hr className="separator" />
 
-      {/* Upcoming Fight Container */}
       <div className="upcoming-fight-container">
-        <h1 className="upcoming-fight-title">Upcoming</h1>
         <div className="upcoming-fight-details" data-aos="fade-up">
           <div className="fighter-layout">
+            {/* Top - Kha Lu */}
             <div className="fighter">
-              <span className="fighter-name">KHA LU</span>
+              <span className="fighter-name">Kha Lu</span>
               <img
                 src={australiaFlag}
                 alt="Australian Flag"
                 className="flag-icon"
               />
             </div>
-            <div className="versus">vs</div>
+
+            {/* Middle - Vs */}
+            <div className="versus">Vs</div>
+
+            {/* Bottom - Katsunari Takayama */}
             <div className="fighter">
-              <span className="fighter-name">KATSUNARI TAKAYAMA</span>
+              <span className="fighter-name">Katsunari Takayama</span>
               <img src={japanFlag} alt="Japanese Flag" className="flag-icon" />
             </div>
           </div>
+
           <p className="fight-title">IBO Minimum Weight Title</p>
           <p className="fight-date">December 18, 2024</p>
           <p className="fight-location">Bula Gymnasium, Philippines</p>
