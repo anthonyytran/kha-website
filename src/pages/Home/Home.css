@@ -377,7 +377,7 @@
   max-width: 1200px;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center; /* Change from space-around to center */
   padding: 2rem;
 }
 
@@ -482,14 +482,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: 0.3rem; 
+  padding: 0.8rem; 
   width: 100%;
 }
 
 .fight-details p {
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
+  margin: 0.3rem 0; 
+  font-size: 1rem; 
   text-align: center;
 }
 
