@@ -7,7 +7,7 @@
 .sponsors-container {
   flex: 1;
   padding: 2rem;
-  padding-top: 10vh; /* Adjust this to match the navbar height */
+  padding-top: 10vh; 
   background-color: var(--color-white);
   color: var(--color-black);
   text-align: center;
@@ -51,7 +51,7 @@
 }
 
 .sponsor-logo {
-  width: 150px; /* Adjust size as needed */
+  width: 150px; 
   height: auto;
   transition: transform 0.2s ease-in-out;
 }
@@ -63,24 +63,24 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .gold-sponsors-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    grid-template-columns: repeat(2, 1fr); 
   }
 
   .silver-sponsors-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 480px) {
   .gold-sponsors-grid {
-    grid-template-columns: 1fr; /* 1 column on mobile */
+    grid-template-columns: 1fr; 
   }
 
   .silver-sponsors-grid {
-    grid-template-columns: 1fr; /* 1 column on mobile */
+    grid-template-columns: 1fr; 
   }
 
   .sponsor-logo {
-    width: 120px; /* Reduce logo size on mobile */
+    width: 120px;
   }
 }

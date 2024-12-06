@@ -7,6 +7,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
 
+// Flag images
+import australiaFlag from "../../assets/images/australia-icon.png";
+import japanFlag from "../../assets/images/japan-icon.png";
+
 // Fighter images
 import fighter1 from "../../assets/images/buacharoen.jpg";
 import fighter2 from "../../assets/images/weerachon.jpg";
@@ -141,19 +145,30 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <div className="home-container-2">
-        <h3 className="fights-title">Fights</h3>
+      <hr className="separator" />
 
-        {/* Upcoming Fight Card with Countdown */}
-        <div className="fight-card upcoming" data-aos="fade-up">
-          <h4>
-            <span className="first-name">Katsunari</span>
-            <span className="last-name">Takayama</span>
-          </h4>
-          <p className="title">IBO Minimum Weight Title</p>
-          <p className="date">December 18, 2024</p>
-          <p className="method upcoming-text">Upcoming</p>
-          <p className="location">Lagao Gymnasium, Philippines</p>
+      {/* Upcoming Fight Container */}
+      <div className="upcoming-fight-container">
+        <h1 className="upcoming-fight-title">Upcoming</h1>
+        <div className="upcoming-fight-details" data-aos="fade-up">
+          <div className="fighter-layout">
+            <div className="fighter">
+              <span className="fighter-name">KHA LU</span>
+              <img
+                src={australiaFlag}
+                alt="Australian Flag"
+                className="flag-icon"
+              />
+            </div>
+            <div className="versus">vs</div>
+            <div className="fighter">
+              <span className="fighter-name">KATSUNARI TAKAYAMA</span>
+              <img src={japanFlag} alt="Japanese Flag" className="flag-icon" />
+            </div>
+          </div>
+          <p className="fight-title">IBO Minimum Weight Title</p>
+          <p className="fight-date">December 18, 2024</p>
+          <p className="fight-location">Bula Gymnasium, Philippines</p>
           <div className="countdown-timer">
             <span className="countdown red">{timeLeft.days}d</span>{" "}
             <span className="countdown red">{timeLeft.hours}h</span>{" "}
@@ -161,7 +176,10 @@ const Home: React.FC = () => {
             <span className="countdown red">{timeLeft.seconds}s</span>
           </div>
         </div>
+      </div>
 
+      <div className="home-container-2">
+        <h3 className="fights-title">Past Fights</h3>
         <div className="fight-history">
           {/* Fight card for Watcharin Buacharoen */}
           <div className="fight-card" data-aos="fade-up">

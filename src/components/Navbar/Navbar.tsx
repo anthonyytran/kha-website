@@ -8,9 +8,9 @@ import lionsdenLogo from "../../assets/images/lionsden-logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isTransparent, setIsTransparent] = useState(true); // New state to handle transparency
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [isInitialAnimationDone, setIsInitialAnimationDone] = useState(false);
 
   const location = useLocation();
 
@@ -19,26 +19,19 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    // Set initial animation as done after its duration
-    const timer = setTimeout(() => {
-      setIsInitialAnimationDone(true);
-    }, 1500); // Match this duration to your CSS animation delay
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (!isInitialAnimationDone) return;
-
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
+      // Handle scrolling up or down
       if (scrollTop > lastScrollTop) {
         setIsScrollingUp(false);
       } else {
         setIsScrollingUp(true);
       }
+
+      // Set navbar transparency
+      setIsTransparent(scrollTop === 0);
 
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
@@ -48,16 +41,12 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollTop, isInitialAnimationDone]);
+  }, [lastScrollTop]);
 
   return (
     <nav
-      className={`navbar ${
-        isInitialAnimationDone
-          ? isScrollingUp
-            ? "navbar-visible"
-            : "navbar-hidden"
-          : "navbar-initial"
+      className={`navbar ${isTransparent ? "transparent" : "scrolled"} ${
+        isScrollingUp ? "navbar-visible" : "navbar-hidden"
       }`}
     >
       <div className="navbar-container">

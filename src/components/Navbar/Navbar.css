@@ -1,5 +1,4 @@
 .navbar {
-  background-color: var(--color-black);
   color: var(--color-white);
   height: 11vh;
   padding: 0 2rem;
@@ -7,9 +6,44 @@
   position: fixed;
   width: 100%;
   top: 0;
+  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.navbar.transparent {
+  background-color: transparent; /* Transparent navbar */
+}
+
+.navbar.scrolled {
+  background-color: var(--color-black); /* Black navbar */
+}
+
+.navbar-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navbar-hidden {
   transform: translateY(-100%);
   opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
 }
 
 /* Initial animation */
