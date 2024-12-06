@@ -20,24 +20,24 @@ const pageVariants = {
   initial: {
     opacity: 0,
     scale: 0.98,
-    x: -30, // Subtle shift for a polished look
+    x: -30,
   },
   animate: {
     opacity: 1,
     scale: 1,
     x: 0,
     transition: {
-      duration: 0.8, // Slightly longer duration for smoother animation
-      ease: [0.25, 0.8, 0.5, 1], // Custom cubic bezier easing for a natural motion
+      duration: 0.8,
+      ease: [0.25, 0.8, 0.5, 1],
     },
   },
   exit: {
     opacity: 0,
     scale: 0.98,
-    x: 30, // Matches the initial movement for consistency
+    x: 30,
     transition: {
       duration: 0.6,
-      ease: [0.4, 0, 0.2, 1], // Different cubic bezier for a smooth exit
+      ease: [0.4, 0, 0.2, 1],
     },
   },
 };
@@ -48,10 +48,7 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        {/* Home page without animation */}
         <Route path="/" element={<Home />} />
-
-        {/* Pages with enhanced transitions */}
         <Route
           path="/about"
           element={
@@ -104,6 +101,8 @@ const AnimatedRoutes = () => {
             </motion.div>
           }
         />
+        {/* Fallback route to handle unknown paths */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </AnimatePresence>
   );
@@ -111,7 +110,8 @@ const AnimatedRoutes = () => {
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/kha-website">
+      {/* basename is set to match the GitHub Pages deployment path */}
       <ScrollToTop />
       <Navbar />
       <AnimatedRoutes />
