@@ -24,7 +24,7 @@
   /* Default color palette */
   --color-primary: #f1ee27;
   --color-secondary: #383737;
-  --color-background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(24, 24, 24, 0.95) 30%, rgba(44, 43, 44, 0.85) 60%, rgba(20, 20, 20, 1) 100%);
+  --color-background: #d3d3d3;
   --color-black: #000000;
   --color-white: #ffffff;
   --color-grey: #d3d3d3;
