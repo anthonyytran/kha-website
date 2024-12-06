@@ -2,7 +2,7 @@ import React from "react";
 import "./Sponsors.css";
 
 // Temporary import statements for sponsor logos
-import GoldSponsor1 from "../../assets/images/elitist.png";
+import GoldSponsor1 from "../../assets/images/elitist.jpg";
 // import GoldSponsor2 from "../assets/gold-sponsor2.png";
 // import GoldSponsor3 from "../assets/gold-sponsor3.png";
 
