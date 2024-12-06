@@ -8,9 +8,11 @@ import lionsdenLogo from "../../assets/images/lionsden-logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isTransparent, setIsTransparent] = useState(true); // New state to handle transparency
+  const [isTransparent, setIsTransparent] = useState(true);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const location = useLocation();
 
@@ -23,16 +25,13 @@ const Navbar = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
-      // Handle scrolling up or down
       if (scrollTop > lastScrollTop) {
         setIsScrollingUp(false);
       } else {
         setIsScrollingUp(true);
       }
 
-      // Set navbar transparency
       setIsTransparent(scrollTop === 0);
-
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
 
@@ -43,11 +42,23 @@ const Navbar = () => {
     };
   }, [lastScrollTop]);
 
+  // Trigger navbar animation on mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowNavbar(true);
+      setIsInitialLoad(false);
+    }, 1500); // Delay of 1.5 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <nav
-      className={`navbar ${isTransparent ? "transparent" : "scrolled"} ${
-        isScrollingUp ? "navbar-visible" : "navbar-hidden"
-      }`}
+      className={`navbar 
+        ${isInitialLoad ? "navbar-initial" : ""} 
+        ${!showNavbar ? "navbar-hidden" : "navbar-visible"} 
+        ${isTransparent ? "transparent" : "scrolled"} 
+        ${isScrollingUp ? "" : "navbar-hidden"}`}
     >
       <div className="navbar-container">
         <Link to="/" className="logo">

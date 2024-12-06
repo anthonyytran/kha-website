@@ -17,6 +17,13 @@
   background-color: var(--color-black); 
 }
 
+.navbar-initial {
+  transform: translateY(-100%);
+  opacity: 0;
+  animation: slideDown 1s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
 .navbar-visible {
   transform: translateY(0);
   opacity: 1;
@@ -27,8 +34,15 @@
   opacity: 0;
 }
 
-.hamburger {
-  display: none;
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
@@ -46,31 +60,10 @@
   }
 }
 
-/* Initially hide the navbar */
+/* Initial animation */
 .navbar-initial {
-  transform: translateY(-100%);
-  opacity: 0;
   animation: slideDown 1s ease-in-out forwards;
-  animation-delay: 1.5s; /* Start after 1.5 seconds */
-}
-
-/* Slide-in animation */
-@keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-    background-color: transparent;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-    background-color: transparent; /* Navbar stays transparent */
-  }
-}
-
-/* Navbar styles when scrolled */
-.navbar.scrolled {
-  background-color: var(--color-black); /* Change to black when scrolled */
+  animation-delay: 1.5s; 
 }
 
 .navbar-visible {
