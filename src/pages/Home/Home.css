@@ -17,9 +17,9 @@
   animation: fadeInBackgroundColor 3s ease-in forwards 3s;
 }
 
-@media (max-width: 768px) { /* Mobile devices */
+@media (max-width: 768px) { 
   .home-container-1 {
-    background-position: center; /* Remove cropping for mobile */
+    background-position: center; 
   }
 }
 
@@ -185,6 +185,14 @@
   opacity: 0; 
   animation: fadeInArrow 1.5s ease-in-out forwards 3.5s, pointUpAndDown 1.5s infinite 5s; 
 }
+
+/* Scroll Indicator Styling for Mobile */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    bottom: 37vh; /* Move it slightly up */
+  }
+}
+
 
 /* Fade-In Animation for Text */
 @keyframes fadeInText {
