@@ -8,24 +8,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="social-links">
-          <a
-            href="https://www.instagram.com/_khalu/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-          >
-            <img src={instagramIcon} alt="Instagram" className="social-icon" />
-          </a>
-          <a
-            href="https://www.tiktok.com/@_kha.lu?lang=en"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-          >
-            <img src={tiktokIcon} alt="TikTok" className="social-icon" />
-          </a>
-        </div>
         <div className="site-map">
           <h3></h3>
           <ul className="site-map-links">
@@ -46,6 +28,28 @@ const Footer = () => {
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
+          <div className="social-links">
+            <a
+              href="https://www.instagram.com/_khalu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <img
+                src={instagramIcon}
+                alt="Instagram"
+                className="social-icon"
+              />
+            </a>
+            <a
+              href="https://www.tiktok.com/@_kha.lu?lang=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <img src={tiktokIcon} alt="TikTok" className="social-icon" />
+            </a>
+          </div>
         </div>
         <p className="copyright">
           &copy; {new Date().getFullYear()} Kha Lu | All rights reserved

@@ -509,7 +509,7 @@
   justify-content: center;
   align-items: center;
   margin: 2rem 0;
-  background: rgba(0, 0, 0, 0.5); /* Black transparent background */
+  background: rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
   border-radius: 1rem;
 }
@@ -521,11 +521,30 @@
   align-items: center;
 }
 
+/* Position relative to allow absolute positioning of the colon */
+.countdown-item:not(:last-child) .countdown-value {
+  position: relative;
+  padding-right: 1.5rem; /* space for the colon */
+}
+
+/* Insert colon after each value except the last item */
+.countdown-item:not(:last-child) .countdown-value::after {
+  content: ":";
+  position: absolute;
+  right: 0;
+  top: 40%;
+  transform: translateY(-50%);
+  margin-right: -1rem;
+  font-size: 2.5rem;
+  font-family: 'Chakra Petch', sans-serif;
+  color: var(--color-red);
+}
+
+/* Number Styling */
 .countdown-value {
   font-family: 'Chakra Petch', sans-serif;
   font-size: 4rem;
   font-weight: 700;
-  padding: 0.5rem 1.2rem;
   border-radius: 8px;
   text-align: center;
   color: var(--color-red);
@@ -537,7 +556,7 @@
   font-size: 2.5rem;
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 500;
-  color: #dc3545;
+  color: var(--color-red);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -545,8 +564,8 @@
 /* Responsive Adjustments for Countdown */
 @media (max-width: 600px) {
   .countdown-value {
-    font-size: 2rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 1.8rem;
+
   }
 
   .countdown-label {

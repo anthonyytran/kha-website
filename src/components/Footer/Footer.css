@@ -17,13 +17,13 @@
   display: flex;
   justify-content: center;
   gap: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
 }
 
 .social-link {
   text-decoration: none;
   transition: transform 0.2s ease, color 0.3s ease;
-  color: var(--color-grey);
+  color: var(--color-primary);
 }
 
 .social-link:hover {
@@ -41,12 +41,6 @@
   margin-top: 1.5rem;
 }
 
-.site-map h3 {
-  color: var(--color-white);
-  font-size: 1.6rem; 
-  margin-bottom: 0.5rem;
-}
-
 .site-map-links {
   list-style: none;
   padding: 1.2rem 0;
@@ -56,11 +50,11 @@
   gap: 0.7rem;
   border-top: 1px solid var(--color-white);
   border-bottom: 1px solid var(--color-white);
-  max-width: 320px;
+  width: 30%;
 }
 
 .site-map-links li a {
-  color: var(--color-white);
+  color: var(--color-primary);
   text-decoration: none;
   transition: color 0.3s ease;
   font-size: 1.5rem; 
