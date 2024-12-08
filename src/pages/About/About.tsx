@@ -10,13 +10,13 @@ const About = () => {
           <h2>Statistics</h2>
           <ul className="stats-list">
             <li>
-              <strong>Weight:</strong> 49 kg
+              <strong>Weight:</strong> TBC
             </li>
             <li>
-              <strong>Height:</strong> 165 cm
+              <strong>Height:</strong> TBC
             </li>
             <li>
-              <strong>Age:</strong> 25 years
+              <strong>Age:</strong> 24
             </li>
           </ul>
         </div>
