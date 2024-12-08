@@ -180,19 +180,19 @@ const Home: React.FC = () => {
         {/* Countdown Timer */}
         <div className="countdown-timer">
           <div className="countdown-item">
-            <span className="countdown-value">{timeLeft.days}</span>
+            <span className="countdown-value red">{timeLeft.days}</span>
             <span className="countdown-label">Days</span>
           </div>
           <div className="countdown-item">
-            <span className="countdown-value">{timeLeft.hours}</span>
+            <span className="countdown-value red">{timeLeft.hours}</span>
             <span className="countdown-label">Hours</span>
           </div>
           <div className="countdown-item">
-            <span className="countdown-value">{timeLeft.minutes}</span>
+            <span className="countdown-value red">{timeLeft.minutes}</span>
             <span className="countdown-label">Minutes</span>
           </div>
           <div className="countdown-item">
-            <span className="countdown-value">{timeLeft.seconds}</span>
+            <span className="countdown-value red">{timeLeft.seconds}</span>
             <span className="countdown-label">Seconds</span>
           </div>
         </div>
@@ -203,8 +203,6 @@ const Home: React.FC = () => {
           <p className="fight-location">Bula Gymnasium, Philippines</p>
         </div>
       </div>
-
-      <hr className="separator" />
 
       <div className="home-container-2">
         <h3 className="fights-title">Past Fights</h3>
@@ -221,10 +219,10 @@ const Home: React.FC = () => {
               className="fighter-image"
             />
             <div className="fight-details">
-              <p className="date">March 16, 2024</p>
-              <p className="method">UD</p>
-              <p className="location">Melbourne Pavilion, Australia</p>
+              <p className="method">UNANIMOUS DECISION</p>
               <p className="result win">Win</p>
+              <p className="date">March 16, 2024</p>
+              <p className="location">Melbourne Pavilion, Australia</p>
             </div>
           </div>
 
@@ -240,10 +238,10 @@ const Home: React.FC = () => {
               className="fighter-image"
             />
             <div className="fight-details">
-              <p className="date">December 2, 2023</p>
-              <p className="method">TKO</p>
-              <p className="location">Melbourne Pavilion, Australia</p>
+              <p className="method">TECHNICAL KNOCKOUT</p>
               <p className="result win">Win</p>
+              <p className="date">December 2, 2023</p>
+              <p className="location">Melbourne Pavilion, Australia</p>
             </div>
           </div>
 
@@ -259,10 +257,10 @@ const Home: React.FC = () => {
               className="fighter-image"
             />
             <div className="fight-details">
-              <p className="date">September 16, 2023</p>
-              <p className="method">TKO</p>
-              <p className="location">Melbourne Pavilion, Australia</p>
+              <p className="method">TECHNICAL KNOCKOUT</p>
               <p className="result win">Win</p>
+              <p className="date">September 16, 2023</p>
+              <p className="location">Melbourne Pavilion, Australia</p>
             </div>
           </div>
         </div>

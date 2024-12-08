@@ -184,8 +184,8 @@
 .arrow-down {
   width: 24px;
   height: 24px;
-  border-left: 3px solid var(--color-primary);
-  border-bottom: 3px solid var(--color-primary);
+  border-left: 3px solid var(--color-white);
+  border-bottom: 3px solid var(--color-white);
   transform: rotate(-45deg);
   margin: 0 auto;
   opacity: 0; 
@@ -231,7 +231,7 @@
 .sponsor-button {
   display: inline-block;
   padding: 0.5rem 1rem; 
-  font-size: 1rem; 
+  font-size: 1.4rem; 
   font-weight: 700;
   color: var(--color-white);
   background-color: transparent;
@@ -239,6 +239,7 @@
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.3s ease;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 .find-out-more-button {
@@ -385,7 +386,7 @@
 .separator {
   width: 80%; 
   height: 2px; 
-  background-color: var(--color-primary);
+  background-color: var(--color-white);
   border: none; 
   margin: 20px auto;
   opacity: 0.8; 
@@ -446,7 +447,7 @@
   text-align: left;
 }
 
-/* First Name (slightly smaller) */
+/* First Name*/
 .fighter-name-first {
   font-size: 2rem;
   font-weight: 700;
@@ -455,19 +456,20 @@
   font-family: "Roboto", sans-serif;
 }
 
-/* Last Name (bigger, more prominent) */
+/* Last Name*/
 .fighter-name-last {
   font-size: 3rem;
   font-weight: 800;
   color: var(--color-white);
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+  font-family: "Bebas Nueu", sans-serif;
 }
 
 /* VS Text */
 .versus {
   font-size: 2.5rem;
   font-weight: 700;
+  font-family: 'Chakra Petch', sans-serif;
   color: var(--color-white);
   text-transform: uppercase;
   text-align: center;
@@ -526,7 +528,7 @@
   padding: 0.5rem 1.2rem;
   border-radius: 8px;
   text-align: center;
-  color: #dc3545;
+  color: var(--color-red);
 }
 
 /* Label Under Each Number */
@@ -620,21 +622,9 @@
   padding: 2rem;
 }
 
-.fight-details {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-
-.fight-details p {
-  margin: 0;
-  font-size: 1.2rem;
-}
 
 .fight-card {
-  background: #f0f0f0;
+  background: var(--color-black);
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   padding: 0;
@@ -653,26 +643,22 @@
 
 .fight-card .fighter-image {
   width: 100%;
-  max-height: 200px;
+  height: 250px;
   object-fit: cover;
   border-bottom: 2px solid #000;
 }
 
 .fight-details {
+  color: var(--color-primary);
   padding: 1rem;
   width: 100%;
-}
-
-.fight-details p {
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
-  font-family: Arial, sans-serif;
+  font-size: 2rem;
 }
 
 /* Fighter's Name Section */
 .fight-card h4 {
   background-color: #000;
-  color: #fff;
+  color: var(--color-primary);
   font-size: 2.5rem;
   font-weight: 900;
   font-family: 'Montserrat', sans-serif;
@@ -691,12 +677,14 @@
 .fight-card h4 .first-name {
   font-size: 1.5rem;
   display: block;
+  color: var(--color-white);
 }
 
 .fight-card h4 .last-name {
   font-size: 2rem;
   display: block;
   font-weight: bold;
+  color: var(--color-white);
 }
 
 /* Fight Title Styling */
@@ -706,7 +694,6 @@
   font-weight: 600;
   margin-top: 0.5rem;
   text-transform: uppercase;
-  font-family: 'Roboto', sans-serif;
 }
 
 /* Fight Details Section */
@@ -732,12 +719,25 @@
   text-align: center;
 }
 
-.fight-details .date,
-.fight-details .method,
+.fight-details .date {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.fight-details .method {
+  color: var(--color-green);
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
 .fight-details .location,
 .fight-details .result {
   width: 100%;
   font-weight: bold;
+  font-size: 1rem;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 /* Result Section Styling */
@@ -765,22 +765,6 @@
   color: #6c757d;
 }
 
-/* Hover Effect */
-.fight-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Additional Styling */
-.fight-card .date {
-  font-size: 1rem;
-  color: #777;
-}
-
-.fight-card .method.upcoming-text {
-  color: red;
-  font-weight: bold;
-}
 
 /* View All Button Container */
 .view-all-button-container {
@@ -805,16 +789,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-grey);
+  background-color: var(--color-secondary);
   padding: 1.5rem 1rem;
-  color: var(--color-black);
+  color: var(--color-primary);
 }
 
 .sponsors-title {
   font-size: 4rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
-  color: var(--color-secondary);
+  color: var(--color-primary);
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -865,7 +849,7 @@
 .slick-prev:before,
 .slick-next:before {
   font-size: 40px;
-  color: var(--color-black);
+  color: var(--color-primary);
   opacity: 0.75;
 }
 
@@ -875,11 +859,11 @@
 
 .slick-dots li button:before {
   font-size: 12px;
-  color: var(--color-black);
+  color: var(--color-primary);
 }
 
 .slick-dots li.slick-active button:before {
-  color: var(--color-black);
+  color: var(--color-primary);
 }
 
 /* Responsive Adjustments */

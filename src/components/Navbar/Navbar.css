@@ -9,6 +9,13 @@
   transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 
+.copyright {
+  margin-top: 2rem;
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
 .navbar.transparent {
   background-color: transparent; 
 }
@@ -205,7 +212,7 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 1.5rem; /* Reduced spacing */
+    margin-top: 1.5rem; 
   }
 
   .social-link {
@@ -228,7 +235,7 @@
   width: 60%;
   margin: 0.5rem auto; 
   border: 0;
-  border-top: 1px solid var(--color-grey);
+  border-top: 1px solid var(--color-white);
   opacity: 0.7;
 }
 
