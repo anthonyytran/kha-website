@@ -6,7 +6,6 @@ const About = () => {
     <div className="about-page-container">
       <div className="about-container">
         <h1>About</h1>
-
         <div className="stats-section">
           <h2>Statistics</h2>
           <ul className="stats-list">

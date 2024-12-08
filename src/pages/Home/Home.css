@@ -868,7 +868,7 @@
 .slick-prev:before,
 .slick-next:before {
   font-size: 40px;
-  color: var(--color-primary);
+  color: var(--color-white);
   opacity: 0.75;
 }
 
