@@ -150,37 +150,61 @@ const Home: React.FC = () => {
       <div className="upcoming-fight-container">
         <div className="upcoming-fight-details" data-aos="fade-up">
           <div className="fighter-layout">
-            {/* Top - Kha Lu */}
+            {/* Top Fighter: Kha Lu */}
             <div className="fighter">
-              <span className="fighter-name">Kha Lu</span>
               <img
                 src={australiaFlag}
                 alt="Australian Flag"
                 className="flag-icon"
               />
+              <div className="fighter-name-container">
+                <span className="fighter-name-first">Kha</span>
+                <span className="fighter-name-last">Lu</span>
+              </div>
             </div>
 
             {/* Middle - Vs */}
             <div className="versus">Vs</div>
 
-            {/* Bottom - Katsunari Takayama */}
+            {/* Bottom Fighter: Katsunari Takayama */}
             <div className="fighter">
-              <span className="fighter-name">Katsunari Takayama</span>
               <img src={japanFlag} alt="Japanese Flag" className="flag-icon" />
+              <div className="fighter-name-container">
+                <span className="fighter-name-first">Katsunari</span>
+                <span className="fighter-name-last">Takayama</span>
+              </div>
             </div>
           </div>
+        </div>
 
-          <p className="fight-title">IBO Minimum Weight Title</p>
-          <p className="fight-date">December 18, 2024</p>
-          <p className="fight-location">Bula Gymnasium, Philippines</p>
-          <div className="countdown-timer">
-            <span className="countdown red">{timeLeft.days}d</span>{" "}
-            <span className="countdown red">{timeLeft.hours}h</span>{" "}
-            <span className="countdown red">{timeLeft.minutes}m</span>{" "}
-            <span className="countdown red">{timeLeft.seconds}s</span>
+        {/* Countdown Timer */}
+        <div className="countdown-timer">
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.days}</span>
+            <span className="countdown-label">Days</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.hours}</span>
+            <span className="countdown-label">Hours</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.minutes}</span>
+            <span className="countdown-label">Minutes</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.seconds}</span>
+            <span className="countdown-label">Seconds</span>
           </div>
         </div>
+
+        {/* Fight Info */}
+        <div className="fight-info">
+          <p className="fight-date">December 18, 2024</p>
+          <p className="fight-location">Bula Gymnasium, Philippines</p>
+        </div>
       </div>
+
+      <hr className="separator" />
 
       <div className="home-container-2">
         <h3 className="fights-title">Past Fights</h3>

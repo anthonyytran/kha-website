@@ -132,7 +132,7 @@
 
 @media (min-width: 769px) {
   .nav-links li a {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -146,7 +146,7 @@
 .hamburger .line {
   width: 25px;
   height: 3px;
-  background-color: var(--color-white);
+  background-color: var(--color-primary);
   transition: all 0.3s ease;
 }
 

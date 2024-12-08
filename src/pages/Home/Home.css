@@ -167,6 +167,12 @@
   animation: fadeInText 1.2s ease-in-out forwards 2.5s;
 }
 
+@media (max-width: 600px) {
+  .scroll-indicator {
+    bottom: 35vh; 
+  }
+}
+
 .scroll-text {
   font-size: 1rem;
   font-family: 'Bebas Neue', sans-serif;
@@ -178,21 +184,13 @@
 .arrow-down {
   width: 24px;
   height: 24px;
-  border-left: 3px solid var(--color-white);
-  border-bottom: 3px solid var(--color-white);
+  border-left: 3px solid var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
   transform: rotate(-45deg);
   margin: 0 auto;
   opacity: 0; 
   animation: fadeInArrow 1.5s ease-in-out forwards 3.5s, pointUpAndDown 1.5s infinite 5s; 
 }
-
-/* Scroll Indicator Styling for Mobile */
-@media (max-width: 768px) {
-  .scroll-indicator {
-    bottom: 37vh; /* Move it slightly up */
-  }
-}
-
 
 /* Fade-In Animation for Text */
 @keyframes fadeInText {
@@ -296,7 +294,7 @@
   font-size: 5rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
-  color: var(--color-white);
+  color: var(--color-primary);
   margin-bottom: 1.5rem;
   z-index: 2;
 }
@@ -387,7 +385,7 @@
 .separator {
   width: 80%; 
   height: 2px; 
-  background-color: #fff; 
+  background-color: var(--color-primary);
   border: none; 
   margin: 20px auto;
   opacity: 0.8; 
@@ -414,11 +412,11 @@
 
 /* Title Styling */
 .upcoming-fight-title {
-  font-size: 5rem; 
-  font-weight: 800; 
+  font-size: 5rem;
+  font-weight: 800;
   font-family: 'Bebas Neue', sans-serif;
   color: var(--color-white);
-  margin-bottom: 2rem; 
+  margin-bottom: 2rem;
   text-align: center;
   text-transform: uppercase;
 }
@@ -428,28 +426,47 @@
   display: flex;
   flex-direction: column; 
   align-items: center;
-  gap: 1.5rem; 
+  gap: 1.5rem;
 }
 
-/* Top - Fighter Name and Flag */
+/* Fighter Wrapper */
 .fighter {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.8rem;
-  justify-content: center; 
+  gap: 1rem;
+  justify-content: center;
 }
 
-.fighter-name {
-  font-size: 3rem; 
+/* Container for Fighter Names */
+.fighter-name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* First Name (slightly smaller) */
+.fighter-name-first {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Last Name (bigger, more prominent) */
+.fighter-name-last {
+  font-size: 3rem;
   font-weight: 800;
   color: var(--color-white);
   text-transform: uppercase;
-  text-align: center; 
+  font-family: "Roboto", sans-serif;
 }
 
-/* Middle - Vs */
+/* VS Text */
 .versus {
-  font-size: 2.5rem; 
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-white);
   text-transform: uppercase;
@@ -458,78 +475,97 @@
 
 /* Flag Icon */
 .flag-icon {
-  width: 40px; 
+  width: 40px;
   height: auto;
   vertical-align: middle;
 }
 
-/* Fight Title */
-.fight-title {
-  font-size: 2rem; 
-  color: var(--color-white);
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 1rem 0;
-  font-family: "Roboto", sans-serif;
+/* Responsive Adjustments for Fighter Names */
+@media (max-width: 600px) {
+  .fighter-name-first {
+    font-size: 1.5rem;
+  }
+
+  .fighter-name-last {
+    font-size: 2.5rem;
+  }
+
+  .versus {
+    font-size: 2rem;
+  }
+
+  .flag-icon {
+    width: 30px;
+  }
 }
 
-/* Fight Date and Location */
+/* Countdown Timer Grid */
+.countdown-timer {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  background: rgba(0, 0, 0, 0.5); /* Black transparent background */
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+/* Each Countdown Item */
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-value {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #dc3545;
+}
+
+/* Label Under Each Number */
+.countdown-label {
+  margin-top: 0.5rem;
+  font-size: 2.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 500;
+  color: #dc3545;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive Adjustments for Countdown */
+@media (max-width: 600px) {
+  .countdown-value {
+    font-size: 2rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .countdown-label {
+    font-size: 1.4rem;
+  }
+}
+
+/* Fight Info (Date & Location) */
+.fight-info {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 .fight-date,
 .fight-location {
   font-size: 1.2rem;
-  color: var(--color-white);
   font-weight: 500;
   margin: 0.3rem 0;
-  font-family: "Arial", sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--color-primary);
 }
-
-/* Countdown Timer */
-.countdown-timer {
-  display: flex;
-  gap: 1.5rem; 
-  justify-content: center;
-}
-
-.countdown-timer .countdown {
-  font-size: 1.8rem; 
-  font-weight: bold;
-  padding: 0.5rem 1.2rem; 
-  border-radius: 8px;
-  text-align: center; /* Ensure the text is centered */
-}
-
-/* Red Countdown Elements */
-.countdown-timer .countdown.red {
-  color: #e63946; 
-  background-color: rgba(255, 255, 255, 0.3); 
-  border: 2px solid var(--color-white); 
-  font-weight: bold; 
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); 
-}
-
-/* Hover Effect */
-.countdown-timer .countdown:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-/* Responsive Styling for 2x2 Layout */
-@media (max-width: 768px) {
-  .countdown-timer {
-    display: grid; /* Switch to grid layout */
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    grid-template-rows: auto auto; /* Two rows */
-    gap: 1rem; /* Adjust gap for smaller screens */
-    justify-content: center; /* Center-align the grid */
-    padding: 1rem; /* Add padding for spacing */
-  }
-
-  .countdown-timer .countdown {
-    font-size: 1.6rem; /* Adjust font size for mobile */
-    padding: 0.4rem 1rem; /* Compact padding for smaller screens */
-  }
-}
-
 
 /* Responsive Styling */
 @media (max-width: 768px) {
