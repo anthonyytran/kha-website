@@ -6,12 +6,7 @@ const About = () => {
     <div className="about-page-container">
       <div className="about-container">
         <h1>About</h1>
-        <p>
-          Kha Lu is a dedicated professional boxer known for his hard work,
-          discipline, and passion for the sport. With a strong commitment to his
-          craft, he has earned recognition as a Victorian Light Flyweight
-          Champion.
-        </p>
+
         <div className="stats-section">
           <h2>Statistics</h2>
           <ul className="stats-list">
