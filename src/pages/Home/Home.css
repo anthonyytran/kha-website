@@ -732,22 +732,16 @@
   width: 100%;
 }
 
-.fight-details p {
-  margin: 0.1rem 0; 
-  font-size: 1rem; 
-  text-align: center;
-}
-
 .fight-details .date {
   color: var(--color-primary);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-family: 'Bebas Neue', sans-serif;
 }
 
 .fight-details .method {
   color: var(--color-green);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: 'Chakra Petch', sans-serif;
 }
 
@@ -755,7 +749,7 @@
 .fight-details .result {
   width: 100%;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: 'Bebas Neue', sans-serif;
 }
 
@@ -767,22 +761,7 @@
   margin: 0.5rem 0;
 }
 
-.fight-card .upcoming-text {
-  color: red;
-  font-weight: bold;
-}
 
-.fight-card .result.win {
-  color: #28a745;
-}
-
-.fight-card .result.loss {
-  color: #dc3545;
-}
-
-.fight-card .result.draw {
-  color: #6c757d;
-}
 
 
 /* View All Button Container */
