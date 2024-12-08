@@ -295,7 +295,7 @@
   font-size: 5rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
-  color: var(--color-white);
+  color: var(--color-primary);
   margin-bottom: 1.5rem;
   z-index: 2;
 }
@@ -351,6 +351,14 @@
   font-family: 'Bebas Neue', sans-serif;
   color: var(--color-white);
   letter-spacing: 2px;
+}
+
+.record-value-win {
+  color: var(--color-green);
+}
+
+.record-value-loss {
+  color: var(--color-red);
 }
 
 .record-label {

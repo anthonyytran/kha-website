@@ -132,11 +132,13 @@ const Home: React.FC = () => {
         <h2>Record</h2>
         <div className="record-summary">
           <div className="record-number">
-            7<div className="record-label win">Win</div>
+            <span className="record-value-win">7</span>
+            <div className="record-label win">Win</div>
           </div>
           <span className="record-separator">-</span>
           <div className="record-number">
-            0<div className="record-label loss">Loss</div>
+            <span className="record-value-loss">0</span>
+            <div className="record-label loss">Loss</div>
           </div>
           <span className="record-separator">-</span>
           <div className="record-number">
