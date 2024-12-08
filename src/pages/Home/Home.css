@@ -761,7 +761,22 @@
   margin: 0.5rem 0;
 }
 
+.fight-card .upcoming-text {
+  color: red;
+  font-weight: bold;
+}
 
+.fight-card .result.win {
+  color: #28a745;
+}
+
+.fight-card .result.loss {
+  color: #dc3545;
+}
+
+.fight-card .result.draw {
+  color: #6c757d;
+}
 
 
 /* View All Button Container */
