@@ -317,12 +317,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url('../../assets/images/record-bg3.jpg');
+  /* background-image: url('../../assets/images/record-bg3.jpg'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: var(--color-black);
   padding: 2rem;
   position: relative;
 }
@@ -331,7 +330,7 @@
   font-size: 5rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
-  color: var(--color-white);
+  color: var(--color-primary);
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -652,9 +651,6 @@
 
 .fight-card {
   background: var(--color-black);
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  padding: 0;
   flex: 1 1 calc(33.33% - 1rem);
   min-width: 350px;
   max-width: 380px;
@@ -666,13 +662,16 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   text-align: center;
+  border-radius: 30px;
+  border-top: 2px solid var(--color-primary); 
+  border-bottom: 2px solid var(--color-primary); 
 }
 
 .fight-card .fighter-image {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  border-bottom: 2px solid #000;
+  border: none;
 }
 
 .fight-details {
@@ -684,43 +683,45 @@
 
 /* Fighter's Name Section */
 .fight-card h4 {
-  background-color: #000;
-  color: var(--color-primary);
-  font-size: 2.5rem;
+  background-color: var(--color-black);
   font-weight: 900;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   width: 100%;
   margin: 0;
-  padding: 1rem 0;
+  padding: 1rem;
   text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
+  display: flex; 
   align-items: center;
-  justify-content: center;
-  line-height: 1.2;
+  gap: 1rem; 
 }
 
-/* Stacked First and Last Names */
+/* Flag Icon */
+.flag-icon {
+  height: auto; 
+  max-height: 100%; 
+  object-fit: contain;
+  margin-right: 0.5rem;
+}
+
+/* Name Container */
+.name-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  justify-content: center; 
+  line-height: 1.2; 
+}
+
+/* First and Last Names */
 .fight-card h4 .first-name {
-  font-size: 1.5rem;
-  display: block;
+  font-size: 1.5rem; 
   color: var(--color-white);
 }
 
 .fight-card h4 .last-name {
-  font-size: 2rem;
-  display: block;
+  font-size: 2rem; 
   font-weight: bold;
   color: var(--color-white);
-}
-
-/* Fight Title Styling */
-.fight-card .title {
-  font-size: 1.3rem;
-  color: #28a745;
-  font-weight: 600;
-  margin-top: 0.5rem;
-  text-transform: uppercase;
 }
 
 /* Fight Details Section */
@@ -728,7 +729,6 @@
   width: 100%;
   max-height: 200px;
   object-fit: cover;
-  border-bottom: 2px solid #000;
 }
 
 .fight-details {
@@ -747,7 +747,7 @@
 }
 
 .fight-details .method {
-  color: var(--color-green);
+  color: var(--color-white);
   font-weight: bold;
   font-size: 1.2rem;
   font-family: 'Chakra Petch', sans-serif;
@@ -880,7 +880,7 @@
 
 .slick-dots li button:before {
   font-size: 12px;
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .slick-dots li.slick-active button:before {

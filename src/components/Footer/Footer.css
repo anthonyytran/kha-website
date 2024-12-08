@@ -13,6 +13,19 @@
   font-family: 'Bebas Neue', sans-serif;
 }
 
+/* LionsDen Logo */
+.lionsden-logo-container {
+  margin-top: 1rem;
+  text-align: center; 
+}
+
+.lionsden-logo {
+  max-width: 150px; 
+  height: auto;
+  display: inline-block; 
+  
+}
+
 .social-links {
   display: flex;
   justify-content: center;

@@ -10,6 +10,7 @@ import "./Home.css";
 // Flag images
 import australiaFlag from "../../assets/images/australia-icon.png";
 import japanFlag from "../../assets/images/japan-icon.png";
+import thailandFlag from "../../assets/images/thailand-icon.png";
 
 // Fighter images
 import fighter1 from "../../assets/images/buacharoen.jpg";
@@ -206,14 +207,24 @@ const Home: React.FC = () => {
         </div>
       </div>
 
+      <hr className="separator" />
+
+      {/* Fight History Section */}
       <div className="home-container-2">
         <h3 className="fights-title">Past Fights</h3>
         <div className="fight-history">
           {/* Fight card for Watcharin Buacharoen */}
           <div className="fight-card" data-aos="fade-up">
             <h4>
-              <span className="first-name">Watcharin</span>
-              <span className="last-name">Buacharoen</span>
+              <img
+                src={thailandFlag}
+                alt="Thailand Flag"
+                className="flag-icon"
+              />
+              <div className="name-container">
+                <span className="first-name">Watcharin</span>
+                <span className="last-name">Buacharoen</span>
+              </div>
             </h4>
             <img
               src={fighter1}
@@ -231,8 +242,15 @@ const Home: React.FC = () => {
           {/* Fight card for Thoedkiad Weerachon */}
           <div className="fight-card" data-aos="fade-up" data-aos-delay="100">
             <h4>
-              <span className="first-name">Thoedkiad</span>
-              <span className="last-name">Weerachon</span>
+              <img
+                src={thailandFlag}
+                alt="Thailand Flag"
+                className="flag-icon"
+              />
+              <div className="name-container">
+                <span className="first-name">Thoedkiad</span>
+                <span className="last-name">Weerachon</span>
+              </div>
             </h4>
             <img
               src={fighter2}
@@ -250,8 +268,15 @@ const Home: React.FC = () => {
           {/* Fight card for Oatkowit Kamlangcharoey */}
           <div className="fight-card" data-aos="fade-up" data-aos-delay="200">
             <h4>
-              <span className="first-name">Oatkowit</span>
-              <span className="last-name">Kamlangcharoey</span>
+              <img
+                src={thailandFlag}
+                alt="Thailand Flag"
+                className="flag-icon"
+              />
+              <div className="name-container">
+                <span className="first-name">Oatkowit</span>
+                <span className="last-name">Kamlangcharoey</span>
+              </div>
             </h4>
             <img
               src={fighter3}

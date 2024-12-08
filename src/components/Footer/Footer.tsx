@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.css";
 import instagramIcon from "../../assets/images/instagram.png";
 import tiktokIcon from "../../assets/images/tiktok.png";
+import lionsdenLogo from "../../assets/images/lionsden-logo.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -17,7 +18,6 @@ const Footer = () => {
             <li>
               <Link to="/about">About</Link>
             </li>
-
             <li>
               <Link to="/record">Record</Link>
             </li>
@@ -28,32 +28,36 @@ const Footer = () => {
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
-          <div className="social-links">
-            <a
-              href="https://www.instagram.com/_khalu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <img
-                src={instagramIcon}
-                alt="Instagram"
-                className="social-icon"
-              />
-            </a>
-            <a
-              href="https://www.tiktok.com/@_kha.lu?lang=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <img src={tiktokIcon} alt="TikTok" className="social-icon" />
-            </a>
+          {/* LionsDen Logo */}
+          <div className="lionsden-logo-container">
+            <img
+              src={lionsdenLogo}
+              alt="LionsDen Logo"
+              className="lionsden-logo"
+            />
           </div>
         </div>
         <p className="copyright">
           &copy; {new Date().getFullYear()} Kha Lu | All rights reserved
         </p>
+      </div>
+      <div className="social-links">
+        <a
+          href="https://www.instagram.com/_khalu/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-link"
+        >
+          <img src={instagramIcon} alt="Instagram" className="social-icon" />
+        </a>
+        <a
+          href="https://www.tiktok.com/@_kha.lu?lang=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-link"
+        >
+          <img src={tiktokIcon} alt="TikTok" className="social-icon" />
+        </a>
       </div>
     </footer>
   );
