@@ -15,7 +15,6 @@ import Sponsors from "./pages/Sponsors/Sponsors";
 import Contact from "./pages/Contact/Contact";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
-// Enhanced transition animations
 const pageVariants = {
   initial: {
     opacity: 0,
