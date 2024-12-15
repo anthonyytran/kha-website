@@ -1,25 +1,123 @@
 .record-page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.record-container {
+  flex: 1;
+  padding: 2rem;
+  padding-top: 10vh;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.record-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.record-container p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--color-white);
+}
+
+/* Table Layout for the Record */
+.record-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.record-table thead tr {
+  background: #222; /* Slightly lighter than black for header contrast */
+}
+
+.record-table th, 
+.record-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+.result-col {
+  width: 50px;
+}
+
+.result-box {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 4px;
+  color: #fff;
+  background: #bbb;
+}
+
+.result-box.win {
+  background: #28a745; /* Green for win */
+}
+
+.opponent-col {
+  cursor: pointer;
+}
+
+.record-row:hover {
+  background: #333; /* Subtle hover to indicate clickable row */
+}
+
+.record-row.expanded-row {
+  background: #222;
+}
+
+/* Details Row */
+.details-row {
+  background-color: #111;
+}
+
+.details-content {
+  padding: 1rem;
+}
+
+.details-content p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.details-content strong {
+  color: var(--color-primary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .record-table th, .record-table td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
   }
-  
-  .record-container {
-    flex: 1;
-    padding: 2rem;
-    padding-top: 10vh; 
-    background-color: var(--color-black);
-    color: var(--color-white);
-    text-align: center;
+
+  .details-content p {
+    font-size: 0.9rem;
   }
-  
+}
+
+@media (max-width: 480px) {
   .record-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
   }
-  
-  .record-container p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+
+  .record-table th, .record-table td {
+    font-size: 0.8rem;
+    padding: 0.6rem;
   }
-  
+
+  .details-content p {
+    font-size: 0.8rem;
+  }
+}

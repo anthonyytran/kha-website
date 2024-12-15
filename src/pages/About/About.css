@@ -2,51 +2,142 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-.about-container {
-  flex: 1;
-  padding: 2rem;
-  padding-top: 10vh;
   background-color: var(--color-black);
   color: var(--color-white);
-  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  padding-top: 5rem; /* Add top padding to prevent overlap with navbar on mobile */
 }
 
-.about-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+/* Main Sections */
+.about-section {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.about-container p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+/* Remove border on the last section */
+.about-section:last-child {
+  border-bottom: none;
 }
 
-.stats-section {
-  margin-top: 2rem;
-  background-color: var(--color-light-grey);
-  padding: 1.5rem;
+/* Container for content within each section */
+.about-section-content {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: row;
+}
+
+/* Alternate the positions for even sections: image on the right, text on the left */
+.about-section:nth-child(even) .about-section-content {
+  flex-direction: row-reverse;
+}
+
+.about-section-image,
+.about-section-text {
+  flex: 1;
+}
+
+.about-section-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: 10px;
 }
 
-.stats-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--color-black);
+.about-section-text {
+  text-align: left;
 }
 
-.stats-list {
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.about-section strong {
+  color: var(--color-primary);
+}
+
+/* Stats and Accomplishments lists */
+.stats-list,
+.accomplishments-list {
   list-style: none;
   padding: 0;
+  margin: 1.5rem 0;
   font-size: 1.2rem;
   line-height: 1.8;
 }
 
-.stats-list li {
+.stats-list li,
+.accomplishments-list li {
   margin-bottom: 0.5rem;
 }
 
-.stats-list strong {
+/* Alternate background for contrast */
+.about-alt-bg {
+  background-color: var(--color-light-grey);
+  color: var(--color-black);
+}
+
+.about-alt-bg .section-title {
+  color: var(--color-black);
+}
+
+.about-alt-bg strong {
   color: var(--color-primary);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .about-section-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* On mobile, stacking naturally places image on top and text below, so no need for row-reverse adjustments here */
+
+  .about-section-text {
+    text-align: center;
+  }
+
+  .about-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-section p,
+  .stats-list li,
+  .accomplishments-list li {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .about-section p,
+  .stats-list li,
+  .accomplishments-list li {
+    font-size: 1rem;
+  }
 }

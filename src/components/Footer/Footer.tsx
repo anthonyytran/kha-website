@@ -10,27 +10,29 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="site-map">
-          <div className="social-links">
-            <a
-              href="https://www.instagram.com/_khalu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <img
-                src={instagramIcon}
-                alt="Instagram"
-                className="social-icon"
-              />
-            </a>
-            <a
-              href="https://www.tiktok.com/@_kha.lu?lang=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <img src={tiktokIcon} alt="TikTok" className="social-icon" />
-            </a>
+          <div className="top-row">
+            <div className="social-links">
+              <a
+                href="https://www.instagram.com/_khalu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <img
+                  src={instagramIcon}
+                  alt="Instagram"
+                  className="social-icon"
+                />
+              </a>
+              <a
+                href="https://www.tiktok.com/@_kha.lu?lang=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <img src={tiktokIcon} alt="TikTok" className="social-icon" />
+              </a>
+            </div>
           </div>
           <ul className="site-map-links">
             <li>
@@ -49,14 +51,6 @@ const Footer = () => {
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
-          {/* LionsDen Logo */}
-          <div className="lionsden-logo-container">
-            <img
-              src={lionsdenLogo}
-              alt="LionsDen Logo"
-              className="lionsden-logo"
-            />
-          </div>
         </div>
         <p className="copyright">
           &copy; {new Date().getFullYear()} Kha Lu | All rights reserved
