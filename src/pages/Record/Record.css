@@ -15,8 +15,9 @@
 }
 
 .record-container h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
+  color: var(--color-primary);
 }
 
 .record-container p {
@@ -31,10 +32,11 @@
   border-collapse: collapse;
   background: var(--color-black);
   color: var(--color-white);
+  margin-bottom: 2rem;
 }
 
 .record-table thead tr {
-  background: #222; /* Slightly lighter than black for header contrast */
+  background: #222;
 }
 
 .record-table th, 
@@ -45,7 +47,8 @@
 }
 
 .result-col {
-  width: 50px;
+  width: 60px;
+  text-align: center;
 }
 
 .result-box {
@@ -69,7 +72,7 @@
 }
 
 .record-row:hover {
-  background: #333; /* Subtle hover to indicate clickable row */
+  background: #333;
 }
 
 .record-row.expanded-row {
@@ -95,6 +98,94 @@
   color: var(--color-primary);
 }
 
+.total-record-container {
+  text-align: center;
+  margin-top: 2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-bottom: 2rem;
+}
+
+.record-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 1rem; /* Adjust spacing between cells */
+  align-items: center;
+  justify-items: center;
+  max-width: 300px; /* Optional: Limit the grid's width for better layout */
+  margin: 0 auto; /* Center the grid container */
+}
+
+.record-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Numbers (top row) */
+.record-grid .record-cell:nth-child(-n+3) span {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Labels (bottom row) */
+.record-grid .record-cell:nth-child(n+4) span {
+  font-size: 1.2rem; 
+  opacity: 0.8;
+}
+
+/* Colors for numbers */
+.wins {
+  color: #28a745; /* Green */
+}
+
+.losses {
+  color: #dc3545; /* Red */
+}
+
+.draws {
+  color: #fff; /* White */
+}
+
+/* Colors for labels */
+.wins-label {
+  color: #28a745;
+}
+
+.losses-label {
+  color: #dc3545;
+}
+
+.draws-label {
+  color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .record-grid .record-cell:nth-child(-n+3) span {
+    font-size: 2.5rem; /* Adjust font size for smaller screens */
+  }
+
+  .record-grid .record-cell:nth-child(n+4) span {
+    font-size: 1rem; /* Adjust label size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .record-grid {
+    gap: 0.5rem; /* Reduce gap on smaller devices */
+  }
+
+  .record-grid .record-cell:nth-child(-n+3) span {
+    font-size: 2rem; /* Further reduce font size for small screens */
+  }
+
+  .record-grid .record-cell:nth-child(n+4) span {
+    font-size: 0.9rem; /* Further reduce label size */
+  }
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .record-table th, .record-table td {
@@ -105,11 +196,19 @@
   .details-content p {
     font-size: 0.9rem;
   }
+
+  .total-record {
+    font-size: 1.5rem;
+  }
+
+  .record-labels {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
   .record-container h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .record-table th, .record-table td {
@@ -118,6 +217,14 @@
   }
 
   .details-content p {
+    font-size: 0.8rem;
+  }
+
+  .total-record {
+    font-size: 1.2rem;
+  }
+
+  .record-labels {
     font-size: 0.8rem;
   }
 }

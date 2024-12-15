@@ -10,7 +10,6 @@ interface Fight {
   venue: string;
   method: string;
   rounds: string;
-  additionalInfo: string;
 }
 
 const Record: React.FC = () => {
@@ -24,8 +23,6 @@ const Record: React.FC = () => {
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-UD",
       rounds: "5/5",
-      additionalInfo:
-        "Ref: Malcolm Bulner | Judges: Andrew Bartlett 50-45, Lynne Kennedy 49-46, Brett Manton 49-46",
     },
     {
       id: 2,
@@ -36,8 +33,6 @@ const Record: React.FC = () => {
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-TKO",
       rounds: "3/6",
-      additionalInfo:
-        "Ref: Anthony Hibbs | Judges: Andrew Bartlett 20-18, Andrew Campbell 20-18, Matthew Thynne 20-18",
     },
     {
       id: 3,
@@ -48,8 +43,6 @@ const Record: React.FC = () => {
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-TKO",
       rounds: "1/6",
-      additionalInfo:
-        "Ref: Anthony Hibbs | Judges: Samantha Bulner, Andrew Campbell, Martin O'Malley",
     },
     {
       id: 4,
@@ -60,8 +53,6 @@ const Record: React.FC = () => {
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-TKO",
       rounds: "2/4",
-      additionalInfo:
-        "Ref: Malcolm Bulner | Judges: Peter Hansen 10-9, Anthony Hibbs 10-9, Brett Manton 10-9",
     },
     {
       id: 5,
@@ -72,8 +63,6 @@ const Record: React.FC = () => {
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-UD",
       rounds: "6/6",
-      additionalInfo:
-        "Ref: Malcolm Bulner | Judges: Peter Hansen 60-54, Brett Manton 60-54, Damian Membrey 60-54",
     },
     {
       id: 6,
@@ -84,8 +73,6 @@ const Record: React.FC = () => {
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-UD",
       rounds: "4/4",
-      additionalInfo:
-        "Ref: Ignatius Missailidis | Judges: Andrew Campbell 40-36, Martin O'Malley 40-36, Andrew Bartlett 40-36",
     },
     {
       id: 7,
@@ -96,8 +83,6 @@ const Record: React.FC = () => {
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-MD",
       rounds: "4/4",
-      additionalInfo:
-        "Ref: Anthony Hibbs | Judges: Andrew Bartlett 38-37, Lynne Kennedy 38-37, Paul Le 38-38",
     },
   ];
 
@@ -110,11 +95,37 @@ const Record: React.FC = () => {
   return (
     <div className="record-container">
       <h1>My Record</h1>
+
+      <div className="total-record-container">
+        <div className="record-grid">
+          <div className="record-cell">
+            <span className="wins">7</span>
+          </div>
+          <div className="record-cell">
+            <span className="losses">0</span>
+          </div>
+          <div className="record-cell">
+            <span className="draws">0</span>
+          </div>
+          <div className="record-cell">
+            <span className="wins-label">Win</span>
+          </div>
+          <div className="record-cell">
+            <span className="losses-label">Loss</span>
+          </div>
+          <div className="record-cell">
+            <span className="draws-label">Draw</span>
+          </div>
+        </div>
+      </div>
+
       <table className="record-table">
         <thead>
           <tr>
-            <th className="result-col"></th>
+            <th className="result-col">Result</th>
             <th>Opponent</th>
+            <th>Method</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -136,14 +147,13 @@ const Record: React.FC = () => {
                   </div>
                 </td>
                 <td className="opponent-col">{fight.opponent}</td>
+                <td>{fight.method}</td>
+                <td>{fight.date}</td>
               </tr>
               {expandedFightId === fight.id && (
                 <tr className="details-row">
-                  <td colSpan={2}>
+                  <td colSpan={4}>
                     <div className="details-content">
-                      <p>
-                        <strong>Date:</strong> {fight.date}
-                      </p>
                       <p>
                         <strong>Weight:</strong> {fight.weight}
                       </p>
@@ -151,13 +161,7 @@ const Record: React.FC = () => {
                         <strong>Venue:</strong> {fight.venue}
                       </p>
                       <p>
-                        <strong>Method:</strong> {fight.method}
-                      </p>
-                      <p>
                         <strong>Rounds:</strong> {fight.rounds}
-                      </p>
-                      <p>
-                        <strong>Additional Info:</strong> {fight.additionalInfo}
                       </p>
                     </div>
                   </td>
