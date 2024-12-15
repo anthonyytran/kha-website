@@ -100,7 +100,6 @@ const AnimatedRoutes = () => {
             </motion.div>
           }
         />
-        {/* Fallback route to handle unknown paths */}
         <Route path="*" element={<Home />} />
       </Routes>
     </AnimatePresence>
@@ -109,8 +108,7 @@ const AnimatedRoutes = () => {
 
 const App = () => {
   return (
-    <Router basename="/kha-website">
-      {/* basename is set to match the GitHub Pages deployment path */}
+    <Router>
       <ScrollToTop />
       <Navbar />
       <AnimatedRoutes />
