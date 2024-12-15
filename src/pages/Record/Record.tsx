@@ -3,6 +3,7 @@ import "./Record.css";
 
 interface Fight {
   id: number;
+  record: string;
   opponent: string;
   result: string;
   date: string;
@@ -16,6 +17,7 @@ const Record: React.FC = () => {
   const fights: Fight[] = [
     {
       id: 1,
+      record: "7-0-0",
       opponent: "Watcharin Buacharoen",
       result: "W",
       date: "2024-03-16",
@@ -26,6 +28,7 @@ const Record: React.FC = () => {
     },
     {
       id: 2,
+      record: "6-0-0",
       opponent: "Thoedkiad Weerachon",
       result: "W",
       date: "2023-12-02",
@@ -36,6 +39,7 @@ const Record: React.FC = () => {
     },
     {
       id: 3,
+      record: "5-0-0",
       opponent: "Oatkowit Kamlangcharoey",
       result: "W",
       date: "2023-09-16",
@@ -46,6 +50,7 @@ const Record: React.FC = () => {
     },
     {
       id: 4,
+      record: "4-0-0",
       opponent: "Sirachat Soising",
       result: "W",
       date: "2023-03-25",
@@ -56,6 +61,7 @@ const Record: React.FC = () => {
     },
     {
       id: 5,
+      record: "3-0-0",
       opponent: "Gerttipong Kumsahwat",
       result: "W",
       date: "2022-12-16",
@@ -66,6 +72,7 @@ const Record: React.FC = () => {
     },
     {
       id: 6,
+      record: "2-0-0",
       opponent: "Gerttipong Kumsahwat",
       result: "W",
       date: "2022-08-20",
@@ -76,6 +83,7 @@ const Record: React.FC = () => {
     },
     {
       id: 7,
+      record: "1-0-0",
       opponent: "Prakob Nuankaew",
       result: "W",
       date: "2022-03-19",
@@ -123,6 +131,7 @@ const Record: React.FC = () => {
         <thead>
           <tr>
             <th className="result-col">Result</th>
+            <th>Record</th>
             <th>Opponent</th>
             <th>Method</th>
             <th>Date</th>
@@ -146,13 +155,14 @@ const Record: React.FC = () => {
                     {fight.result}
                   </div>
                 </td>
+                <td className="record-col">{fight.record}</td>
                 <td className="opponent-col">{fight.opponent}</td>
                 <td>{fight.method}</td>
                 <td>{fight.date}</td>
               </tr>
               {expandedFightId === fight.id && (
                 <tr className="details-row">
-                  <td colSpan={4}>
+                  <td colSpan={5}>
                     <div className="details-content">
                       <p>
                         <strong>Weight:</strong> {fight.weight}
