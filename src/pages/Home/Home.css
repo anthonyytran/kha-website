@@ -14,7 +14,7 @@
   background-position: center 15%;
   background-repeat: no-repeat;
   background-blend-mode: darken;
-  animation: fadeInBackgroundColor 2.5s ease-in forwards 2.5s;
+  animation: fadeInBackgroundColor 1.8s ease-in forwards 1.8s; /* Faster duration */
 }
 
 @media (max-width: 768px) { 
@@ -34,7 +34,7 @@
   border-radius: 30px;
   transform: translateY(-25%);
   opacity: 0; 
-  animation: fadeInOverlay 1.5s ease-in-out forwards 0.5s; 
+  animation: fadeInOverlay 0.8s ease-in-out forwards 0.3s; /* Faster and reduced delay */
 }
 
 /* Background and Overlay Animations */
@@ -42,8 +42,8 @@
   0% {
     opacity: 0;
   }
-  50% {
-    opacity: 0.5; /* Gradual build-up */
+  60% {
+    opacity: 0.8; /* Gradual build-up */
   }
   100% {
     opacity: 1;
@@ -55,7 +55,7 @@
     background-color: black;
     background-blend-mode: darken;
   }
-  50% {
+  60% {
     background-color: rgba(0, 0, 0, 0.5); 
     background-blend-mode: darken;
   }
@@ -66,11 +66,11 @@
 }
 
 .fade-in-overlay {
-  animation: fadeInOverlay 1.5s ease-in-out;
+  animation: fadeInOverlay 1.2s ease-in-out;
 }
 
 .fade-in-background {
-  animation: fadeInBackgroundColor 2s ease-in-out;
+  animation: fadeInBackgroundColor 1.5s ease-in-out;
 }
 
 .overlay-text h2 {
@@ -80,6 +80,7 @@
   letter-spacing: 1px;
   color: var(--color-white);
   margin: 1rem 0;
+  animation: fadeInText 0.9s ease-in-out forwards 0.2s; /* Added animation */
 }
 
 .overlay-text h3 {
@@ -89,7 +90,7 @@
   color: var(--color-white);
   margin: 1rem 0;
   opacity: 0; 
-  animation: fadeInChampion 1.5s ease-in-out forwards 0.5s; 
+  animation: fadeInChampion 1s ease-in-out forwards 0.4s; /* Reduced duration and delay */
 }
 
 .divider {
@@ -101,22 +102,22 @@
 }
 
 .divider-top {
-  animation: fadeInLeft 1.5s ease-in-out forwards;
+  animation: fadeInLeft 1s ease-in-out forwards 0.2s; /* Reduced duration and added delay */
 }
 
 .divider-bottom {
-  animation: fadeInRight 1.5s ease-in-out forwards;
+  animation: fadeInRight 1s ease-in-out forwards 0.2s; /* Reduced duration and added delay */
 }
 
 .fade-in-text {
-  animation: fadeInText 1.5s ease-in-out forwards;
+  animation: fadeInText 0.9s ease-in-out forwards 0.2s; /* Reduced duration */
 }
 
 /* Keyframes for animations */
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translateX(-50%);
+    transform: translateX(-40%);
   }
   to {
     opacity: 1;
@@ -127,7 +128,7 @@
 @keyframes fadeInRight {
   from {
     opacity: 0;
-    transform: translateX(50%);
+    transform: translateX(40%);
   }
   to {
     opacity: 1;
@@ -147,13 +148,14 @@
 @keyframes fadeInChampion {
   from {
     opacity: 0;
-    transform: translateY(20px); 
+    transform: translateY(15px); /* Slight bounce effect */
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 
 /* Scroll Indicator Styling */
 .scroll-indicator {
@@ -225,32 +227,60 @@
   }
 }
 
-/* Button Styling */
-.find-out-more-button,
-.view-all-button,
 .sponsor-button {
   display: inline-block;
   padding: 0.5rem 1rem; 
   font-size: 1.4rem; 
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-black);
   background-color: transparent;
-  border: 1.5px solid var(--color-white); 
+  border: 1.5px solid var(--color-black); 
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.3s ease;
   font-family: 'Bebas Neue', sans-serif;
 }
 
-.find-out-more-button {
-  margin-top: 2.5rem; 
+/* Sponsor Button - Black Border and Black Text */
+.sponsor-button {
+  display: inline-block;
+  padding: 0.5rem 1rem; 
+  font-size: 1.4rem; 
+  font-weight: 700;
+  color: var(--color-black); /* Black text */
+  background-color: transparent;
+  border: 1.5px solid var(--color-black); /* Black border */
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.sponsor-button:hover {
+  background-color: var(--color-black); /* Black background on hover */
+  color: var(--color-white); /* White text on hover */
+}
+
+/* Other Buttons (Find Out More, View All) */
+.find-out-more-button,
+.view-all-button {
+  display: inline-block;
+  padding: 0.5rem 1rem; 
+  font-size: 1.4rem; 
+  font-weight: 700;
+  color: var(--color-white); /* White text */
+  background-color: transparent;
+  border: 1.5px solid var(--color-white); /* White border */
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 .find-out-more-button:hover,
-.view-all-button:hover,
-.sponsor-button:hover {
-  background-color: var(--color-white); 
-  color: var(--color-black);
+.view-all-button:hover {
+  background-color: var(--color-white); /* White background on hover */
+  color: var(--color-black); /* Black text on hover */
 }
 
 .fights-button {
@@ -814,7 +844,7 @@
 }
 
 .sponsors-title {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 700;
   font-family: 'Bebas Neue', sans-serif;
   color: var(--color-black);

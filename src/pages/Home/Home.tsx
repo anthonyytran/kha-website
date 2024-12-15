@@ -322,7 +322,7 @@ const Home: React.FC = () => {
           </Slider>
         </div>
         <div className="sponsor-button-container">
-          <Link to="/sponsors" className="view-all-button sponsor-button">
+          <Link to="/sponsors" className="sponsor-button">
             View All
           </Link>
         </div>
