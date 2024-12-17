@@ -1,3 +1,4 @@
+/* General Page Styles */
 .sponsors-page-container {
   display: flex;
   flex-direction: column;
@@ -7,22 +8,26 @@
 .sponsors-container {
   flex: 1;
   padding: 2rem;
-  padding-top: 10vh; 
+  padding-top: 10vh;
   background-color: var(--color-black);
-  color: var(--color-white);
   text-align: center;
 }
 
 .sponsors-container h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .sponsors-container p {
   font-size: 1.2rem;
   line-height: 1.6;
+  color: var(--color-white);
+  font-style: italic;
 }
 
+/* Sponsor Section Headers */
 .gold-sponsors-section,
 .silver-sponsors-section {
   margin: 2rem 0;
@@ -32,26 +37,35 @@
 .silver-sponsors-section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.sponsor-thank-you {
+  font-size: 1rem;
+  color: var(--color-light-grey);
+  margin-bottom: 1.5rem;
+}
+
+/* Sponsor Grids */
+.gold-sponsors-grid,
+.silver-sponsors-grid {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
 }
 
 .gold-sponsors-grid {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  justify-items: center;
   margin-bottom: 2rem;
 }
 
 .silver-sponsors-grid {
-  display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  justify-items: center;
   margin-bottom: 2rem;
 }
 
 .sponsor-logo {
-  width: 150px; 
+  width: 150px;
   height: auto;
   transition: transform 0.2s ease-in-out;
 }
@@ -60,24 +74,26 @@
   transform: scale(1.1);
 }
 
+/* Closing Message */
+.closing-message {
+  margin-top: 3rem;
+  font-size: 1.2rem;
+  color: var(--color-light-grey);
+  font-style: italic;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-  .gold-sponsors-grid {
-    grid-template-columns: repeat(2, 1fr); 
-  }
-
+  .gold-sponsors-grid,
   .silver-sponsors-grid {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .gold-sponsors-grid {
-    grid-template-columns: 1fr; 
-  }
-
+  .gold-sponsors-grid,
   .silver-sponsors-grid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
   .sponsor-logo {

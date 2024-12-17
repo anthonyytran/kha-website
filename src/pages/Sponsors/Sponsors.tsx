@@ -3,27 +3,26 @@ import "./Sponsors.css";
 
 // Temporary import statements for sponsor logos
 import GoldSponsor1 from "../../assets/images/elitist.jpg";
-// import GoldSponsor2 from "../assets/gold-sponsor2.png";
-// import GoldSponsor3 from "../assets/gold-sponsor3.png";
+import GoldSponsor2 from "../../assets/images/visitint.jpg";
+import GoldSponsor3 from "../../assets/images/marsh.jpg";
 
 import SilverSponsor1 from "../../assets/images/theboxinglab.png";
-// import SilverSponsor2 from "../assets/silver-sponsor2.png";
-// import SilverSponsor3 from "../assets/silver-sponsor3.png";
-// import SilverSponsor4 from "../assets/silver-sponsor4.png";
-// import SilverSponsor5 from "../assets/silver-sponsor5.png";
-// import SilverSponsor6 from "../assets/silver-sponsor6.png";
-// import SilverSponsor7 from "../assets/silver-sponsor7.png";
-// import SilverSponsor8 from "../assets/silver-sponsor8.png";
+import SilverSponsor2 from "../../assets/images/a1.jpg";
 
 const Sponsors = () => {
   return (
     <div className="sponsors-page-container">
+      {/* Sponsors Header */}
       <div className="sponsors-container">
-        <h1>Sponsors</h1>
-        <p>Learn more about our sponsors and partners here.</p>
+        <h1>Our Sponsors</h1>
+        <p>
+          We are incredibly grateful for the generous support of our sponsors
+          and partners. Their contributions help us continue striving for
+          excellence and achieving new heights.
+        </p>
 
+        {/* Gold Sponsors Section */}
         <div className="gold-sponsors-section">
-          <h2>Gold Sponsors</h2>
           <div className="gold-sponsors-grid">
             <img
               src={GoldSponsor1}
@@ -31,20 +30,20 @@ const Sponsors = () => {
               className="sponsor-logo"
             />
             <img
-              src={GoldSponsor1}
+              src={GoldSponsor2}
               alt="Gold Sponsor 2"
               className="sponsor-logo"
             />
             <img
-              src={GoldSponsor1}
+              src={GoldSponsor3}
               alt="Gold Sponsor 3"
               className="sponsor-logo"
             />
           </div>
         </div>
 
+        {/* Silver Sponsors Section */}
         <div className="silver-sponsors-section">
-          <h2>Silver Sponsors</h2>
           <div className="silver-sponsors-grid">
             <img
               src={SilverSponsor1}
@@ -52,7 +51,7 @@ const Sponsors = () => {
               className="sponsor-logo"
             />
             <img
-              src={SilverSponsor1}
+              src={SilverSponsor2}
               alt="Silver Sponsor 2"
               className="sponsor-logo"
             />
@@ -87,6 +86,15 @@ const Sponsors = () => {
               className="sponsor-logo"
             />
           </div>
+        </div>
+
+        {/* Closing Message */}
+        <div className="closing-message">
+          <p>
+            We appreciate every sponsor and supporter who contributes to our
+            journey. Your partnership drives us forward, and we couldn't do it
+            without you!
+          </p>
         </div>
       </div>
     </div>
