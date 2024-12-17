@@ -39,7 +39,7 @@ const About = () => {
             <img src={khaBoxing} alt="Kha Lu Stats" />
           </div>
           <div className="about-section-text">
-            <h2 className="section-title">About</h2>
+            <h2 className="section-title">Stats</h2>
             <ul className="stats-list">
               <li>
                 <strong>Name:</strong> Kha Lu
@@ -66,11 +66,6 @@ const About = () => {
                 <strong>Gym:</strong> Lionsden
               </li>
             </ul>
-            <p>
-              Fighting out of the <strong>LionsDen</strong>, my goal is not just
-              to win, but to continually refine my craft. Focus, discipline, and
-              respect for the sport guide me every time I step into the ring.
-            </p>
           </div>
         </div>
       </section>
