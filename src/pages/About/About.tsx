@@ -24,10 +24,9 @@ const About = () => {
               continually honing my technique and mental strength.
             </p>
             <p>
-              Today, I proudly represent the <strong>LionsDen</strong> gym, a
-              home for warriors who share the same relentless spirit and
-              ambition. Each day in the ring is a chance to grow, learn, and
-              become a better version of myself.
+              Today, I proudly represent the <strong>LionsDen</strong> gym, my
+              childhood gym. Each day in the ring is a chance to grow, learn,
+              and become a better version of myself.
             </p>
           </div>
         </div>
@@ -52,13 +51,19 @@ const About = () => {
                 <strong>Country:</strong> Australia
               </li>
               <li>
-                <strong>Weight:</strong> TBC
+                <strong>Weight Class:</strong> Minimum Weight
               </li>
               <li>
-                <strong>Height:</strong> TBC
+                <strong>Bouts:</strong> 7
               </li>
               <li>
-                <strong>Boxing Division:</strong> TBC
+                <strong>Rounds:</strong> 25
+              </li>
+              <li>
+                <strong>KO%:</strong> 42.86%
+              </li>
+              <li>
+                <strong>Gym:</strong> Lionsden
               </li>
             </ul>
             <p>
@@ -79,18 +84,12 @@ const About = () => {
           <div className="about-section-text">
             <h2 className="section-title">Accomplishments</h2>
             <ul className="accomplishments-list">
-              <li>Regional Golden Gloves Champion 2022</li>
-              <li>State Lightweight Finalist 2021</li>
-              <li>Multiple Amateur Bout Victories</li>
+              <li>Victorian Gold Light Flyweight Champion</li>
+              <li>Victorian Silver Light Flyweight Champion</li>
               <li>
-                Consistent High-Performing Record at LionsDen Sparring Sessions
+                Fight of the Night - <strong>x3</strong>
               </li>
             </ul>
-            <p>
-              As my career progresses, I aim to add professional titles and
-              international victories to my record. The journey is just
-              beginning, and I look forward to what the future holds.
-            </p>
           </div>
         </div>
       </section>

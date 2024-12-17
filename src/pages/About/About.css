@@ -69,6 +69,10 @@
 }
 
 /* Stats and Accomplishments lists */
+.about-section p {
+  color: var(--color-white);
+}
+
 .stats-list,
 .accomplishments-list {
   list-style: none;
@@ -76,11 +80,13 @@
   margin: 1.5rem 0;
   font-size: 1.2rem;
   line-height: 1.8;
+  color: var(--color-white);
 }
 
 .stats-list li,
 .accomplishments-list li {
   margin-bottom: 0.5rem;
+  color: var(--color-white);
 }
 
 /* Alternate background for contrast */

@@ -26,7 +26,7 @@ import sponsor5 from "../../assets/images/greeneflicks.png";
 
 // Countdown Timer Function
 const calculateTimeLeft = () => {
-  const eventDate = new Date("December 18, 2024 00:00:00").getTime();
+  const eventDate = new Date("December 18, 2024 23:00:00").getTime();
   const now = new Date().getTime();
   const difference = eventDate - now;
 
@@ -200,10 +200,14 @@ const Home: React.FC = () => {
           </div>
         </div>
 
+        <div className="countdown-title">
+          <h3>IBO World Minimum</h3>
+        </div>
+
         {/* Fight Info */}
         <div className="fight-info">
           <p className="fight-date">December 18, 2024</p>
-          <p className="fight-location">Bula Gymnasium, Philippines</p>
+          <p className="fight-location">Barangay Bula, General Santos City</p>
         </div>
       </div>
 
