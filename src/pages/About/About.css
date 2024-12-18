@@ -5,7 +5,7 @@
   background-color: var(--color-black);
   color: var(--color-white);
   font-family: 'Bebas Neue', sans-serif;
-  padding-top: 5rem; /* Add top padding to prevent overlap with navbar on mobile */
+  padding-top: 5rem; 
 }
 
 /* Main Sections */
@@ -158,4 +158,5 @@
   .accomplishments-list li {
     font-size: 1rem;
   }
+}
 }

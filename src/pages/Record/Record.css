@@ -1,3 +1,4 @@
+/* General Page Styles */
 .record-page-container {
   display: flex;
   flex-direction: column;
@@ -26,7 +27,7 @@
   color: var(--color-white);
 }
 
-/* Table Layout for the Record */
+/* Table Layout */
 .record-table {
   width: 100%;
   border-collapse: collapse;
@@ -105,15 +106,16 @@
   margin-bottom: 2rem;
 }
 
+/* Record Grid */
 .record-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  grid-template-rows: repeat(2, auto); /* 2 rows */
-  gap: 1rem; /* Adjust spacing between cells */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
   align-items: center;
   justify-items: center;
-  max-width: 300px; /* Optional: Limit the grid's width for better layout */
-  margin: 0 auto; /* Center the grid container */
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .record-cell {
@@ -122,20 +124,17 @@
   justify-content: center;
 }
 
-/* Numbers (top row) */
 .record-grid .record-cell:nth-child(-n+3) span {
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
 }
 
-/* Labels (bottom row) */
 .record-grid .record-cell:nth-child(n+4) span {
   font-size: 1.2rem; 
   opacity: 0.8;
 }
 
-/* Colors for numbers */
 .wins {
   color: #28a745; /* Green */
 }
@@ -148,7 +147,6 @@
   color: #fff; /* White */
 }
 
-/* Colors for labels */
 .wins-label {
   color: #28a745;
 }
@@ -164,30 +162,13 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .record-grid .record-cell:nth-child(-n+3) span {
-    font-size: 2.5rem; /* Adjust font size for smaller screens */
+    font-size: 2.5rem;
   }
 
   .record-grid .record-cell:nth-child(n+4) span {
-    font-size: 1rem; /* Adjust label size for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .record-grid {
-    gap: 0.5rem; /* Reduce gap on smaller devices */
+    font-size: 1rem;
   }
 
-  .record-grid .record-cell:nth-child(-n+3) span {
-    font-size: 2rem; /* Further reduce font size for small screens */
-  }
-
-  .record-grid .record-cell:nth-child(n+4) span {
-    font-size: 0.9rem; /* Further reduce label size */
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
   .record-table th, .record-table td {
     padding: 0.8rem;
     font-size: 0.9rem;
@@ -207,6 +188,18 @@
 }
 
 @media (max-width: 480px) {
+  .record-grid {
+    gap: 0.5rem;
+  }
+
+  .record-grid .record-cell:nth-child(-n+3) span {
+    font-size: 2rem;
+  }
+
+  .record-grid .record-cell:nth-child(n+4) span {
+    font-size: 0.9rem;
+  }
+
   .record-container h1 {
     font-size: 2.5rem;
   }

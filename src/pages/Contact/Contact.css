@@ -134,7 +134,7 @@
 }
 
 .submit-button:hover {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-secondary);
 }
 
 /* Responsive Styles */
@@ -146,8 +146,8 @@
 
   .contact-image,
   .contact-form {
-    flex: 0 1 100%; /* Full width on medium screens */
-    max-width: 500px; /* Limit maximum size */
+    flex: 0 1 100%; 
+    max-width: 500px;  
   }
 }
 

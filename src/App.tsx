@@ -41,66 +41,72 @@ const pageVariants = {
   },
 };
 
+// Motion wrapper component for consistent transitions
+const MotionWrapper = ({ children }) => (
+  <motion.div
+    initial="initial"
+    animate="animate"
+    exit="exit"
+    variants={pageVariants}
+  >
+    {children}
+  </motion.div>
+);
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <MotionWrapper>
+              <Home />
+            </MotionWrapper>
+          }
+        />
         <Route
           path="/about"
           element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-            >
+            <MotionWrapper>
               <About />
-            </motion.div>
+            </MotionWrapper>
           }
         />
         <Route
           path="/record"
           element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-            >
+            <MotionWrapper>
               <Record />
-            </motion.div>
+            </MotionWrapper>
           }
         />
         <Route
           path="/sponsors"
           element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-            >
+            <MotionWrapper>
               <Sponsors />
-            </motion.div>
+            </MotionWrapper>
           }
         />
         <Route
           path="/contact"
           element={
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-            >
+            <MotionWrapper>
               <Contact />
-            </motion.div>
+            </MotionWrapper>
           }
         />
-        <Route path="*" element={<Home />} />
+        <Route
+          path="*"
+          element={
+            <MotionWrapper>
+              <Home />
+            </MotionWrapper>
+          }
+        />
       </Routes>
     </AnimatePresence>
   );
