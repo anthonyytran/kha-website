@@ -17,7 +17,7 @@ const Sponsors = () => {
         <h1>Our Sponsors</h1>
         <p>
           We are incredibly grateful for the generous support of our sponsors
-          and partners. Their contributions help us continue striving for
+          and partners. Your contributions help us continue striving for
           excellence and achieving new heights.
         </p>
 

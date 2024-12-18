@@ -113,7 +113,7 @@ const Record: React.FC = () => {
 
   return (
     <div className="record-container">
-      <h1>My Record</h1>
+      <h1>Record</h1>
 
       <div className="total-record-container">
         <div className="record-grid">

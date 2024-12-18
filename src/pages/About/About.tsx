@@ -16,17 +16,16 @@ const About = () => {
           <div className="about-section-text">
             <h2 className="section-title">Biography</h2>
             <p>
-              My name is <strong>Kha Lu</strong>, a 24-year-old boxer fighting
-              out of Australia. I began my journey in boxing at a young age,
-              driven by an unwavering passion for the sport and a dedication to
-              pushing myself beyond my limits. Over the years, I have trained
-              under some of the best coaches and sparred with skilled fighters,
-              continually honing my technique and mental strength.
+              My name is <strong>Kha</strong>, a 24-year-old boxer fighting out
+              of Australia. I began my journey in boxing at a young age, driven
+              by an unwavering passion for the sport and a dedication to pushing
+              myself beyond my limits. Over the years, I have trained under some
+              of the best coaches and fought very talented fighters.
             </p>
             <p>
-              Today, I proudly represent the <strong>LionsDen</strong> gym, my
-              childhood gym. Each day in the ring is a chance to grow, learn,
-              and become a better version of myself.
+              I proudly represent <strong>LionsDen</strong>, my childhood gym.
+              Each day in the ring is a chance to grow, learn, and become a
+              better version of myself.
             </p>
           </div>
         </div>
@@ -51,7 +50,7 @@ const About = () => {
                 <strong>Country:</strong> Australia
               </li>
               <li>
-                <strong>Weight Class:</strong> Minimum Weight
+                <strong>Weight Class:</strong> Minimumweight & Flyweight
               </li>
               <li>
                 <strong>Bouts:</strong> 7
@@ -82,7 +81,7 @@ const About = () => {
               <li>Victorian Gold Light Flyweight Champion</li>
               <li>Victorian Silver Light Flyweight Champion</li>
               <li>
-                Fight of the Night - <strong>x3</strong>
+                Fight of the Night - <strong>x 3</strong>
               </li>
             </ul>
           </div>
