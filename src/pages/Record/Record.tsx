@@ -17,14 +17,14 @@ const Record: React.FC = () => {
   const fights: Fight[] = [
     {
       id: 1,
-      record: "7-0-0",
+      record: "7-1-0",
       opponent: "Katsunari Takayama",
-      result: "TBD",
+      result: "L",
       date: "18-12-2024",
-      weight: "TBA",
+      weight: `${(104.25 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
-      method: "TBD",
-      rounds: "TBD",
+      method: "L-UD",
+      rounds: "12/12",
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ const Record: React.FC = () => {
       opponent: "Watcharin Buacharoen",
       result: "W",
       date: "16-03-2024",
-      weight: "106½ lbs",
+      weight: `${(106.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-UD",
       rounds: "5/5",
@@ -43,7 +43,7 @@ const Record: React.FC = () => {
       opponent: "Thoedkiad Weerachon",
       result: "W",
       date: "02-12-2023",
-      weight: "102½ lbs",
+      weight: `${(102.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-TKO",
       rounds: "3/6",
@@ -54,7 +54,7 @@ const Record: React.FC = () => {
       opponent: "Oatkowit Kamlangcharoey",
       result: "W",
       date: "16-09-2023",
-      weight: "102½ lbs",
+      weight: `${(102.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-TKO",
       rounds: "1/6",
@@ -65,7 +65,7 @@ const Record: React.FC = () => {
       opponent: "Sirachat Soising",
       result: "W",
       date: "25-03-2023",
-      weight: "105½ lbs",
+      weight: `${(105.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-TKO",
       rounds: "2/4",
@@ -76,7 +76,7 @@ const Record: React.FC = () => {
       opponent: "Gerttipong Kumsahwat",
       result: "W",
       date: "16-12-2022",
-      weight: "103¾ lbs",
+      weight: `${(103.75 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-UD",
       rounds: "6/6",
@@ -87,7 +87,7 @@ const Record: React.FC = () => {
       opponent: "Gerttipong Kumsahwat",
       result: "W",
       date: "20-08-2022",
-      weight: "108¾ lbs",
+      weight: `${(108.75 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-UD",
       rounds: "4/4",
@@ -98,7 +98,7 @@ const Record: React.FC = () => {
       opponent: "Prakob Nuankaew",
       result: "W",
       date: "19-03-2022",
-      weight: "111½ lbs",
+      weight: `${(111.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
       method: "W-MD",
       rounds: "4/4",
@@ -121,7 +121,7 @@ const Record: React.FC = () => {
             <span className="wins">7</span>
           </div>
           <div className="record-cell">
-            <span className="losses">0</span>
+            <span className="losses">1</span>
           </div>
           <div className="record-cell">
             <span className="draws">0</span>
@@ -160,7 +160,11 @@ const Record: React.FC = () => {
                 <td className="result-col">
                   <div
                     className={`result-box ${
-                      fight.result === "W" ? "win" : ""
+                      fight.result === "W"
+                        ? "win"
+                        : fight.result === "L"
+                        ? "loss"
+                        : ""
                     }`}
                   >
                     {fight.result}

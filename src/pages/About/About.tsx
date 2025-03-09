@@ -53,7 +53,7 @@ const About = () => {
                 <strong>Weight Class:</strong> Minimumweight & Flyweight
               </li>
               <li>
-                <strong>Bouts:</strong> 7
+                <strong>Bouts:</strong> 8
               </li>
               <li>
                 <strong>Rounds:</strong> 25
