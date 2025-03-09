@@ -2,21 +2,15 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "./UpcomingFight.css";
 
-// Flag image
-import australiaFlag from "../../assets/images/australia-icon.png";
+// Import images
+import australiaIcon from "../../assets/images/australia-icon.png";
 
 const calculateTimeLeft = () => {
   const eventDate = new Date("April 4, 2025 20:00:00").getTime();
   const now = new Date().getTime();
   const difference = eventDate - now;
 
-  let timeLeft = {
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  };
-
+  let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
   if (difference > 0) {
     timeLeft = {
       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -27,7 +21,6 @@ const calculateTimeLeft = () => {
       seconds: Math.floor((difference % (1000 * 60)) / 1000),
     };
   }
-
   return timeLeft;
 };
 
@@ -35,67 +28,90 @@ const UpcomingFight: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    AOS.refresh();
+    AOS.init({ once: true });
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="upcoming-fight-container">
-      <div className="upcoming-fight-details" data-aos="fade-up">
-        <div className="fighter-layout">
-          <div className="fighter">
+      {/* Title and Date */}
+      <div className="fight-title-container" data-aos="fade-up">
+        <h1 className="fight-title">Australian Title</h1>
+        <p className="fight-date">April 4, 2025</p>
+        <p className="fight-date">Melbourne Pavilion</p>
+      </div>
+
+      {/* Fighters Section */}
+      <div className="fight-header" data-aos="fade-up" data-aos-delay="200">
+        <div className="fighter fighter-main">
+          <div className="fighter-name">
             <img
-              src={australiaFlag}
-              alt="Australian Flag"
-              className="flag-icon"
+              className="australia-icon"
+              src={australiaIcon}
+              alt="Australia"
             />
-            <div className="fighter-name-container">
-              <span className="fighter-name-first">Kha</span>
-              <span className="fighter-name-last">Lu</span>
-            </div>
-          </div>
-          <div className="versus">Vs</div>
-          <div className="fighter">
-            <img
-              src={australiaFlag}
-              alt="Japanese Flag"
-              className="flag-icon"
-            />
-            <div className="fighter-name-container">
-              <span className="fighter-name-first">Daniel</span>
-              <span className="fighter-name-last">Anderson</span>
-            </div>
+            <span className="fighter-first">Kha Lu</span>
           </div>
         </div>
-      </div>
-      <div className="countdown-timer">
-        <div className="countdown-item">
-          <span className="countdown-value red">{timeLeft.days}</span>
-          <span className="countdown-label">Days</span>
-        </div>
-        <div className="countdown-item">
-          <span className="countdown-value red">{timeLeft.hours}</span>
-          <span className="countdown-label">Hours</span>
-        </div>
-        <div className="countdown-item">
-          <span className="countdown-value red">{timeLeft.minutes}</span>
-          <span className="countdown-label">Minutes</span>
-        </div>
-        <div className="countdown-item">
-          <span className="countdown-value red">{timeLeft.seconds}</span>
-          <span className="countdown-label">Seconds</span>
+
+        <div className="vs">VS</div>
+
+        <div className="fighter fighter-secondary">
+          <div className="fighter-name">
+            <img
+              className="australia-icon"
+              src={australiaIcon}
+              alt="Australia"
+            />
+            <span className="fighter-first">David Anderson</span>
+          </div>
         </div>
       </div>
-      <div className="countdown-title">
-        <h3>Australian Title</h3>
+
+      {/* Countdown */}
+      <div className="countdown" data-aos="fade-up" data-aos-delay="400">
+        <div className="countdown-item">
+          <div className="countdown-number">{timeLeft.days}</div>
+          <div className="countdown-label">Days</div>
+        </div>
+        <div className="countdown-item">
+          <div className="countdown-number">{timeLeft.hours}</div>
+          <div className="countdown-label">Hours</div>
+        </div>
+        <div className="countdown-item">
+          <div className="countdown-number">{timeLeft.minutes}</div>
+          <div className="countdown-label">Minutes</div>
+        </div>
+        <div className="countdown-item">
+          <div className="countdown-number">{timeLeft.seconds}</div>
+          <div className="countdown-label">Seconds</div>
+        </div>
       </div>
-      <div className="fight-info">
-        <p className="fight-date">December 18, 2024</p>
-        <p className="fight-location">Melbourne Pavillion, Australia</p>
+
+      {/* Location */}
+      <div
+        className="fight-location"
+        data-aos="fade-up"
+        data-aos-delay="600"
+      ></div>
+
+      {/* Ticket Button */}
+      <div
+        className="ticket-button-container"
+        data-aos="fade-up"
+        data-aos-delay="800"
+      >
+        <a
+          href="https://lionsdendelahey.com.au/pages/fight-night-tickets"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ticket-button"
+        >
+          Buy Tickets Now
+        </a>
       </div>
     </div>
   );

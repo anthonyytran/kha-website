@@ -1,0 +1,24 @@
+.homepage-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* Wider on desktop than before */
+    margin: 0 auto;
+    background: black;
+    overflow: hidden;
+  }
+  
+  .homepage-video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* On desktop (or larger screens), enforce a smaller height */
+  @media (min-width: 1024px) {
+    .homepage-video {
+      height: 450px; /* Adjust to reduce height */
+      width: 100%;   /* Still use full container width (max-width: 1000px) */
+    }
+  }
+  

@@ -9,6 +9,7 @@ import "./Home.css";
 
 import UpcomingFight from "../../components/UpcomingFight/UpcomingFight";
 import HomeRecord from "../../components/HomeRecord/HomeRecord";
+import HomepageVideo from "../../components/HomepageVideo/HomepageVideo";
 
 // Fighter images
 import fighter1 from "../../assets/images/buacharoen.jpg";
@@ -93,6 +94,9 @@ const Home: React.FC = () => {
       <HomeRecord />
 
       <hr className="separator" />
+
+      {/* Video */}
+      <HomepageVideo />
 
       {/* Upcoming Fight Section */}
       <UpcomingFight />
