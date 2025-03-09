@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import AOS from "aos";
@@ -7,15 +7,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
 
-// Flag images
-import australiaFlag from "../../assets/images/australia-icon.png";
-import japanFlag from "../../assets/images/japan-icon.png";
-import thailandFlag from "../../assets/images/thailand-icon.png";
+import UpcomingFight from "../../components/UpcomingFight/UpcomingFight";
+import HomeRecord from "../../components/HomeRecord/HomeRecord";
 
 // Fighter images
 import fighter1 from "../../assets/images/buacharoen.jpg";
 import fighter2 from "../../assets/images/weerachon.jpg";
 import fighter3 from "../../assets/images/kamlangcharoey.jpg";
+
+// Flag image
+import thailandFlag from "../../assets/images/thailand-icon.png";
 
 // Sponsor images
 import sponsor1 from "../../assets/images/rephaze.png";
@@ -24,51 +25,13 @@ import sponsor3 from "../../assets/images/theboxinglab.png";
 import sponsor4 from "../../assets/images/dynamic-therapy.png";
 import sponsor5 from "../../assets/images/greeneflicks.png";
 
-// Countdown Timer Function
-const calculateTimeLeft = () => {
-  const eventDate = new Date("December 18, 2024 23:00:00").getTime();
-  const now = new Date().getTime();
-  const difference = eventDate - now;
-
-  let timeLeft = {
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  };
-
-  if (difference > 0) {
-    timeLeft = {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      ),
-      minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-      seconds: Math.floor((difference % (1000 * 60)) / 1000),
-    };
-  }
-
-  return timeLeft;
-};
-
 const Home: React.FC = () => {
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
   useEffect(() => {
     AOS.init({
       duration: 800,
       easing: "ease-in-out",
     });
-
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
   }, []);
 
   const sponsorSettings = {
@@ -106,110 +69,33 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <div>
-        <div className="home-container-1">
-          <div className="overlay-text">
-            <hr className="divider divider-top" />
-            <h2 className="fade-in-text" data-aos="fade-in">
-              PROFESSIONAL BOXER
-            </h2>
-            <hr className="divider divider-bottom" />
-            <h3 className="fade-in-champion subtext">
-              Victorian Light Flyweight Champion
-            </h3>
-            <Link to="/about" className="find-out-more-button">
-              Find out more
-            </Link>
-          </div>
-          <div className="scroll-indicator">
-            <p className="scroll-text">Scroll Down</p>
-            <div className="arrow-down"></div>
-          </div>
+      <div className="home-container-1">
+        <div className="overlay-text">
+          <hr className="divider divider-top" />
+          <h2 className="fade-in-text" data-aos="fade-in">
+            PROFESSIONAL BOXER
+          </h2>
+          <hr className="divider divider-bottom" />
+          <h3 className="fade-in-champion subtext">
+            Victorian Light Flyweight Champion
+          </h3>
+          <Link to="/about" className="find-out-more-button">
+            Find out more
+          </Link>
+        </div>
+        <div className="scroll-indicator">
+          <p className="scroll-text">Scroll Down</p>
+          <div className="arrow-down"></div>
         </div>
       </div>
 
       {/* Record Title Container */}
-      <div className="record-title-container">
-        <h2>Record</h2>
-        <div className="record-summary">
-          <div className="record-number">
-            <span className="record-value-win">7</span>
-            <div className="record-label win">Win</div>
-          </div>
-          <span className="record-separator">-</span>
-          <div className="record-number">
-            <span className="record-value-loss">1</span>
-            <div className="record-label loss">Loss</div>
-          </div>
-          <span className="record-separator">-</span>
-          <div className="record-number">
-            0<div className="record-label draw">Draw</div>
-          </div>
-        </div>
-      </div>
+      <HomeRecord />
 
       <hr className="separator" />
 
-      <div className="upcoming-fight-container">
-        <div className="upcoming-fight-details" data-aos="fade-up">
-          <div className="fighter-layout">
-            {/* Top Fighter: Kha Lu */}
-            <div className="fighter">
-              <img
-                src={australiaFlag}
-                alt="Australian Flag"
-                className="flag-icon"
-              />
-              <div className="fighter-name-container">
-                <span className="fighter-name-first">Kha</span>
-                <span className="fighter-name-last">Lu</span>
-              </div>
-            </div>
-
-            {/* Middle - Vs */}
-            <div className="versus">Vs</div>
-
-            {/* Bottom Fighter: Katsunari Takayama */}
-            <div className="fighter">
-              <img src={japanFlag} alt="Japanese Flag" className="flag-icon" />
-              <div className="fighter-name-container">
-                <span className="fighter-name-first">Katsunari</span>
-                <span className="fighter-name-last">Takayama</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Countdown Timer */}
-        <div className="countdown-timer">
-          <div className="countdown-item">
-            <span className="countdown-value red">{timeLeft.days}</span>
-            <span className="countdown-label">Days</span>
-          </div>
-          <div className="countdown-item">
-            <span className="countdown-value red">{timeLeft.hours}</span>
-            <span className="countdown-label">Hours</span>
-          </div>
-          <div className="countdown-item">
-            <span className="countdown-value red">{timeLeft.minutes}</span>
-            <span className="countdown-label">Minutes</span>
-          </div>
-          <div className="countdown-item">
-            <span className="countdown-value red">{timeLeft.seconds}</span>
-            <span className="countdown-label">Seconds</span>
-          </div>
-        </div>
-
-        <div className="countdown-title">
-          <h3>IBO World Minimum</h3>
-        </div>
-
-        {/* Fight Info */}
-        <div className="fight-info">
-          <p className="fight-date">December 18, 2024</p>
-          <p className="fight-location">Barangay Bula, General Santos City</p>
-        </div>
-      </div>
+      {/* Upcoming Fight Section */}
+      <UpcomingFight />
 
       <hr className="separator" />
 
@@ -217,7 +103,6 @@ const Home: React.FC = () => {
       <div className="home-container-2">
         <h3 className="fights-title">Past Fights</h3>
         <div className="fight-history">
-          {/* Fight card for Watcharin Buacharoen */}
           <div className="fight-card" data-aos="fade-up">
             <h4>
               <img
@@ -242,8 +127,6 @@ const Home: React.FC = () => {
               <p className="location">Melbourne Pavilion, Australia</p>
             </div>
           </div>
-
-          {/* Fight card for Thoedkiad Weerachon */}
           <div className="fight-card" data-aos="fade-up" data-aos-delay="100">
             <h4>
               <img
@@ -268,8 +151,6 @@ const Home: React.FC = () => {
               <p className="location">Melbourne Pavilion, Australia</p>
             </div>
           </div>
-
-          {/* Fight card for Oatkowit Kamlangcharoey */}
           <div className="fight-card" data-aos="fade-up" data-aos-delay="200">
             <h4>
               <img
