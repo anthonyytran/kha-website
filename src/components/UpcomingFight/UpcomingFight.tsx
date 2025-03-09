@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
+import "aos/dist/aos.css";
 import "./UpcomingFight.css";
 
 // Import images
 import australiaIcon from "../../assets/images/australia-icon.png";
+import lionsdenLogo from "../../assets/images/lionsden-logo.png";
 
 const calculateTimeLeft = () => {
   const eventDate = new Date("April 4, 2025 20:00:00").getTime();
@@ -38,48 +40,66 @@ const UpcomingFight: React.FC = () => {
   return (
     <div className="upcoming-fight-container">
       {/* Title and Date */}
-      <div className="fight-title-container" data-aos="fade-up">
-        <h1 className="fight-title">Australian Title</h1>
-        <p className="fight-date">April 4, 2025</p>
-        <p className="fight-date">Melbourne Pavilion</p>
+      <div className="fight-title-container">
+        <h1 className="fight-title" data-aos="zoom-in" data-aos-delay="100">
+          Australian Title
+        </h1>
+        <p className="fight-date" data-aos="fade-up" data-aos-delay="300">
+          April 4, 2025
+        </p>
+        <p className="fight-date" data-aos="fade-up" data-aos-delay="500">
+          Melbourne Pavilion
+        </p>
       </div>
 
       {/* Fighters Section */}
-      <div className="fight-header" data-aos="fade-up" data-aos-delay="200">
-        <div className="fighter fighter-main">
+      <div className="fight-header">
+        <div
+          className="fighter fighter-main"
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
           <div className="fighter-name">
             <img
               className="australia-icon"
               src={australiaIcon}
               alt="Australia"
             />
-            <span className="fighter-first">Kha Lu</span>
+            <span className="fighter-first">Kha</span>
+            <span className="fighter-last">Lu</span>
           </div>
         </div>
 
-        <div className="vs">VS</div>
+        <div className="vs" data-aos="fade-down" data-aos-delay="400">
+          VS
+        </div>
 
-        <div className="fighter fighter-secondary">
+        <div
+          className="fighter fighter-secondary"
+          data-aos="fade-right"
+          data-aos-delay="600"
+        >
           <div className="fighter-name">
             <img
               className="australia-icon"
               src={australiaIcon}
               alt="Australia"
             />
-            <span className="fighter-first">David Anderson</span>
+            <span className="fighter-first">David</span>
+            <span className="fighter-last">Anderson</span>
           </div>
         </div>
       </div>
 
       {/* Countdown */}
-      <div className="countdown" data-aos="fade-up" data-aos-delay="400">
+      <div className="countdown" data-aos="fade" data-aos-delay="800">
         <div className="countdown-item">
           <div className="countdown-number">{timeLeft.days}</div>
           <div className="countdown-label">Days</div>
         </div>
         <div className="countdown-item">
           <div className="countdown-number">{timeLeft.hours}</div>
-          <div className="countdown-label">Hours</div>
+          <div className="countdown-label">Hour</div>
         </div>
         <div className="countdown-item">
           <div className="countdown-number">{timeLeft.minutes}</div>
@@ -91,18 +111,11 @@ const UpcomingFight: React.FC = () => {
         </div>
       </div>
 
-      {/* Location */}
-      <div
-        className="fight-location"
-        data-aos="fade-up"
-        data-aos-delay="600"
-      ></div>
-
       {/* Ticket Button */}
       <div
         className="ticket-button-container"
-        data-aos="fade-up"
-        data-aos-delay="800"
+        data-aos="fade"
+        data-aos-delay="1000"
       >
         <a
           href="https://lionsdendelahey.com.au/pages/fight-night-tickets"

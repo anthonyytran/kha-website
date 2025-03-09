@@ -93,15 +93,11 @@ const Home: React.FC = () => {
       {/* Record Title Container */}
       <HomeRecord />
 
-      <hr className="separator" />
-
       {/* Video */}
       <HomepageVideo />
 
       {/* Upcoming Fight Section */}
       <UpcomingFight />
-
-      <hr className="separator" />
 
       {/* Fight History Section */}
       <div className="home-container-2">

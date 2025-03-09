@@ -10,9 +10,9 @@
 }
 
 .logo-icon {
-  max-height: 80px; /* fixed size for desktop */
+  max-height: 80px;
   width: auto;
-  margin-top: 0;
+  margin-top: 2rem; /* adjust as needed */
   position: relative;
   z-index: 10;
   transition: z-index 0.3s ease;

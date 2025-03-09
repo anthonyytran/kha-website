@@ -4,7 +4,7 @@ import "./Navbar.css";
 import instagramIcon from "../../assets/images/instagram.png";
 import tiktokIcon from "../../assets/images/tiktok.png";
 import logoIcon from "../../assets/images/kha-logo2.png";
-import lionsdenLogo from "../../assets/images/lionsden-logo.png";
+import lionsdenLogo from "../../assets/images/kha-logo2.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
