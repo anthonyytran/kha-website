@@ -74,7 +74,7 @@ const Home: React.FC = () => {
         <div className="overlay-text">
           <hr className="divider divider-top" />
           <h2 className="fade-in-text" data-aos="fade-in">
-            PROFESSIONAL BOXER
+            KHA LU
           </h2>
           <hr className="divider divider-bottom" />
           <h3 className="fade-in-champion subtext">

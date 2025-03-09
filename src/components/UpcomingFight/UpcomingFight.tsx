@@ -30,24 +30,38 @@ const UpcomingFight: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    AOS.init({ once: true });
+    // Initialize AOS with consistent settings
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: "ease-out-cubic",
+      mirror: false,
+      offset: 50,
+      anchorPlacement: "top-bottom",
+    });
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
+
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="upcoming-fight-container">
+    <div
+      className="upcoming-fight-container"
+      data-aos="fade-in"
+      data-aos-duration="1000"
+    >
       {/* Title and Date */}
       <div className="fight-title-container">
-        <h1 className="fight-title" data-aos="zoom-in" data-aos-delay="100">
+        <h1 className="fight-title" data-aos="fade-up" data-aos-delay="100">
           Australian Title
         </h1>
-        <p className="fight-date" data-aos="fade-up" data-aos-delay="300">
+        <p className="fight-date" data-aos="fade-up" data-aos-delay="200">
           April 4, 2025
         </p>
-        <p className="fight-date" data-aos="fade-up" data-aos-delay="500">
+        <p className="fight-date" data-aos="fade-up" data-aos-delay="300">
           Melbourne Pavilion
         </p>
       </div>
@@ -56,34 +70,38 @@ const UpcomingFight: React.FC = () => {
       <div className="fight-header">
         <div
           className="fighter fighter-main"
-          data-aos="fade-left"
-          data-aos-delay="200"
+          data-aos="fade-right"
+          data-aos-delay="400"
         >
           <div className="fighter-name">
             <img
               className="australia-icon"
               src={australiaIcon}
               alt="Australia"
+              data-aos="zoom-in"
+              data-aos-delay="600"
             />
             <span className="fighter-first">Kha</span>
             <span className="fighter-last">Lu</span>
           </div>
         </div>
 
-        <div className="vs" data-aos="fade-down" data-aos-delay="400">
+        <div className="vs" data-aos="zoom-in" data-aos-delay="500">
           VS
         </div>
 
         <div
           className="fighter fighter-secondary"
-          data-aos="fade-right"
-          data-aos-delay="600"
+          data-aos="fade-left"
+          data-aos-delay="400"
         >
           <div className="fighter-name">
             <img
               className="australia-icon"
               src={australiaIcon}
               alt="Australia"
+              data-aos="zoom-in"
+              data-aos-delay="600"
             />
             <span className="fighter-first">David</span>
             <span className="fighter-last">Anderson</span>
@@ -92,36 +110,35 @@ const UpcomingFight: React.FC = () => {
       </div>
 
       {/* Countdown */}
-      <div className="countdown" data-aos="fade" data-aos-delay="800">
-        <div className="countdown-item">
-          <div className="countdown-number">{timeLeft.days}</div>
-          <div className="countdown-label">Days</div>
-        </div>
-        <div className="countdown-item">
-          <div className="countdown-number">{timeLeft.hours}</div>
-          <div className="countdown-label">Hour</div>
-        </div>
-        <div className="countdown-item">
-          <div className="countdown-number">{timeLeft.minutes}</div>
-          <div className="countdown-label">Minutes</div>
-        </div>
-        <div className="countdown-item">
-          <div className="countdown-number">{timeLeft.seconds}</div>
-          <div className="countdown-label">Seconds</div>
-        </div>
+      <div className="countdown" data-aos="fade-up" data-aos-delay="500">
+        {["days", "hours", "minutes", "seconds"].map((unit, index) => (
+          <div
+            key={unit}
+            className="countdown-item"
+            data-aos="zoom-in"
+            data-aos-delay={600 + index * 100}
+          >
+            <div className="countdown-number">{timeLeft[unit]}</div>
+            <div className="countdown-label">
+              {unit.charAt(0).toUpperCase() + unit.slice(1)}
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Ticket Button */}
       <div
         className="ticket-button-container"
-        data-aos="fade"
-        data-aos-delay="1000"
+        data-aos="fade-up"
+        data-aos-delay="700"
       >
         <a
           href="https://lionsdendelahey.com.au/pages/fight-night-tickets"
           target="_blank"
           rel="noopener noreferrer"
           className="ticket-button"
+          data-aos="zoom-in"
+          data-aos-delay="900"
         >
           Buy Tickets Now
         </a>

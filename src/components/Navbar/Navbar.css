@@ -113,6 +113,12 @@
   text-decoration: underline;
 }
 
+.nav-links.open .lionsden-logo {
+  display: flex;
+  /* Add margin or position as desired */
+  margin-left: 10px; /* move slightly left */
+}
+
 @media (min-width: 769px) {
   .nav-links li a {
     font-size: 1.5rem;
