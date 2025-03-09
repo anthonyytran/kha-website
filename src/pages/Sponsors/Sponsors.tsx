@@ -8,6 +8,11 @@ import GoldSponsor3 from "../../assets/images/marsh.jpg";
 
 import SilverSponsor1 from "../../assets/images/theboxinglab.png";
 import SilverSponsor2 from "../../assets/images/a1.jpg";
+import SilverSponsor3 from "../../assets/images/nimbus.png";
+import SilverSponsor4 from "../../assets/images/greeneflicks.png";
+import SilverSponsor5 from "../../assets/images/studio25.png";
+import SilverSponsor6 from "../../assets/images/rephaze.png";
+import SilverSponsor7 from "../../assets/images/dynamic-therapy.png";
 
 const Sponsors = () => {
   return (
@@ -56,27 +61,27 @@ const Sponsors = () => {
               className="sponsor-logo"
             />
             <img
-              src={SilverSponsor1}
+              src={SilverSponsor3}
               alt="Silver Sponsor 3"
               className="sponsor-logo"
             />
             <img
-              src={SilverSponsor1}
+              src={SilverSponsor4}
               alt="Silver Sponsor 4"
               className="sponsor-logo"
             />
             <img
-              src={SilverSponsor1}
+              src={SilverSponsor5}
               alt="Silver Sponsor 5"
               className="sponsor-logo"
             />
             <img
-              src={SilverSponsor1}
+              src={SilverSponsor6}
               alt="Silver Sponsor 6"
               className="sponsor-logo"
             />
             <img
-              src={SilverSponsor1}
+              src={SilverSponsor7}
               alt="Silver Sponsor 7"
               className="sponsor-logo"
             />

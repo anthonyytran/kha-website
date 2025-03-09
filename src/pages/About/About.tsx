@@ -16,16 +16,16 @@ const About = () => {
           <div className="about-section-text">
             <h2 className="section-title">Biography</h2>
             <p>
-              My name is <strong>Kha</strong>, a 24-year-old boxer fighting out
-              of Australia. I began my journey in boxing at a young age, driven
-              by an unwavering passion for the sport and a dedication to pushing
-              myself beyond my limits. Over the years, I have trained under some
-              of the best coaches and fought very talented fighters.
+              <strong>Kha Lu</strong> is a 24-year-old boxer fighting out of
+              Australia. His boxing journey begun at a young age, driven by an
+              unwavering passion for the sport and a dedication to pushing
+              himself beyond his limits. Over the years, <strong>Kha</strong>{" "}
+              has trained under some of the best coaches and fought very
+              talented fighters both domestically and internationally.
             </p>
             <p>
-              I proudly represent <strong>LionsDen</strong>, my childhood gym.
-              Each day in the ring is a chance to grow, learn, and become a
-              better version of myself.
+              <strong>Kha Lu</strong> proudly represents{" "}
+              <strong>LionsDens</strong> - his childhood gym.
             </p>
           </div>
         </div>

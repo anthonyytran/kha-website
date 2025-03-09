@@ -19,7 +19,7 @@ import fighter3 from "../../assets/images/kamlangcharoey.jpg";
 
 // Sponsor images
 import sponsor1 from "../../assets/images/rephaze.png";
-import sponsor2 from "../../assets/images/sponsor2.png";
+import sponsor2 from "../../assets/images/studio25.png";
 import sponsor3 from "../../assets/images/theboxinglab.png";
 import sponsor4 from "../../assets/images/dynamic-therapy.png";
 import sponsor5 from "../../assets/images/greeneflicks.png";
@@ -138,7 +138,7 @@ const Home: React.FC = () => {
           </div>
           <span className="record-separator">-</span>
           <div className="record-number">
-            <span className="record-value-loss">0</span>
+            <span className="record-value-loss">1</span>
             <div className="record-label loss">Loss</div>
           </div>
           <span className="record-separator">-</span>
