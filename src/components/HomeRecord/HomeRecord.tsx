@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./HomeRecord.css";
 
-const HomeRecord = () => {
+const HomeRecord: React.FC = () => {
   return (
     <div className="record-card">
       <h2 className="record-title">Record</h2>
@@ -18,6 +19,11 @@ const HomeRecord = () => {
           <div className="record-value draws">0</div>
           <div className="record-label">Draws</div>
         </div>
+      </div>
+      <div className="view-all-button-container fights-button">
+        <Link to="/record" className="view-all-button">
+          View All
+        </Link>
       </div>
     </div>
   );
