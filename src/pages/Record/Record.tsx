@@ -22,8 +22,8 @@ const Record: React.FC = () => {
       result: "L",
       date: "18-12-2024",
       weight: `${(104.25 * 0.453592).toFixed(2)} kg`,
-      venue: "The Melbourne Pavilion, Flemington",
-      method: "L-UD",
+      venue: "Barangay Bula, General Santos City",
+      method: "Unanimous Decision",
       rounds: "12/12",
     },
     {
@@ -34,7 +34,7 @@ const Record: React.FC = () => {
       date: "16-03-2024",
       weight: `${(106.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
-      method: "W-UD",
+      method: "Unanimous Decision",
       rounds: "5/5",
     },
     {
@@ -45,7 +45,7 @@ const Record: React.FC = () => {
       date: "02-12-2023",
       weight: `${(102.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
-      method: "W-TKO",
+      method: "Technical Knockout",
       rounds: "3/6",
     },
     {
@@ -56,7 +56,7 @@ const Record: React.FC = () => {
       date: "16-09-2023",
       weight: `${(102.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
-      method: "W-TKO",
+      method: "Technical Knockout",
       rounds: "1/6",
     },
     {
@@ -67,7 +67,7 @@ const Record: React.FC = () => {
       date: "25-03-2023",
       weight: `${(105.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
-      method: "W-TKO",
+      method: "Technical Knockout",
       rounds: "2/4",
     },
     {
@@ -78,7 +78,7 @@ const Record: React.FC = () => {
       date: "16-12-2022",
       weight: `${(103.75 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
-      method: "W-UD",
+      method: "Unanimous Decision",
       rounds: "6/6",
     },
     {
@@ -89,7 +89,7 @@ const Record: React.FC = () => {
       date: "20-08-2022",
       weight: `${(108.75 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
-      method: "W-UD",
+      method: "Unanimous Decision",
       rounds: "4/4",
     },
     {
@@ -100,21 +100,38 @@ const Record: React.FC = () => {
       date: "19-03-2022",
       weight: `${(111.5 * 0.453592).toFixed(2)} kg`,
       venue: "The Melbourne Pavilion, Flemington",
-      method: "W-MD",
+      method: "Majority Decision",
       rounds: "4/4",
     },
   ];
 
-  const [expandedFightId, setExpandedFightId] = useState<number | null>(null);
-
-  const toggleExpand = (id: number) => {
-    setExpandedFightId((prevId) => (prevId === id ? null : id));
+  // Format date from dd-mm-yyyy to "day month year"
+  const formatDate = (dateStr: string) => {
+    const [day, month, year] = dateStr.split("-");
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return `${day} ${monthNames[parseInt(month) - 1]} ${year}`;
   };
+
+  const [expandedFightId, setExpandedFightId] = useState<number | null>(null);
+  const toggleExpand = (id: number) =>
+    setExpandedFightId((prevId) => (prevId === id ? null : id));
 
   return (
     <div className="record-container">
       <h1>Record</h1>
-
       <div className="total-record-container">
         <div className="record-grid">
           <div className="record-cell">
@@ -138,64 +155,77 @@ const Record: React.FC = () => {
         </div>
       </div>
 
-      <table className="record-table">
-        <thead>
-          <tr>
-            <th className="result-col">Result</th>
-            <th>Record</th>
-            <th>Opponent</th>
-            <th>Method</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {fights.map((fight) => (
-            <React.Fragment key={fight.id}>
-              <tr
-                className={`record-row ${
-                  expandedFightId === fight.id ? "expanded-row" : ""
-                }`}
-                onClick={() => toggleExpand(fight.id)}
-              >
-                <td className="result-col">
-                  <div
-                    className={`result-box ${
-                      fight.result === "W"
-                        ? "win"
-                        : fight.result === "L"
-                        ? "loss"
-                        : ""
-                    }`}
+      <div className="table-wrapper">
+        <table className="record-table">
+          <thead>
+            <tr>
+              <th className="result-col">Result</th>
+              <th className="date-col">Date</th>
+              <th>Record</th>
+              <th>Opponent</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fights.map((fight) => (
+              <React.Fragment key={fight.id}>
+                <tr
+                  className={`record-row ${
+                    expandedFightId === fight.id ? "expanded-row" : ""
+                  }`}
+                  onClick={() => toggleExpand(fight.id)}
+                >
+                  <td
+                    className="result-col"
+                    data-label="Result"
+                    data-opponent={fight.opponent}
                   >
-                    {fight.result}
-                  </div>
-                </td>
-                <td className="record-col">{fight.record}</td>
-                <td className="opponent-col">{fight.opponent}</td>
-                <td>{fight.method}</td>
-                <td>{fight.date}</td>
-              </tr>
-              {expandedFightId === fight.id && (
-                <tr className="details-row">
-                  <td colSpan={5}>
-                    <div className="details-content">
-                      <p>
-                        <strong>Weight:</strong> {fight.weight}
-                      </p>
-                      <p>
-                        <strong>Venue:</strong> {fight.venue}
-                      </p>
-                      <p>
-                        <strong>Rounds:</strong> {fight.rounds}
-                      </p>
+                    <div
+                      className={`result-box ${
+                        fight.result === "W"
+                          ? "win"
+                          : fight.result === "L"
+                          ? "loss"
+                          : ""
+                      }`}
+                    >
+                      {fight.result}
                     </div>
                   </td>
+                  <td className="date-col" data-label="Date">
+                    {formatDate(fight.date)}
+                  </td>
+                  <td className="record-col" data-label="Record">
+                    {fight.record}
+                  </td>
+                  <td className="opponent-col" data-label="Opponent">
+                    {fight.opponent}
+                  </td>
                 </tr>
-              )}
-            </React.Fragment>
-          ))}
-        </tbody>
-      </table>
+                {expandedFightId === fight.id && (
+                  <tr className="details-row">
+                    <td colSpan={4}>
+                      <div className="details-content">
+                        <p>
+                          <strong>Weight:</strong> {fight.weight}
+                        </p>
+                        <p>
+                          <strong>Method:</strong> {fight.method}
+                        </p>
+                        <p>
+                          <strong>Venue:</strong> {fight.venue}
+                        </p>
+                        <p>
+                          <strong>Rounds:</strong> {fight.rounds}
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
