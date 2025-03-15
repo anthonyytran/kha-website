@@ -11,6 +11,15 @@
   position: relative; /* needed for ::before positioning */
   overflow: hidden;
   padding: 1.5rem;
+  opacity: 0; /* Start invisible for smooth fade-in */
+  transform: translateY(20px); /* Small initial offset for fade-up effect */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Animation class that AOS will apply */
+.upcoming-fight-container.aos-animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Pseudo-element with background and lowered opacity */
@@ -22,8 +31,13 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.2;
+  opacity: 0;
   z-index: -1; /* behind child content */
+  transition: opacity 1.2s ease-in-out;
+}
+
+.upcoming-fight-container.aos-animate::before {
+  opacity: 0.2;
 }
 
 .upcoming-fight-container > * {
@@ -46,6 +60,14 @@
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   position: relative;
   z-index: 1;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+}
+
+.fight-title.aos-animate {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .fight-date {
@@ -54,6 +76,14 @@
   margin: 0.5rem 0 0;
   color: var(--color-white);
   letter-spacing: 1px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+}
+
+.fight-date.aos-animate {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* Fighters Section */
@@ -73,7 +103,19 @@
   width: 100%;
   max-width: 280px;
   padding: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0;
+  transform: translateX(0);
+}
+
+.fighter.fighter-main.aos-animate {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.fighter.fighter-secondary.aos-animate {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .fighter-name {
@@ -89,7 +131,7 @@
 
 .fighter-first,
 .fighter-last {
-  font-family: "Beba Neue", sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -101,6 +143,14 @@
   width: 20px;
   height: auto;
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.australia-icon.aos-animate {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* VS Text */
@@ -118,6 +168,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+}
+
+.vs.aos-animate {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Countdown Timer Grid */
@@ -129,6 +187,14 @@
   padding: 1.5rem;
   border-radius: 12px;
   margin: 1rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.8s ease;
+}
+
+.countdown.aos-animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .countdown-item {
@@ -136,6 +202,14 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
+}
+
+.countdown-item.aos-animate {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .countdown-item:not(:last-child)::after {
@@ -181,25 +255,40 @@
 .ticket-button-container {
   text-align: center;
   margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.8s ease;
+}
+
+.ticket-button-container.aos-animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ticket-button {
-  /* start transparent so it can fade in */
-  background: transparent;
   color: var(--color-white);
   padding: 1rem 2rem;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.5rem;
   border-radius: 12px;
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 1px;
   border: none;
   position: relative;
   overflow: hidden;
-  box-shadow: none; /* remove box shadow until it animates in */
+  background: transparent;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.ticket-button.aos-animate {
+  opacity: 1;
+  transform: scale(1);
+  background: linear-gradient(145deg, var(--color-primary), #9a874a);
+  box-shadow: 0 5px 15px rgba(184, 161, 83, 0.4);
 }
 
 .ticket-button::before {
@@ -224,12 +313,6 @@
 
 .ticket-button:hover::before {
   left: 100%;
-}
-
-/* Animate the background to var(--color-primary) once in view */
-[data-aos="fade"].aos-animate .ticket-button {
-  background: linear-gradient(145deg, var(--color-primary), #9a874a);
-  box-shadow: 0 5px 15px rgba(184, 161, 83, 0.4);
 }
 
 .ticket-button:active {

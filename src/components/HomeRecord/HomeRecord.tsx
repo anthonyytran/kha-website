@@ -22,7 +22,7 @@ const HomeRecord: React.FC = () => {
       </div>
       <div className="view-all-button-container fights-button">
         <Link to="/record" className="view-all-button">
-          View All
+          View More
         </Link>
       </div>
     </div>

@@ -57,18 +57,16 @@
 
 .record-stats {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* or space-between, space-around, etc. */
   align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
+  flex-wrap: nowrap; /* prevent items from wrapping */
+  gap: 0.5rem;       /* reduce the gap between items */
 }
 
 .record-item {
-  flex: 1;
-  min-width: 120px;
-  margin: 1rem;
-  transition: transform 0.3s ease;
+  flex: 0 0 auto;  /* shrink items to their content size */
+  min-width: 80px; /* make sure this is small enough for mobile */
+  margin: 0.5rem;  /* smaller margin than before */
 }
 
 .record-item:hover {
@@ -109,11 +107,17 @@
   color: #f8f9fa;
 }
 
+.fights-button {
+  margin-top: 2rem;
+}
+
 /* Responsive stacking on small screens and larger background on mobile */
 @media (max-width: 600px) {
+  /* Remove or comment out this rule so items remain in a row
   .record-stats {
     flex-direction: column;
   }
+  */
   .record-card::after {
     background-size: 100%;
   }
