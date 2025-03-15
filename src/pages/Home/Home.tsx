@@ -6,7 +6,7 @@ import "./Home.css";
 
 import UpcomingFight from "../../components/UpcomingFight/UpcomingFight";
 import HomeRecord from "../../components/HomeRecord/HomeRecord";
-import HomepageVideo from "../../components/HomepageVideo/HomepageVideo";
+import HomepageVideo from "../../components/HomeVideo/HomeVideo";
 import FightHistory from "../../components/FightHistory/FightHistory";
 import HomeSponsors from "../../components/HomeSponsors/HomeSponsors";
 

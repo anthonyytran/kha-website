@@ -1,5 +1,5 @@
 import React from "react";
-import "./HomepageVideo.css";
+import "./HomeVideo.css";
 
 const HomepageVideo: React.FC = () => {
   return (

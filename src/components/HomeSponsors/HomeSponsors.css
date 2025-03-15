@@ -124,4 +124,32 @@
       height: 200px !important;
     }
     .sponsor-slide img {
-      max-width:
+      max-width: 300px;
+    }
+    .sponsors-title {
+      font-size: 3.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .slick-prev,
+    .slick-next {
+      width: 30px; 
+      height: 30px;
+    }
+    .slick-prev {
+      left: -1%; 
+    }
+    .slick-next {
+      right: -1%;
+    }
+    .sponsor-slide {
+      height: 150px !important;
+    }
+    .sponsor-slide img {
+      max-width: 250px;
+    }
+    .sponsors-title {
+      font-size: 3rem;
+    }
+  }
