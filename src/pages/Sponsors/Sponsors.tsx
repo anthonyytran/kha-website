@@ -33,7 +33,7 @@ const Sponsors = () => {
   const sponsors: SponsorData[] = [
     // Gold sponsors
     { id: 1, name: "Elitist", logo: GoldSponsor1, type: "gold" },
-    { id: 2, name: "Visit International", logo: GoldSponsor2, type: "gold" },
+    { id: 2, name: "VisiTint", logo: GoldSponsor2, type: "gold" },
     { id: 3, name: "Marsh", logo: GoldSponsor3, type: "gold" },
     { id: 4, name: "Bosker", logo: GoldSponsor4, type: "gold" },
 
@@ -42,13 +42,13 @@ const Sponsors = () => {
     { id: 6, name: "A1 Performance", logo: SilverSponsor2, type: "silver" },
     {
       id: 7,
-      name: "Nimbus Technologies",
+      name: "Nimbus Studios",
       logo: SilverSponsor3,
       type: "silver",
     },
     { id: 8, name: "Greene Flicks", logo: SilverSponsor4, type: "silver" },
     { id: 9, name: "Studio 25", logo: SilverSponsor5, type: "silver" },
-    { id: 10, name: "Rephaze", logo: SilverSponsor6, type: "silver" },
+    { id: 10, name: "Re:phaze", logo: SilverSponsor6, type: "silver" },
     { id: 11, name: "Dynamic Therapy", logo: SilverSponsor7, type: "silver" },
     { id: 12, name: "Placeholder", logo: placeholderLogo, type: "silver" },
     { id: 13, name: "Placeholder", logo: placeholderLogo, type: "silver" },
