@@ -48,7 +48,7 @@ const Sponsors = () => {
     },
     { id: 8, name: "Greene Flicks", logo: SilverSponsor4, type: "silver" },
     { id: 9, name: "Studio 25", logo: SilverSponsor5, type: "silver" },
-    { id: 10, name: "Re:phaze", logo: SilverSponsor6, type: "silver" },
+    { id: 10, name: "Re:Phaze", logo: SilverSponsor6, type: "silver" },
     { id: 11, name: "Dynamic Therapy", logo: SilverSponsor7, type: "silver" },
     { id: 12, name: "Placeholder", logo: placeholderLogo, type: "silver" },
     { id: 13, name: "Placeholder", logo: placeholderLogo, type: "silver" },

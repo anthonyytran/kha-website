@@ -1,155 +1,287 @@
 /* Sponsors Container Styling */
 .home-sponsors-container {
-    width: 100%;
-    min-height: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-grey);
-    padding: 1.5rem 1rem;
-    color: var(--color-primary);
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-grey);
+  padding: 3rem 1rem 4rem;
+  color: var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.sponsors-title2 {
+  font-size: 4.5rem;
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--color-black);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.sponsors-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-family: 'Chakra Petch', sans-serif;
+  max-width: 600px;
+}
+
+.sponsor-carousel {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.sponsor-slide {
+  padding: 1rem;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.sponsor-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 240px;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sponsor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.sponsor-card.gold {
+  border-top: 5px solid #FFD700;
+}
+
+.sponsor-card.silver {
+  border-top: 5px solid #C0C0C0;
+}
+
+.sponsor-image-wrapper {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.sponsor-card img {
+  max-width: 90%;
+  max-height: 130px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.sponsor-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-black);
+  text-align: center;
+  margin-top: auto;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.sponsor-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-black);
+  background-color: transparent;
+  border: 2px solid var(--color-black);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sponsor-button:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sponsor-button-container {
+  margin-top: 3.5rem;
+}
+
+/* Slider Arrows and Dots */
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 24px;
+  color: white;
+  opacity: 1;
+}
+
+.slick-dots {
+  bottom: -35px;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: var(--color-black);
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--color-black);
+  opacity: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .sponsors-title2 {
+    font-size: 4rem;
+  }
+  
+  .sponsor-card {
+    height: 220px;
+  }
+  
+  .sponsor-image-wrapper {
+    height: 130px;
+  }
+  
+  .sponsor-card img {
+    max-height: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-sponsors-container {
+    padding: 2.5rem 0.5rem 3.5rem;
   }
   
   .sponsors-title2 {
-    font-size: 5rem;
-    font-weight: 700;
-    font-family: 'Bebas Neue', sans-serif;
-    color: var(--color-black);
-    text-align: center;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+  }
+  
+  .sponsors-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
   
   .sponsor-carousel {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 1.5rem;
+    padding: 0 30px;
   }
   
-  .sponsor-slide {
-    padding: 0.75rem;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    height: 250px !important;
+  .sponsor-card {
+    height: 200px;
+    padding: 1.2rem;
   }
   
-  .sponsor-slide img {
-    width: 200px;
-    height: 100px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+  .sponsor-image-wrapper {
+    height: 120px;
+  }
+  
+  .sponsor-card img {
+    max-height: 100px;
+  }
+  
+  .sponsor-name {
+    font-size: 1.1rem;
   }
   
   .sponsor-button {
-    display: inline-block;
-    padding: 0.5rem 1rem; 
-    font-size: 1.4rem; 
-    font-weight: 700;
-    color: var(--color-black);
-    background-color: transparent;
-    border: 1.5px solid var(--color-black);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    font-family: 'Bebas Neue', sans-serif;
+    padding: 0.7rem 1.8rem;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-sponsors-container {
+    padding: 2rem 0.5rem 3rem;
   }
   
-  .sponsor-button:hover {
-    background-color: var(--color-black);
-    color: var(--color-white);
+  .sponsors-title2 {
+    font-size: 3rem;
+  }
+  
+  .sponsors-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sponsor-carousel {
+    padding: 0 15px;
+  }
+  
+  .sponsor-card {
+    height: 190px;
+    padding: 1rem;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .sponsor-image-wrapper {
+    height: 110px;
+  }
+  
+  .sponsor-card img {
+    max-height: 90px;
+  }
+  
+  .sponsor-name {
+    font-size: 1rem;
+  }
+  
+  .sponsor-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 1.2rem;
   }
   
   .sponsor-button-container {
-    margin-top: 3rem;
-  }
-  
-  .slick-prev,
-  .slick-next {
-    width: 40px;
-    height: 40px;
-    z-index: 1;
-  }
-  
-  .slick-prev {
-    left: -5%; 
-  }
-  
-  .slick-next {
-    right: -5%; 
-  }
-  
-  .slick-prev:before,
-  .slick-next:before {
-    font-size: 40px;
-    color: var(--color-black);
-    opacity: 0.75;
+    margin-top: 2.5rem;
   }
   
   .slick-dots {
-    bottom: -40px;
+    bottom: -25px;
   }
-  
-  .slick-dots li button:before {
-    font-size: 12px;
-    color: var(--color-black);
-  }
-  
-  .slick-dots li.slick-active button:before {
-    color: var(--color-black);
-  }
-  
-  @media (max-width: 1024px) {
-    .slick-prev {
-      left: -3%; 
-    }
-    .slick-next {
-      right: -3%; 
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .slick-prev {
-      left: -2%; 
-    }
-    .slick-next {
-      right: -2%;
-    }
-    .sponsor-slide {
-      height: 200px !important;
-    }
-    .sponsor-slide img {
-      max-width: 300px;
-    }
-    .sponsors-title {
-      font-size: 3.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .slick-prev,
-    .slick-next {
-      width: 30px; 
-      height: 30px;
-    }
-    .slick-prev {
-      left: -1%; 
-    }
-    .slick-next {
-      right: -1%;
-    }
-    .sponsor-slide {
-      height: 150px !important;
-    }
-    .sponsor-slide img {
-      max-width: 250px;
-    }
-    .sponsors-title {
-      font-size: 3rem;
-    }
-  }
+}
