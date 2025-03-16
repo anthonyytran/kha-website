@@ -5,11 +5,25 @@
     <link rel="icon" type="image/png" href="/assets/kha-logo2-CxUsA0_Q.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kha Lu</title>
-    <script type="module" crossorigin src="/assets/index-BliT9_cA.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-XDP2qmPY.css">
+    <script>
+      // Store the URL that the user was trying to access
+      sessionStorage.redirect = location.href;
+
+      // Single Page Apps for GitHub Pages
+      // This script takes the current URL and redirects to the root with a special query parameter
+      var pathSegmentsToKeep = 0;
+      
+      var l = location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <h2>Redirecting...</h2>
   </body>
 </html>
- 
