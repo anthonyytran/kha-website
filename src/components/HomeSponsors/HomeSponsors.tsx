@@ -9,6 +9,7 @@ import "./HomeSponsors.css";
 import goldSponsor1 from "../../assets/images/elitist.jpg";
 import goldSponsor2 from "../../assets/images/visitint.jpg";
 import goldSponsor3 from "../../assets/images/marsh.jpg";
+import goldSponsor4 from "../../assets/images/bosker.jpg";
 
 // Silver Sponsor images
 import sponsor1 from "../../assets/images/rephaze.png";
@@ -24,13 +25,14 @@ const HomeSponsors: React.FC = () => {
     { id: 1, name: "Elitist", image: goldSponsor1, tier: "gold" },
     { id: 2, name: "VisiTint", image: goldSponsor2, tier: "gold" },
     { id: 3, name: "Marsh", image: goldSponsor3, tier: "gold" },
-    { id: 4, name: "Re:Phaze", image: sponsor1, tier: "silver" },
-    { id: 5, name: "Studio 25", image: sponsor2, tier: "silver" },
-    { id: 6, name: "The Boxing Lab", image: sponsor3, tier: "silver" },
-    { id: 7, name: "Dynamic Therapy", image: sponsor4, tier: "silver" },
-    { id: 8, name: "Greene Flicks", image: sponsor5, tier: "silver" },
-    { id: 9, name: "A1 Performance", image: sponsor6, tier: "silver" },
-    { id: 10, name: "Nimbus Studios", image: sponsor7, tier: "silver" },
+    { id: 4, name: "Bosker", image: goldSponsor4, tier: "gold" },
+    { id: 5, name: "Re:Phaze", image: sponsor1, tier: "silver" },
+    { id: 6, name: "Studio 25", image: sponsor2, tier: "silver" },
+    { id: 7, name: "The Boxing Lab", image: sponsor3, tier: "silver" },
+    { id: 8, name: "Dynamic Therapy", image: sponsor4, tier: "silver" },
+    { id: 9, name: "Greene Flicks", image: sponsor5, tier: "silver" },
+    { id: 10, name: "A1 Performance", image: sponsor6, tier: "silver" },
+    { id: 11, name: "Nimbus Studios", image: sponsor7, tier: "silver" },
   ];
 
   const sponsorSettings = {
