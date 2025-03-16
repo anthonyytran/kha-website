@@ -9,6 +9,7 @@ import HomeRecord from "../../components/HomeRecord/HomeRecord";
 import HomepageVideo from "../../components/HomeVideo/HomeVideo";
 import FightHistory from "../../components/FightHistory/FightHistory";
 import HomeSponsors from "../../components/HomeSponsors/HomeSponsors";
+import HomePT from "../../components/HomePT/HomePT";
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -52,6 +53,9 @@ const Home: React.FC = () => {
 
       {/* Fight History Section */}
       <FightHistory />
+
+      {/* Personal Training Section */}
+      <HomePT />
 
       {/* Sponsors Section */}
       <HomeSponsors />

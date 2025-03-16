@@ -14,6 +14,7 @@
   justify-content: center;
   padding: 5rem 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
 /* Remove border on the last section */
@@ -29,6 +30,7 @@
   align-items: center;
   gap: 2rem;
   flex-direction: row;
+  position: relative;
 }
 
 /* Alternate the positions for even sections: image on the right, text on the left */
@@ -46,6 +48,13 @@
   height: auto;
   object-fit: cover;
   border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-section-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 .about-section-text {
@@ -56,12 +65,25 @@
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   color: var(--color-primary);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40%;
+  height: 3px;
+  background-color: var(--color-primary);
 }
 
 .about-section p {
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+  color: var(--color-white);
 }
 
 .about-section .section-title {
@@ -74,12 +96,65 @@
   color: var(--color-primary);
 }
 
-/* Stats and Accomplishments lists */
-.about-section p {
+/* Enhanced Biography Section */
+.biography-content {
+  background: linear-gradient(145deg, rgba(25, 25, 25, 0.6), rgba(10, 10, 10, 0.6));
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--color-primary);
+  position: relative;
+}
+
+.biography-content p {
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced Stats Section */
+.stats-container {
+  background: linear-gradient(145deg, rgba(25, 25, 25, 0.6), rgba(10, 10, 10, 0.6));
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.stats-list li {
+  padding: 0.8rem 1rem;
+  background: rgba(30, 30, 30, 0.7);
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+  margin-bottom: 0;
   color: var(--color-white);
 }
 
-.stats-list,
+.stats-list li:hover {
+  transform: translateY(-3px);
+  background: rgba(40, 40, 40, 0.8);
+}
+
+.stat-label {
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.stat-value {
+  color: var(--color-white);
+}
+
+/* Enhanced Accomplishments List */
 .accomplishments-list {
   list-style: none;
   padding: 0;
@@ -89,10 +164,35 @@
   color: var(--color-white);
 }
 
-.stats-list li,
 .accomplishments-list li {
-  margin-bottom: 0.5rem;
-  color: var(--color-white);
+  position: relative;
+  padding: 12px 15px 12px 50px;
+  margin-bottom: 15px;
+  background: linear-gradient(145deg, rgba(30, 30, 30, 0.7), rgba(15, 15, 15, 0.7));
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border-left: 3px solid var(--color-primary);
+}
+
+.accomplishments-list li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.accomplishments-list li:before {
+  content: '🏆';
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.accomplishments-list li strong {
+  font-weight: bold;
+  color: var(--color-primary);
 }
 
 /* Responsive Styles for Mobile Devices */
@@ -123,6 +223,12 @@
   .about-section-text {
     width: 100%; 
     text-align: center; 
+  }
+
+  .section-title:after {
+    left: 30%;
+    width: 40%;
+  }
 
   .about-section {
     padding: 3rem 1.5rem; 
@@ -138,6 +244,24 @@
   .accomplishments-list li {
     font-size: 1.1rem; 
   }
+
+  .accomplishments-list li {
+    padding: 12px 15px 12px 45px;
+    text-align: left;
+  }
+  
+  .stats-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-list li {
+    text-align: left;
+  }
+  
+  .biography-content::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 480px) {
@@ -149,6 +273,11 @@
     font-size: 1.8rem; 
   }
 
+  .section-title:after {
+    left: 30%;
+    width: 40%;
+  }
+
   .about-section-image {
     margin-bottom: 1rem; 
   }
@@ -158,5 +287,25 @@
   .accomplishments-list li {
     font-size: 1rem;
   }
-}
+
+  .accomplishments-list li {
+    padding: 10px 12px 10px 40px;
+  }
+  
+  .accomplishments-list li:before {
+    left: 10px;
+    font-size: 1.3rem;
+  }
+  
+  .biography-content {
+    padding: 1.2rem;
+  }
+  
+  .stats-container {
+    padding: 1.2rem;
+  }
+  
+  .stats-list li {
+    padding: 0.7rem 0.8rem;
+  }
 }

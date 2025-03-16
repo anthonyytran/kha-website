@@ -152,79 +152,125 @@
   font-weight: 600;
 }
 
-/* Closing Message */
+/* Closing Message - Enhanced Styling */
 .closing-message {
   margin-top: 4rem;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.closing-message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), #FFD700, #C0C0C0);
 }
 
 .closing-message p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--color-white);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 .become-sponsor {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.become-sponsor p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
 }
 
 .contact-options {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .contact-button {
   background-color: var(--color-primary);
   color: var(--color-black);
   border: none;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1px;
   text-decoration: none;
   display: inline-block;
+  text-transform: uppercase;
 }
 
 .contact-button:hover {
   background-color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Instagram Link */
 .instagram-link {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
   background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   color: white;
   text-decoration: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 4px;
+  padding: 0.8rem 1.8rem;
+  border-radius: 6px;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
 }
 
 .instagram-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  opacity: 0.9;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-link:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.instagram-link:hover:before {
+  transform: translateX(100%);
 }
 
 .instagram-link span {
   margin-right: 0.3rem;
+  font-weight: 500;
 }
 
 /* Responsive Design */
@@ -290,7 +336,7 @@
   .instagram-link, 
   .contact-button {
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
     justify-content: center;
   }
   
@@ -301,6 +347,16 @@
   
   .sponsor-logo {
     max-height: 120px;
+  }
+  
+  .closing-message {
+    padding: 2rem 1.5rem;
+  }
+  
+  .closing-message p,
+  .become-sponsor p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
   }
 }
 
@@ -332,7 +388,19 @@
   }
   
   .closing-message {
-    padding: 1.5rem;
+    padding: 1.8rem 1.2rem;
+    margin-top: 3rem;
+  }
+  
+  .instagram-link, 
+  .contact-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .become-sponsor {
+    margin-top: 1.8rem;
+    padding-top: 1.2rem;
   }
   
   .gold-grid,

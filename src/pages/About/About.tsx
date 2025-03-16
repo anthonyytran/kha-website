@@ -15,18 +15,20 @@ const About = () => {
           </div>
           <div className="about-section-text">
             <h2 className="section-title">Biography</h2>
-            <p>
-              <strong>Kha Lu</strong> is a 24-year-old boxer fighting out of
-              Australia. His boxing journey begun at a young age, driven by an
-              unwavering passion for the sport and a dedication to pushing
-              himself beyond his limits. Over the years, <strong>Kha</strong>{" "}
-              has trained under some of the best coaches and fought very
-              talented fighters both domestically and internationally.
-            </p>
-            <p>
-              <strong>Kha Lu</strong> proudly represents{" "}
-              <strong>LionsDens</strong> - his childhood gym.
-            </p>
+            <div className="biography-content">
+              <p>
+                <strong>Kha Lu</strong> is a 24-year-old boxer fighting out of
+                Australia. His boxing journey begun at a young age, driven by an
+                unwavering passion for the sport and a dedication to pushing
+                himself beyond his limits. Over the years, <strong>Kha</strong>{" "}
+                has trained under some of the best coaches and fought very
+                talented fighters both domestically and internationally.
+              </p>
+              <p>
+                <strong>Kha</strong> proudly represents{" "}
+                <strong>LionsDens</strong> - his childhood gym.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -39,32 +41,42 @@ const About = () => {
           </div>
           <div className="about-section-text">
             <h2 className="section-title">Stats</h2>
-            <ul className="stats-list">
-              <li>
-                <strong>Name:</strong> Kha Lu
-              </li>
-              <li>
-                <strong>Age:</strong> 24
-              </li>
-              <li>
-                <strong>Country:</strong> Australia
-              </li>
-              <li>
-                <strong>Weight Class:</strong> Minimumweight & Flyweight
-              </li>
-              <li>
-                <strong>Bouts:</strong> 8
-              </li>
-              <li>
-                <strong>Rounds:</strong> 25
-              </li>
-              <li>
-                <strong>KO%:</strong> 42.86%
-              </li>
-              <li>
-                <strong>Gym:</strong> Lionsden
-              </li>
-            </ul>
+            <div className="stats-container">
+              <ul className="stats-list">
+                <li>
+                  <span className="stat-label">Name:</span>
+                  <span className="stat-value">Kha Lu</span>
+                </li>
+                <li>
+                  <span className="stat-label">Age:</span>
+                  <span className="stat-value">24</span>
+                </li>
+                <li>
+                  <span className="stat-label">Country:</span>
+                  <span className="stat-value">Australia</span>
+                </li>
+                <li>
+                  <span className="stat-label">Weight Class:</span>
+                  <span className="stat-value">Minimumweight & Flyweight</span>
+                </li>
+                <li>
+                  <span className="stat-label">Bouts:</span>
+                  <span className="stat-value">8</span>
+                </li>
+                <li>
+                  <span className="stat-label">Rounds:</span>
+                  <span className="stat-value">25</span>
+                </li>
+                <li>
+                  <span className="stat-label">KO%:</span>
+                  <span className="stat-value">42.86%</span>
+                </li>
+                <li>
+                  <span className="stat-label">Gym:</span>
+                  <span className="stat-value">Lionsden</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
