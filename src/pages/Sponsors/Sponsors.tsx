@@ -130,7 +130,9 @@ const Sponsors = () => {
           <div className="become-sponsor">
             <p>Interested in becoming a sponsor?</p>
             <div className="contact-options">
-              <button className="contact-button">Contact Us</button>
+              <a href="/contact" className="contact-button">
+                Contact Me
+              </a>
               <a
                 href="https://www.instagram.com/_khalu/"
                 className="instagram-link"

@@ -190,6 +190,8 @@
   transition: all 0.3s ease;
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .contact-button:hover {
@@ -242,6 +244,14 @@
   .silver-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .sponsor-image-container {
+    min-height: 160px;
+  }
+  
+  .sponsor-logo {
+    max-height: 110px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -283,6 +293,15 @@
     max-width: 250px;
     justify-content: center;
   }
+  
+  .sponsor-image-container {
+    min-height: 140px;
+    padding: 1rem;
+  }
+  
+  .sponsor-logo {
+    max-height: 120px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -299,7 +318,13 @@
   }
   
   .sponsor-image-container {
-    min-height: 120px;
+    min-height: 130px;
+    padding: 0.75rem;
+  }
+  
+  .sponsor-logo {
+    max-height: 115px;
+    max-width: 90%;
   }
   
   .sponsor-name {
@@ -308,5 +333,14 @@
   
   .closing-message {
     padding: 1.5rem;
+  }
+  
+  .gold-grid,
+  .silver-grid {
+    gap: 1.5rem;
+  }
+  
+  .sponsor-card-content {
+    padding: 1.25rem;
   }
 }
