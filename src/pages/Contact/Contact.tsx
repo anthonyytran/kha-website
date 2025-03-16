@@ -1,35 +1,68 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import khaContact from "../../assets/images/kha-contact.jpg";
-import { Instagram } from "lucide-react";
+import { Instagram, X, CheckCircle } from "lucide-react";
 
 const Contact = () => {
   const refForm = useRef<HTMLFormElement>(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Make sure the form reference exists
+    if (!refForm.current) {
+      alert("Form reference not found. Please try again.");
+      return;
+    }
 
     emailjs
       .sendForm(
         "service_44ciagc",
         "contact_form",
-        refForm.current!,
+        refForm.current,
         "dLSkX7unlU8fSWDFm"
       )
       .then(
         () => {
-          alert("Message successfully sent!");
-          window.location.reload();
+          // Show success popup instead of alert
+          setShowPopup(true);
+          // Reset form
+          refForm.current?.reset();
         },
-        () => {
+        (error) => {
+          console.error("Email error:", error);
           alert("Failed to send the message, please try again.");
         }
       );
   };
 
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <div className="contact-page-container">
+      {/* Success Popup */}
+      {showPopup && (
+        <div className="success-popup-overlay">
+          <div className="success-popup">
+            <button className="close-popup" onClick={closePopup}>
+              <X size={24} />
+            </button>
+            <div className="success-icon">
+              <CheckCircle size={60} />
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. I'll get back to you soon.</p>
+            <button className="popup-button" onClick={closePopup}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Page Header */}
       <div className="contact-header">
         <h1>Contact</h1>
@@ -66,6 +99,7 @@ const Contact = () => {
         {/* Contact Form */}
         <div className="contact-form">
           <h2>Send a Message</h2>
+          {/* Make sure the form has the correct name attributes for EmailJS */}
           <form ref={refForm} onSubmit={sendEmail}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
