@@ -41,7 +41,7 @@ const Contact = () => {
         <p>For sponsorship opportunities, please contact me via:</p>
         <div className="contact-options">
           <a href="mailto:Khalu01@hotmail.com" className="email-link">
-            <span>Email: </span> Khalu01@hotmail.com
+            Khalu01@hotmail.com
           </a>
           <span className="or-divider">or</span>
           <a
@@ -51,7 +51,7 @@ const Contact = () => {
             className="instagram-button"
           >
             <Instagram size={20} />
-            <span>Message me directly on Instagram</span>
+            <span>Message me on Instagram</span>
           </a>
         </div>
       </div>
