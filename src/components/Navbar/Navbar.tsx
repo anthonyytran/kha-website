@@ -53,18 +53,22 @@ const Navbar = () => {
 
   // Handle scroll events
   useEffect(() => {
+    // Initial check when component mounts or route changes
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    setIsTransparent(scrollTop <= 20);
+
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
-      // Determine scroll direction
+      // Determine scroll direction with threshold to reduce sensitivity
       if (scrollTop > lastScrollTop + 10) {
         setIsScrollingUp(false);
       } else if (scrollTop < lastScrollTop - 10) {
         setIsScrollingUp(true);
       }
 
-      // Set transparency based on scroll position
+      // Always update transparency based on absolute position
       setIsTransparent(scrollTop <= 20);
 
       // Update last scroll position
@@ -76,12 +80,19 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollTop]);
+  }, [lastScrollTop, location]); // Added location dependency
 
   // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
     document.body.style.overflow = "visible";
+
+    // Force a check of the scroll position after route change
+    setTimeout(() => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      setIsTransparent(scrollTop <= 20);
+    }, 100); // Small delay to let ScrollToTop complete
   }, [location]);
 
   // Trigger navbar animation on mount
