@@ -83,15 +83,6 @@
   background-color: #C0C0C0;
 }
 
-.sponsor-tier-title.bronze {
-  color: #CD7F32;
-}
-
-.sponsor-tier-title.bronze::before, 
-.sponsor-tier-title.bronze::after {
-  background-color: #CD7F32;
-}
-
 /* Sponsor Cards and Grids */
 .sponsors-grid {
   display: grid;
@@ -104,10 +95,6 @@
 }
 
 .silver-grid {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.bronze-grid {
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -131,10 +118,6 @@
 
 .sponsor-card.silver {
   border-top: 4px solid #C0C0C0;
-}
-
-.sponsor-card.bronze {
-  border-top: 4px solid #CD7F32;
 }
 
 .sponsor-card-content {
@@ -245,8 +228,7 @@
 /* Responsive Design */
 @media (max-width: 1200px) {
   .gold-grid,
-  .silver-grid,
-  .bronze-grid {
+  .silver-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -257,8 +239,7 @@
   }
   
   .gold-grid,
-  .silver-grid,
-  .bronze-grid {
+  .silver-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }

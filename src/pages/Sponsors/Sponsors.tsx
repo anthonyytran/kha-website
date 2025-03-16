@@ -24,7 +24,7 @@ interface SponsorData {
   id: number;
   name: string;
   logo: string;
-  type: "gold" | "silver" | "bronze";
+  type: "gold" | "silver";
 }
 
 const Sponsors = () => {
@@ -36,7 +36,7 @@ const Sponsors = () => {
     { id: 3, name: "Marsh Industries", logo: GoldSponsor3, type: "gold" },
     { id: 4, name: "Global Fitness", logo: placeholderLogo, type: "gold" },
 
-    // Silver sponsors
+    // Silver sponsors (including previous bronze sponsors)
     { id: 5, name: "The Boxing Lab", logo: SilverSponsor1, type: "silver" },
     { id: 6, name: "A1 Performance", logo: SilverSponsor2, type: "silver" },
     {
@@ -51,25 +51,21 @@ const Sponsors = () => {
     { id: 11, name: "Dynamic Therapy", logo: SilverSponsor7, type: "silver" },
     { id: 12, name: "Sports Alliance", logo: placeholderLogo, type: "silver" },
     { id: 13, name: "Power Nutrition", logo: placeholderLogo, type: "silver" },
-
-    // Bronze sponsors (new category with placeholder images)
-    { id: 14, name: "Local Fitness", logo: placeholderLogo, type: "bronze" },
+    // Former bronze sponsors now in silver
+    { id: 14, name: "Local Fitness", logo: placeholderLogo, type: "silver" },
     {
       id: 15,
       name: "Community Athletics",
       logo: placeholderLogo,
-      type: "bronze",
+      type: "silver",
     },
-    { id: 16, name: "Fighter's Edge", logo: placeholderLogo, type: "bronze" },
+    { id: 16, name: "Fighter's Edge", logo: placeholderLogo, type: "silver" },
   ];
 
   // Filter sponsors by type
   const goldSponsors = sponsors.filter((sponsor) => sponsor.type === "gold");
   const silverSponsors = sponsors.filter(
     (sponsor) => sponsor.type === "silver"
-  );
-  const bronzeSponsors = sponsors.filter(
-    (sponsor) => sponsor.type === "bronze"
   );
 
   return (
@@ -109,27 +105,6 @@ const Sponsors = () => {
           <div className="sponsors-grid silver-grid">
             {silverSponsors.map((sponsor) => (
               <div className="sponsor-card silver" key={sponsor.id}>
-                <div className="sponsor-card-content">
-                  <div className="sponsor-image-container">
-                    <img
-                      src={sponsor.logo}
-                      alt={`${sponsor.name} logo`}
-                      className="sponsor-logo"
-                    />
-                  </div>
-                  <h3 className="sponsor-name">{sponsor.name}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bronze Sponsors Section */}
-        <div className="sponsors-section">
-          <h2 className="sponsor-tier-title bronze">Bronze Sponsors</h2>
-          <div className="sponsors-grid bronze-grid">
-            {bronzeSponsors.map((sponsor) => (
-              <div className="sponsor-card bronze" key={sponsor.id}>
                 <div className="sponsor-card-content">
                   <div className="sponsor-image-container">
                     <img
