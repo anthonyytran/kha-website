@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -18,6 +18,9 @@ import sponsor3 from "../../assets/images/theboxinglab.png";
 import sponsor7 from "../../assets/images/nimbus.png";
 
 const HomeSponsors: React.FC = () => {
+  // Create ref for the slider
+  const sliderRef = useRef<Slider | null>(null);
+
   const sponsorData = [
     { id: 1, name: "Elitist", image: goldSponsor1, tier: "gold" },
     { id: 2, name: "VisiTint", image: goldSponsor2, tier: "gold" },
@@ -38,7 +41,7 @@ const HomeSponsors: React.FC = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    cssEase: "ease-in-out",
+    cssEase: "cubic-bezier(0.25, 0.1, 0.25, 1)",
     arrows: true,
     responsive: [
       {
@@ -60,23 +63,56 @@ const HomeSponsors: React.FC = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: true, // Changed from false to true to ensure arrows are visible on mobile
+          arrows: true,
+          autoplaySpeed: 4000,
         },
       },
     ],
   };
 
+  // Pause slider on touch devices when they start interacting
+  useEffect(() => {
+    const handleTouchStart = () => {
+      if (sliderRef.current) {
+        sliderRef.current.slickPause();
+      }
+    };
+
+    const handleTouchEnd = () => {
+      if (sliderRef.current) {
+        // Resume autoplay after a short delay
+        setTimeout(() => {
+          sliderRef.current?.slickPlay();
+        }, 1000);
+      }
+    };
+
+    document.addEventListener("touchstart", handleTouchStart);
+    document.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, []);
+
   return (
     <div className="home-sponsors-container">
-      <h2 className="sponsors-title2">Sponsors</h2>
+      <div className="sponsors-title-container">
+        <h2 className="sponsors-title2">Sponsors</h2>
+      </div>
 
       <div className="sponsor-carousel">
-        <Slider {...sponsorSettings}>
+        <Slider {...sponsorSettings} ref={sliderRef}>
           {sponsorData.map((sponsor) => (
             <div className="sponsor-slide" key={sponsor.id}>
               <div className={`sponsor-card ${sponsor.tier}`}>
                 <div className="sponsor-image-wrapper">
-                  <img src={sponsor.image} alt={sponsor.name} />
+                  <img
+                    src={sponsor.image}
+                    alt={`${sponsor.name} sponsor`}
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="sponsor-name">{sponsor.name}</h3>
               </div>
@@ -84,9 +120,10 @@ const HomeSponsors: React.FC = () => {
           ))}
         </Slider>
       </div>
+
       <div className="sponsor-button-container">
         <Link to="/sponsors" className="sponsor-button">
-          View All Sponsors
+          View All
         </Link>
       </div>
     </div>

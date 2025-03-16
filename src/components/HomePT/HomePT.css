@@ -1,260 +1,262 @@
 .home-pt-container {
-    width: 100%;
-    background: linear-gradient(to bottom, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.8));
-    padding: 4rem 2rem;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    color: var(--color-white);
-  }
-  
-  .home-pt-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../../assets/images/texture.png');
-    opacity: 0.05;
-    pointer-events: none;
-  }
-  
-  .pt-content {
-    max-width: 1100px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .pt-title {
-    font-size: 3rem;
-    color: var(--color-primary);
-    margin-bottom: 1.5rem;
-    font-family: 'Bebas Neue', sans-serif;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .pt-title:after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 20%;
-    width: 60%;
-    height: 3px;
-    background-color: var(--color-primary);
-  }
-  
-  .pt-description {
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-  }
-  
-  .schedule-container {
-    background: rgba(20, 20, 20, 0.6);
-    border-radius: 12px;
-    padding: 2rem;
-    margin: 2rem 0;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    border-top: 3px solid var(--color-primary);
-  }
-  
-  .schedule-title {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-primary);
-    font-family: 'Bebas Neue', sans-serif;
-  }
-  
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.8));
+  padding: 4rem 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: var(--color-white);
+}
+
+.home-pt-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/images/texture.png');
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.pt-content {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+}
+
+.pt-title {
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  position: relative;
+  display: inline-block;
+}
+
+.pt-title:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 20%;
+  width: 60%;
+  height: 3px;
+  background-color: var(--color-primary);
+}
+
+.pt-description {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.schedule-container {
+  background: rgba(20, 20, 20, 0.6);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border-top: 3px solid var(--color-primary);
+}
+
+.schedule-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.schedule-day {
+  background: rgba(30, 30, 30, 0.7);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.schedule-day:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.schedule-day h4 {
+  color: var(--color-primary);
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.schedule-day ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.schedule-day ul li {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.schedule-day ul li:last-child {
+  border-bottom: none;
+}
+
+.availability-note {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 1rem 0 2rem;
+  font-size: 0.9rem;
+}
+
+.booking-info {
+  margin-top: 2rem;
+  background: linear-gradient(145deg, rgba(25, 25, 25, 0.6), rgba(10, 10, 10, 0.6));
+  padding: 1.5rem;
+  border-radius: 10px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 2px solid var(--color-primary);
+  border-right: 2px solid var(--color-primary);
+}
+
+.booking-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.instagram-booking-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.instagram-booking-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-booking-link:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.instagram-booking-link:hover:before {
+  transform: translateX(100%);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
   .schedule-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
   }
   
   .schedule-day {
-    background: rgba(30, 30, 30, 0.7);
-    border-radius: 8px;
-    padding: 1rem;
-    transition: transform 0.3s ease;
+    margin-bottom: 1rem;
   }
   
-  .schedule-day:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  .pt-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-pt-container {
+    padding: 3rem 1.5rem;
   }
   
-  .schedule-day h4 {
-    color: var(--color-primary);
-    margin-bottom: 0.8rem;
-    font-size: 1.3rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 0.5rem;
-    font-family: 'Bebas Neue', sans-serif;
+  .pt-title {
+    font-size: 2.3rem;
   }
   
-  .schedule-day ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .pt-description {
+    font-size: 1.1rem;
   }
   
-  .schedule-day ul li {
-    padding: 0.5rem 0;
-    font-size: 1rem;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+  .schedule-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
   }
   
-  .schedule-day ul li:last-child {
-    border-bottom: none;
+  .schedule-container {
+    padding: 1.5rem;
   }
   
-  .availability-note {
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 1rem;
-    font-size: 0.9rem;
+  .schedule-title {
+    font-size: 1.6rem;
   }
   
   .booking-info {
-    margin-top: 2rem;
-    background: linear-gradient(145deg, rgba(25, 25, 25, 0.6), rgba(10, 10, 10, 0.6));
-    padding: 1.5rem;
-    border-radius: 10px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-pt-container {
+    padding: 2.5rem 1rem;
+  }
+  
+  .pt-title {
+    font-size: 2rem;
+  }
+  
+  .pt-description {
+    font-size: 1rem;
+  }
+  
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .schedule-day h4 {
+    font-size: 1.2rem;
   }
   
   .booking-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-primary);
-    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
   }
   
   .instagram-booking-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.7rem;
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    color: white;
-    text-decoration: none;
-    padding: 0.8rem 1.8rem;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    font-family: "Bebas Neue", sans-serif;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-    margin-top: 1rem;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.5rem;
   }
-  
-  .instagram-booking-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  }
-  
-  .instagram-booking-link:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-  }
-  
-  .instagram-booking-link:hover:before {
-    transform: translateX(100%);
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 992px) {
-    .schedule-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .schedule-day {
-      margin-bottom: 1rem;
-    }
-    
-    .pt-title {
-      font-size: 2.5rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .home-pt-container {
-      padding: 3rem 1.5rem;
-    }
-    
-    .pt-title {
-      font-size: 2.3rem;
-    }
-    
-    .pt-description {
-      font-size: 1.1rem;
-    }
-    
-    .schedule-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.8rem;
-    }
-    
-    .schedule-container {
-      padding: 1.5rem;
-    }
-    
-    .schedule-title {
-      font-size: 1.6rem;
-    }
-    
-    .booking-info {
-      padding: 1.2rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .home-pt-container {
-      padding: 2.5rem 1rem;
-    }
-    
-    .pt-title {
-      font-size: 2rem;
-    }
-    
-    .pt-description {
-      font-size: 1rem;
-    }
-    
-    .schedule-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .schedule-day h4 {
-      font-size: 1.2rem;
-    }
-    
-    .booking-info h3 {
-      font-size: 1.3rem;
-    }
-    
-    .instagram-booking-link {
-      font-size: 1.1rem;
-      padding: 0.7rem 1.5rem;
-    }
-  }
+}

@@ -73,20 +73,20 @@ const HomePT: React.FC = () => {
             </div>
           </div>
           <p className="availability-note">* Subject to availability</p>
-        </div>
 
-        <div className="booking-info">
-          <h3>Booking Information</h3>
-          <p>For enquiries and to secure your booking:</p>
-          <a
-            href="https://www.instagram.com/_khalu/"
-            className="instagram-booking-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram size={24} />
-            <span>Message me on Instagram</span>
-          </a>
+          <div className="booking-info">
+            <h3>Booking Information</h3>
+            <p>For enquiries and to secure your booking:</p>
+            <a
+              href="https://www.instagram.com/_khalu/"
+              className="instagram-booking-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram size={24} />
+              <span>Message me on Instagram</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
