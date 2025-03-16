@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import instagramIcon from "../../assets/images/instagram.png";
@@ -15,23 +15,59 @@ const Navbar = () => {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const location = useLocation();
+  const navLinksRef = useRef(null);
 
+  // Toggle mobile menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+
+    // When menu opens, prevent scrolling on the body
+    if (!isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
   };
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isOpen &&
+        navLinksRef.current &&
+        !navLinksRef.current.contains(event.target) &&
+        !event.target.closest(".hamburger")
+      ) {
+        setIsOpen(false);
+        document.body.style.overflow = "visible";
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "visible";
+    };
+  }, [isOpen]);
+
+  // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
-      if (scrollTop > lastScrollTop) {
+      // Determine scroll direction
+      if (scrollTop > lastScrollTop + 10) {
         setIsScrollingUp(false);
-      } else {
+      } else if (scrollTop < lastScrollTop - 10) {
         setIsScrollingUp(true);
       }
 
-      setIsTransparent(scrollTop === 0);
+      // Set transparency based on scroll position
+      setIsTransparent(scrollTop <= 20);
+
+      // Update last scroll position
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
 
@@ -41,6 +77,12 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollTop]);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+    document.body.style.overflow = "visible";
+  }, [location]);
 
   // Trigger navbar animation on mount
   useEffect(() => {
@@ -52,13 +94,20 @@ const Navbar = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Set animation delay for each nav item in mobile menu
+  const getNavItemStyle = (index) => {
+    return {
+      "--item-index": index,
+    };
+  };
+
   return (
     <nav
       className={`navbar 
         ${isInitialLoad ? "navbar-initial" : ""} 
         ${!showNavbar ? "navbar-hidden" : "navbar-visible"} 
         ${isTransparent ? "transparent" : "scrolled"} 
-        ${isScrollingUp ? "" : "navbar-hidden"}`}
+        ${isScrollingUp || isOpen ? "" : "navbar-hidden"}`}
     >
       <div className="navbar-container">
         <Link to="/" className="logo">
@@ -67,14 +116,17 @@ const Navbar = () => {
         <div
           className={`hamburger ${isOpen ? "open" : ""}`}
           onClick={toggleMenu}
+          aria-label="Toggle menu"
+          role="button"
+          tabIndex={0}
         >
           <span className="line"></span>
           <span className="line"></span>
           <span className="line"></span>
         </div>
-        <ul className={`nav-links ${isOpen ? "open" : ""}`}>
-          <hr className="nav-divider" />
-          <li>
+        <ul className={`nav-links ${isOpen ? "open" : ""}`} ref={navLinksRef}>
+          {isOpen && <hr className="nav-divider" />}
+          <li style={getNavItemStyle(1)}>
             <Link
               to="/"
               onClick={() => setIsOpen(false)}
@@ -83,7 +135,7 @@ const Navbar = () => {
               Home
             </Link>
           </li>
-          <li>
+          <li style={getNavItemStyle(2)}>
             <Link
               to="/about"
               onClick={() => setIsOpen(false)}
@@ -92,7 +144,7 @@ const Navbar = () => {
               About
             </Link>
           </li>
-          <li>
+          <li style={getNavItemStyle(3)}>
             <Link
               to="/record"
               onClick={() => setIsOpen(false)}
@@ -101,7 +153,7 @@ const Navbar = () => {
               Record
             </Link>
           </li>
-          <li>
+          <li style={getNavItemStyle(4)}>
             <Link
               to="/sponsors"
               onClick={() => setIsOpen(false)}
@@ -110,7 +162,7 @@ const Navbar = () => {
               Sponsors
             </Link>
           </li>
-          <li>
+          <li style={getNavItemStyle(5)}>
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}
@@ -119,7 +171,7 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          <hr className="nav-divider" />
+          {isOpen && <hr className="nav-divider" />}
           {isOpen && (
             <>
               <li className="lionsden-logo">
@@ -140,6 +192,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link"
+                    aria-label="Instagram"
                   >
                     <img
                       src={instagramIcon}
@@ -152,6 +205,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link"
+                    aria-label="TikTok"
                   >
                     <img
                       src={tiktokIcon}

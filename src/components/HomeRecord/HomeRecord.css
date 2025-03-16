@@ -2,19 +2,32 @@
 
 .record-card {
   background: #000;
-  padding: 2rem;
+  padding: 3rem 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   max-width: 800px;
-  margin: 2rem auto;
+  margin: 3rem auto;
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 0.6s ease-out forwards;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease-out forwards;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Pseudo-element for boxing glove background */
+.record-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(20, 20, 20, 0.7), rgba(0, 0, 0, 0.9));
+  z-index: 0;
+}
+
 .record-card::after {
   content: "";
   position: absolute;
@@ -23,15 +36,22 @@
   width: 100%;
   height: 100%;
   background: url('../../assets/images/boxing-glove.png') no-repeat center;
-  background-size: 50%; /* default size */
-  opacity: 0.15;
+  background-size: 60%;
+  opacity: 0.12;
   pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+.record-card:hover::after {
+  opacity: 0.18;
+  transform: scale(1.05);
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -40,85 +60,231 @@
 }
 
 .record-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 
+              0 0 15px rgba(184, 161, 83, 0.2);
 }
 
 .record-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem;
-  margin-bottom: 1.5rem;
+  font-size: 5.5rem;
+  margin-bottom: 2rem;
   color: var(--color-primary);
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 
+               0 0 30px rgba(184, 161, 83, 0.3);
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: inline-block;
+}
+
+.record-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0.7;
 }
 
 .record-stats {
   display: flex;
-  justify-content: center; /* or space-between, space-around, etc. */
+  justify-content: center;
   align-items: center;
-  flex-wrap: nowrap; /* prevent items from wrapping */
-  gap: 0.5rem;       /* reduce the gap between items */
+  gap: 3rem;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 2;
 }
 
 .record-item {
-  flex: 0 0 auto;  /* shrink items to their content size */
-  min-width: 80px; /* make sure this is small enough for mobile */
-  margin: 0.5rem;  /* smaller margin than before */
+  position: relative;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+}
+
+.record-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
 .record-item:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
+}
+
+.record-item:hover::before {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .record-value {
-  font-family: 'Roboto', sans-serif;
-  font-size: 3rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.5rem;
   font-weight: 700;
-  transition: color 0.3s ease;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  line-height: 1;
 }
 
 .record-label {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-top: 0.5rem;
   color: #ccc;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  font-weight: 500;
 }
 
 .wins {
-  color: #28a745;
+  color: #2ecc71;
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
 }
 
 .losses {
-  color: #dc3545;
+  color: #e74c3c;
+  text-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
 }
 
 .draws {
   color: #f8f9fa;
+  text-shadow: 0 0 10px rgba(248, 249, 250, 0.3);
 }
 
-.fights-button {
-  margin-top: 2rem;
+.view-all-button-container {
+  position: relative;
+  z-index: 2;
+  margin-top: 2.5rem;
 }
 
-/* Responsive stacking on small screens and larger background on mobile */
-@media (max-width: 600px) {
-  /* Remove or comment out this rule so items remain in a row
-  .record-stats {
-    flex-direction: column;
+.view-all-button {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  padding: 0.8rem 2.5rem;
+  background: transparent;
+  color: var(--color-primary);
+  text-decoration: none;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-all-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(184, 161, 83, 0.15);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.view-all-button:hover {
+  color: #fff;
+  background-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(184, 161, 83, 0.3);
+}
+
+.view-all-button:hover::before {
+  left: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .record-card {
+    padding: 2.5rem 1.5rem;
+    margin: 2rem auto;
   }
-  */
+  
+  .record-title {
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .record-stats {
+    gap: 2rem;
+  }
+  
+  .record-value {
+    font-size: 3.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .record-card {
+    padding: 2rem 1rem;
+  }
+  
+  .record-title {
+    font-size: 4rem;
+  }
+  
+  .record-stats {
+    gap: 1.5rem;
+  }
+  
+  .record-value {
+    font-size: 3.2rem;
+  }
+  
+  .record-label {
+    font-size: 1rem;
+  }
+  
+  .view-all-button {
+    font-size: 1.3rem;
+    padding: 0.7rem 2rem;
+  }
+  
   .record-card::after {
-    background-size: 100%;
+    background-size: 80%;
+    opacity: 0.1;
+  }
+}
+
+@media (max-width: 480px) {
+  .record-title {
+    font-size: 3.5rem;
+  }
+  
+  .record-stats {
+    gap: 1rem;
+  }
+  
+  .record-item {
+    padding: 0.5rem;
+  }
+  
+  .record-value {
+    font-size: 2.8rem;
+  }
+  
+  .record-label {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
   }
 }

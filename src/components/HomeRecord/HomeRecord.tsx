@@ -20,9 +20,9 @@ const HomeRecord: React.FC = () => {
           <div className="record-label">Draws</div>
         </div>
       </div>
-      <div className="view-all-button-container fights-button">
+      <div className="view-all-button-container">
         <Link to="/record" className="view-all-button">
-          View More
+          View All Fights
         </Link>
       </div>
     </div>
