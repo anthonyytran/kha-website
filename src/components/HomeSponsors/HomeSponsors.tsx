@@ -48,7 +48,7 @@ const HomeSponsors: React.FC = () => {
 
   return (
     <div className="home-sponsors-container">
-      <h2 className="sponsors-title">Our Sponsors</h2>
+      <h2 className="sponsors-title2">Sponsors</h2>
       <div className="sponsor-carousel">
         <Slider {...sponsorSettings}>
           <div className="sponsor-slide">

@@ -75,7 +75,7 @@ const Sponsors = () => {
   return (
     <div className="sponsors-page-container">
       <div className="sponsors-container">
-        <h1 className="sponsors-title">Our Sponsors</h1>
+        <h1 className="sponsors-title">Sponsors</h1>
         <p className="sponsors-intro">
           We are incredibly grateful for the generous support of our sponsors
           and partners. Your contributions help us continue striving for
