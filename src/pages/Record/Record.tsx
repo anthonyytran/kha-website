@@ -122,7 +122,14 @@ const Record: React.FC = () => {
       "November",
       "December",
     ];
-    return `${day} ${monthNames[parseInt(month) - 1]} ${year}`;
+
+    // For mobile, use abbreviated month names
+    const isMobile = window.innerWidth <= 480;
+    const monthName = isMobile
+      ? monthNames[parseInt(month) - 1].substring(0, 3)
+      : monthNames[parseInt(month) - 1];
+
+    return `${day} ${monthName} ${year}`;
   };
 
   const [expandedFightId, setExpandedFightId] = useState<number | null>(null);
@@ -161,8 +168,8 @@ const Record: React.FC = () => {
             <tr>
               <th className="result-col">Result</th>
               <th className="date-col">Date</th>
-              <th>Record</th>
-              <th>Opponent</th>
+              <th className="record-col">Record</th>
+              <th className="opponent-col">Opponent</th>
             </tr>
           </thead>
           <tbody>
