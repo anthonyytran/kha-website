@@ -9,14 +9,18 @@ import GoldSponsor4 from "../../assets/images/bosker.jpg";
 
 import SilverSponsor1 from "../../assets/images/theboxinglab.png";
 import SilverSponsor2 from "../../assets/images/a1.jpg";
-import SilverSponsor3 from "../../assets/images/nimbus.png";
-import SilverSponsor4 from "../../assets/images/greeneflicks.png";
+import SilverSponsor3 from "../../assets/images/nimbus.jpg";
+import SilverSponsor4 from "../../assets/images/greeneflicks.jpg";
 import SilverSponsor5 from "../../assets/images/studio25.png";
 import SilverSponsor6 from "../../assets/images/rephaze.png";
-import SilverSponsor7 from "../../assets/images/dynamic-therapy.png";
+import SilverSponsor7 from "../../assets/images/dynamictherapy.jpg";
+import SilverSponsor8 from "../../assets/images/ait.jpg";
+import SilverSponsor9 from "../../assets/images/westend.jpg";
+import SilverSponsor10 from "../../assets/images/jig.jpg";
+import SilverSponsor11 from "../../assets/images/mtk.jpg";
+import SilverSponsor12 from "../../assets/images/zone22.jpg";
 
 // Placeholder for new sponsors
-import placeholderLogo from "../../assets/images/tiktok.png";
 
 // Import Instagram icon from lucide-react
 import { Instagram } from "lucide-react";
@@ -37,9 +41,13 @@ const Sponsors = () => {
     { id: 3, name: "Marsh", logo: GoldSponsor3, type: "gold" },
     { id: 4, name: "Bosker", logo: GoldSponsor4, type: "gold" },
 
-    // Silver sponsors (including previous bronze sponsors)
-    { id: 5, name: "The Boxing Lab", logo: SilverSponsor1, type: "silver" },
-    { id: 6, name: "A1 Performance", logo: SilverSponsor2, type: "silver" },
+    // Silver sponsors
+    {
+      id: 6,
+      name: "A1 Sideloader Service",
+      logo: SilverSponsor2,
+      type: "silver",
+    },
     {
       id: 7,
       name: "Nimbus Studios",
@@ -50,16 +58,36 @@ const Sponsors = () => {
     { id: 9, name: "Studio 25", logo: SilverSponsor5, type: "silver" },
     { id: 10, name: "Re:Phaze", logo: SilverSponsor6, type: "silver" },
     { id: 11, name: "Dynamic Therapy", logo: SilverSponsor7, type: "silver" },
-    { id: 12, name: "Placeholder", logo: placeholderLogo, type: "silver" },
-    { id: 13, name: "Placeholder", logo: placeholderLogo, type: "silver" },
-    { id: 14, name: "Placeholder", logo: placeholderLogo, type: "silver" },
     {
-      id: 15,
-      name: "Placeholder",
-      logo: placeholderLogo,
+      id: 12,
+      name: "Australian IT Group ",
+      logo: SilverSponsor8,
       type: "silver",
     },
-    { id: 16, name: "Placeholder", logo: placeholderLogo, type: "silver" },
+    {
+      id: 13,
+      name: "Westend Construction & Renovation",
+      logo: SilverSponsor9,
+      type: "silver",
+    },
+    {
+      id: 14,
+      name: "JIG Construction Group",
+      logo: SilverSponsor10,
+      type: "silver",
+    },
+    {
+      id: 15,
+      name: "MTK Sons",
+      logo: SilverSponsor11,
+      type: "silver",
+    },
+    {
+      id: 15,
+      name: "Zone 22 Recovery",
+      logo: SilverSponsor12,
+      type: "silver",
+    },
   ];
 
   // Filter sponsors by type
