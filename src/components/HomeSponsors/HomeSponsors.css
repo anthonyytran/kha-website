@@ -250,7 +250,7 @@
   }
   
   .sponsor-carousel {
-    padding: 0 15px;
+    padding: 0 30px; /* Increased side padding to make room for arrows */
   }
   
   .sponsor-card {
@@ -283,5 +283,30 @@
   
   .slick-dots {
     bottom: -25px;
+  }
+  
+  /* Mobile-specific arrow styles */
+  .slick-prev,
+  .slick-next {
+    width: 30px;
+    height: 30px;
+    z-index: 10; /* Increased z-index to ensure visibility */
+    opacity: 0.9; /* Increased opacity */
+    display: block !important; /* Force display of arrows */
+  }
+  
+  .slick-prev {
+    left: 5px;
+  }
+  
+  .slick-next {
+    right: 5px;
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 20px;
+    color: white;
+    opacity: 1;
   }
 }
