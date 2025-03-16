@@ -5,10 +5,11 @@ import "./FightHistory.css";
 // Fighter images
 import fighter1 from "../../assets/images/buacharoen.jpg";
 import fighter2 from "../../assets/images/weerachon.jpg";
-import fighter3 from "../../assets/images/kamlangcharoey.jpg";
+import fighter3 from "../../assets/images/katsunari.jpg";
 
-// Flag image
+// Flag images
 import thailandFlag from "../../assets/images/thailand-icon.png";
+import japanFlag from "../../assets/images/japan-icon.png";
 
 const FightHistory: React.FC = () => {
   return (
@@ -16,6 +17,26 @@ const FightHistory: React.FC = () => {
       <h3 className="fights-title">Past Fights</h3>
       <div className="fight-history">
         <div className="fight-card" data-aos="fade-up">
+          <h4>
+            <img src={japanFlag} alt="Japan Flag" className="flag-icon" />
+            <div className="name-container">
+              <span className="first-name">Katsunari</span>
+              <span className="last-name">Takayama</span>
+            </div>
+          </h4>
+          <img
+            src={fighter3}
+            alt="Katsunari Takayama"
+            className="fighter-image"
+          />
+          <div className="fight-details">
+            <p className="method">UNANIMOUS DECISION</p>
+            <p className="result loss">Loss</p>
+            <p className="date">December 18, 2024</p>
+            <p className="location">Barangay Bula, General Santos City</p>
+          </div>
+        </div>
+        <div className="fight-card" data-aos="fade-up" data-aos-delay="100">
           <h4>
             <img src={thailandFlag} alt="Thailand Flag" className="flag-icon" />
             <div className="name-container">
@@ -35,7 +56,7 @@ const FightHistory: React.FC = () => {
             <p className="location">Melbourne Pavilion, Australia</p>
           </div>
         </div>
-        <div className="fight-card" data-aos="fade-up" data-aos-delay="100">
+        <div className="fight-card" data-aos="fade-up" data-aos-delay="200">
           <h4>
             <img src={thailandFlag} alt="Thailand Flag" className="flag-icon" />
             <div className="name-container">
@@ -52,26 +73,6 @@ const FightHistory: React.FC = () => {
             <p className="method">TECHNICAL KNOCKOUT</p>
             <p className="result win">Win</p>
             <p className="date">December 2, 2023</p>
-            <p className="location">Melbourne Pavilion, Australia</p>
-          </div>
-        </div>
-        <div className="fight-card" data-aos="fade-up" data-aos-delay="200">
-          <h4>
-            <img src={thailandFlag} alt="Thailand Flag" className="flag-icon" />
-            <div className="name-container">
-              <span className="first-name">Oatkowit</span>
-              <span className="last-name">Kamlangcharoey</span>
-            </div>
-          </h4>
-          <img
-            src={fighter3}
-            alt="Oatkowit Kamlangcharoey"
-            className="fighter-image"
-          />
-          <div className="fight-details">
-            <p className="method">TECHNICAL KNOCKOUT</p>
-            <p className="result win">Win</p>
-            <p className="date">September 16, 2023</p>
             <p className="location">Melbourne Pavilion, Australia</p>
           </div>
         </div>

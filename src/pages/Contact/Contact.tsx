@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import khaContact from "../../assets/images/kha-contact.jpg";
+import { Instagram } from "lucide-react";
 
 const Contact = () => {
   const refForm = useRef<HTMLFormElement>(null);
@@ -37,13 +38,22 @@ const Contact = () => {
       {/* Sponsorship Section */}
       <div className="contact-details">
         <h2>Sponsorship Opportunities</h2>
-        <p>
-          For sponsorships, feel free to reach out at:
-          <br />
+        <p>For sponsorship opportunities, please contact me via:</p>
+        <div className="contact-options">
           <a href="mailto:Khalu01@hotmail.com" className="email-link">
-            Khalu01@hotmail.com
+            <span>Email: </span> Khalu01@hotmail.com
           </a>
-        </p>
+          <span className="or-divider">or</span>
+          <a
+            href="https://www.instagram.com/_khalu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="instagram-button"
+          >
+            <Instagram size={20} />
+            <span>Message me directly on Instagram</span>
+          </a>
+        </div>
       </div>
 
       {/* Content Section */}

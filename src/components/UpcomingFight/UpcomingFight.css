@@ -132,7 +132,7 @@
 .fighter-first,
 .fighter-last {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -347,7 +347,8 @@
     height: 80px;
   }
 
-  .fighter-first {
+  .fighter-first,
+  .fighter-last {
     font-size: 1.8rem;
   }
 
@@ -395,7 +396,8 @@
     font-size: 1.2rem;
   }
 
-  .fighter-first {
+  .fighter-first,
+  .fighter-last {
     font-size: 2.2rem;
   }
 
