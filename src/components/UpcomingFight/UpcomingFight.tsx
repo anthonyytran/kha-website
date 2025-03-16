@@ -5,7 +5,6 @@ import "./UpcomingFight.css";
 
 // Import images
 import australiaIcon from "../../assets/images/australia-icon.png";
-import lionsdenLogo from "../../assets/images/lionsden-logo.png";
 
 const calculateTimeLeft = () => {
   const eventDate = new Date("April 4, 2025 20:00:00").getTime();
@@ -26,19 +25,26 @@ const calculateTimeLeft = () => {
   return timeLeft;
 };
 
-const UpcomingFight: React.FC = () => {
+const UpcomingFight = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Initialize AOS with consistent settings
+    // Initialize AOS with more reliable settings
     AOS.init({
-      once: true,
+      once: true, // Changed to true - animations only happen once
       duration: 800,
-      easing: "ease-out-cubic",
-      mirror: false,
-      offset: 50,
-      anchorPlacement: "top-bottom",
+      easing: "ease-out",
+      offset: 0, // Lower offset for easier triggering
+      disable: false, // Never disable
+      startEvent: "DOMContentLoaded", // Earlier start event
     });
+
+    // Force refresh AOS after component mount
+    setTimeout(() => {
+      AOS.refresh();
+      setIsVisible(true); // Set visibility after a short delay
+    }, 500);
 
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
@@ -47,21 +53,54 @@ const UpcomingFight: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Format time numbers to always have two digits
+  const formatTimeNumber = (num) => {
+    return num.toString().padStart(2, "0");
+  };
+
   return (
     <div
-      className="upcoming-fight-container"
+      className={`upcoming-fight-container ${isVisible ? "visible" : ""}`}
       data-aos="fade-in"
-      data-aos-duration="1000"
+      data-aos-duration="600"
     >
       {/* Title and Date */}
-      <div className="fight-title-container">
-        <h1 className="fight-title" data-aos="fade-up" data-aos-delay="100">
+      <div
+        className={`fight-title-container ${isVisible ? "visible" : ""}`}
+        data-aos="fade-up"
+        data-aos-delay="100"
+        // Adding inline styles as a fallback
+        style={{
+          opacity: isVisible ? 1 : null,
+          transform: isVisible ? "none" : null,
+        }}
+      >
+        <h1
+          className={`fight-title ${isVisible ? "visible" : ""}`}
+          style={{
+            opacity: isVisible ? 1 : null,
+            transform: isVisible ? "none" : null,
+          }}
+        >
           Australian Title
         </h1>
-        <p className="fight-date" data-aos="fade-up" data-aos-delay="200">
+        <p
+          className={`fight-date ${isVisible ? "visible" : ""}`}
+          style={{
+            opacity: isVisible ? 1 : null,
+            transform: isVisible ? "none" : null,
+          }}
+        >
           April 4, 2025
         </p>
-        <p className="fight-date" data-aos="fade-up" data-aos-delay="300">
+        <p
+          className={`fight-date ${isVisible ? "visible" : ""}`}
+          data-aos-delay="150"
+          style={{
+            opacity: isVisible ? 1 : null,
+            transform: isVisible ? "none" : null,
+          }}
+        >
           Melbourne Pavilion
         </p>
       </div>
@@ -69,58 +108,82 @@ const UpcomingFight: React.FC = () => {
       {/* Fighters Section */}
       <div className="fight-header">
         <div
-          className="fighter fighter-main"
+          className={`fighter fighter-main ${isVisible ? "visible" : ""}`}
           data-aos="fade-right"
-          data-aos-delay="400"
+          data-aos-delay="200"
+          data-aos-duration="600"
         >
           <div className="fighter-name">
             <img
-              className="australia-icon"
+              className={`australia-icon ${isVisible ? "visible" : ""}`}
               src={australiaIcon}
               alt="Australia"
               data-aos="zoom-in"
-              data-aos-delay="600"
+              data-aos-delay="300"
             />
-            <span className="fighter-first">Kha</span>
-            <span className="fighter-last">Lu</span>
+            <div className="fighter-name-text">
+              <span className="fighter-first">Kha</span>
+              <span className="fighter-last">Lu</span>
+            </div>
           </div>
         </div>
 
-        <div className="vs" data-aos="zoom-in" data-aos-delay="500">
+        <div
+          className={`vs ${isVisible ? "visible" : ""}`}
+          data-aos="zoom-in"
+          data-aos-delay="250"
+          data-aos-duration="600"
+        >
           VS
         </div>
 
         <div
-          className="fighter fighter-secondary"
+          className={`fighter fighter-secondary ${isVisible ? "visible" : ""}`}
           data-aos="fade-left"
-          data-aos-delay="400"
+          data-aos-delay="200"
+          data-aos-duration="600"
         >
           <div className="fighter-name">
             <img
-              className="australia-icon"
+              className={`australia-icon ${isVisible ? "visible" : ""}`}
               src={australiaIcon}
               alt="Australia"
               data-aos="zoom-in"
-              data-aos-delay="600"
+              data-aos-delay="300"
             />
-            <span className="fighter-first">David</span>
-            <span className="fighter-last">Anderson</span>
+            <div className="fighter-name-text">
+              <span className="fighter-first">David</span>
+              <span className="fighter-last">Anderson</span>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Countdown */}
-      <div className="countdown" data-aos="fade-up" data-aos-delay="500">
-        {["days", "hours", "minutes", "seconds"].map((unit, index) => (
+      <div
+        className={`countdown ${isVisible ? "visible" : ""}`}
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="600"
+      >
+        {[
+          { unit: "days", value: timeLeft.days },
+          { unit: "hours", value: timeLeft.hours },
+          { unit: "minutes", value: timeLeft.minutes },
+          { unit: "seconds", value: timeLeft.seconds },
+        ].map((item, index) => (
           <div
-            key={unit}
-            className="countdown-item"
+            key={item.unit}
+            className={`countdown-item ${isVisible ? "visible" : ""}`}
             data-aos="zoom-in"
-            data-aos-delay={600 + index * 100}
+            data-aos-delay={350 + index * 50} // Reduced sequential delays
+            data-aos-duration="500"
           >
-            <div className="countdown-number">{timeLeft[unit]}</div>
+            <div className="countdown-number">
+              {formatTimeNumber(item.value)}
+            </div>
             <div className="countdown-label">
-              {unit.charAt(0).toUpperCase() + unit.slice(1)}
+              {item.unit.charAt(0).toUpperCase() + item.unit.slice(1)}
             </div>
           </div>
         ))}
@@ -128,17 +191,19 @@ const UpcomingFight: React.FC = () => {
 
       {/* Ticket Button */}
       <div
-        className="ticket-button-container"
+        className={`ticket-button-container ${isVisible ? "visible" : ""}`}
         data-aos="fade-up"
-        data-aos-delay="700"
+        data-aos-delay="400"
+        data-aos-duration="600"
       >
         <a
           href="https://lionsdendelahey.com.au/pages/fight-night-tickets"
           target="_blank"
           rel="noopener noreferrer"
-          className="ticket-button"
+          className={`ticket-button ${isVisible ? "visible" : ""}`}
           data-aos="zoom-in"
-          data-aos-delay="900"
+          data-aos-delay="450"
+          data-aos-duration="500"
         >
           Buy Tickets Now
         </a>

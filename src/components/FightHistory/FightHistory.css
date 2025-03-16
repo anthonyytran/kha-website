@@ -1,195 +1,421 @@
 /* Fight History Container and Card Layout */
 .fight-history-container {
-    width: 100%;
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 2rem;
-    position: relative;
-  }
-  
-  .fights-title {
-    font-size: 5rem;
-    font-weight: 700;
-    font-family: 'Bebas Neue', sans-serif;
-    color: var(--color-primary);
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 4rem 2rem;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.9), rgba(10, 10, 10, 0.95));
+  overflow: hidden;
+}
+
+.fight-history-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/images/texture.png');
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.fights-title {
+  font-size: 5rem;
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.fights-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--color-primary);
+}
+
+.fight-history {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center; 
+  padding: 2rem 0;
+}
+
+.fight-card {
+  background: linear-gradient(145deg, rgba(25, 25, 25, 0.8), rgba(10, 10, 10, 0.8));
+  flex: 1 1 calc(33.33% - 2rem);
+  min-width: 330px;
+  max-width: 380px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  transform-origin: center bottom;
+}
+
+.fight-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+}
+
+.fight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-primary);
+}
+
+.fight-card .fighter-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border: none;
+  transition: transform 0.5s ease;
+}
+
+.fight-card:hover .fighter-image {
+  transform: scale(1.05);
+}
+
+.fight-details {
+  color: var(--color-primary);
+  padding: 1.2rem;
+  width: 100%;
+  font-size: 2rem;
+  background: rgba(10, 10, 10, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fight-card h4 {
+  background-color: rgba(0, 0, 0, 0.8);
+  font-weight: 900;
+  font-family: 'Bebas Neue', sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 1.2rem;
+  text-transform: uppercase;
+  display: flex; 
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.flag-icon {
+  width: 70px;
+  height: auto;
+  margin: 0 8px;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.fight-card:hover .flag-icon {
+  transform: scale(1.1);
+}
+
+.name-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  justify-content: center; 
+  line-height: 1.2; 
+}
+
+.fight-card h4 .first-name {
+  font-size: 1.4rem; 
+  color: var(--color-white);
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+.fight-card h4 .last-name {
+  font-size: 2rem; 
+  font-weight: bold;
+  color: var(--color-white);
+  letter-spacing: 1px;
+}
+
+.fight-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem; 
+  padding: 1.2rem; 
+  width: 100%;
+}
+
+.fight-details .date {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.fight-details .method {
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: 'Chakra Petch', sans-serif;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.fight-details .method::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.fight-details .location {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: 'Chakra Petch', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+}
+
+.fight-card .result {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.3rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+.fight-card .result::before,
+.fight-card .result::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+}
+
+.fight-card .result::before {
+  left: -15px;
+}
+
+.fight-card .result::after {
+  right: -15px;
+}
+
+.fight-card .result.win {
+  color: #28a745;
+}
+
+.fight-card .result.win::before,
+.fight-card .result.win::after {
+  background-color: #28a745;
+}
+
+.fight-card .result.loss {
+  color: #dc3545;
+}
+
+.fight-card .result.loss::before,
+.fight-card .result.loss::after {
+  background-color: #dc3545;
+}
+
+.fight-card .result.draw {
+  color: #6c757d;
+}
+
+.fight-card .result.draw::before,
+.fight-card .result.draw::after {
+  background-color: #6c757d;
+}
+
+.view-all-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.fights-button {
+  margin-top: 1.5rem;
+}
+
+.view-all-button {
+  display: inline-block;
+  padding: 0.8rem 2.5rem; 
+  font-size: 1.5rem; 
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: transparent;
+  border: 2px solid var(--color-white);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.view-all-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%) skewX(-30deg);
+  transition: transform 0.6s ease;
+}
+
+.view-all-button:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.view-all-button:hover::before {
+  transform: translateX(100%) skewX(-30deg);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
   .fight-history {
-    display: flex;
     gap: 1.5rem;
-    max-width: 1200px;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center; 
-    padding: 2rem;
   }
   
   .fight-card {
-    background: var(--color-black);
-    flex: 1 1 calc(33.33% - 1rem);
-    min-width: 350px;
-    max-width: 380px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    text-align: center;
-    border-radius: 30px;
-    border-top: 2px solid var(--color-primary); 
-    border-bottom: 2px solid var(--color-primary); 
+    flex: 1 1 calc(50% - 1.5rem);
+    min-width: 300px;
   }
-  
-  .fight-card .fighter-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border: none;
-  }
-  
-  .fight-details {
-    color: var(--color-primary);
-    padding: 1rem;
-    width: 100%;
-    font-size: 2rem;
-  }
-  
-  .fight-card h4 {
-    background-color: var(--color-black);
-    font-weight: 900;
-    font-family: 'Bebas Neue', sans-serif;
-    width: 100%;
-    margin: 0;
-    padding: 1rem;
-    text-transform: uppercase;
-    display: flex; 
-    align-items: center;
-    gap: 1rem; 
-  }
-  
-  .flag-icon {
-    width: 80px;
-    height: auto;
-    margin: 0 8px;
-    vertical-align: middle;
-  }
-  
-  .name-container {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
-    justify-content: center; 
-    line-height: 1.2; 
-  }
-  
-  .fight-card h4 .first-name {
-    font-size: 1.5rem; 
-    color: var(--color-white);
-  }
-  
-  .fight-card h4 .last-name {
-    font-size: 2rem; 
-    font-weight: bold;
-    color: var(--color-white);
-  }
-  
-  .fight-card .fighter-image {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-  }
-  
-  .fight-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1rem; 
-    padding: 0.8rem; 
-    width: 100%;
-  }
-  
-  .fight-details .date {
-    color: var(--color-primary);
-    font-size: 1.2rem;
-    font-family: 'Bebas Neue', sans-serif;
-  }
-  
-  .fight-details .method {
-    color: var(--color-white);
-    font-weight: bold;
-    font-size: 1.2rem;
-    font-family: 'Chakra Petch', sans-serif;
-  }
-  
-  .fight-details .location,
-  .fight-details .result {
-    width: 100%;
-    font-weight: bold;
-    font-size: 1.2rem;
-    font-family: 'Bebas Neue', sans-serif;
+}
+
+@media (max-width: 992px) {
+  .fights-title {
+    font-size: 4rem;
   }
   
   .fight-card .result {
     font-size: 1.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin: 0.5rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .fight-history-container {
+    padding: 3rem 1rem;
   }
   
-  .fight-card .result.win {
-    color: #28a745;
+  .fights-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
   }
   
-  .fight-card .result.loss {
-    color: #dc3545;
+  .fight-history {
+    padding: 1rem 0;
+    gap: 1.5rem;
   }
   
-  .fight-card .result.draw {
-    color: #6c757d;
+  .fight-card {
+    min-width: 280px;
   }
   
-  .view-all-button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 0rem;
+  .fight-card h4 .last-name {
+    font-size: 1.8rem;
   }
   
-  .fights-button {
-    margin-top: 1rem;
+  .fight-card h4 .first-name {
+    font-size: 1.2rem;
   }
   
   .view-all-button {
-    display: inline-block;
-    padding: 0.5rem 1rem; 
-    font-size: 1.4rem; 
-    font-weight: 700;
-    color: var(--color-white);
-    background-color: transparent;
-    border: 1.5px solid var(--color-white);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    font-family: 'Bebas Neue', sans-serif;
+    padding: 0.7rem 2rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fights-title {
+    font-size: 3rem;
   }
   
-  .view-all-button:hover {
-    background-color: var(--color-white);
-    color: var(--color-black);
+  .flag-icon {
+    width: 60px;
   }
   
-  @media (max-width: 480px) {
-    .flag-icon {
-      width: 60px;
-    }
+  .fight-card {
+    min-width: 100%;
+    margin-bottom: 1rem;
   }
+  
+  .fight-card h4 {
+    padding: 1rem;
+  }
+  
+  .fight-card .fighter-image {
+    height: 220px;
+  }
+  
+  .fight-details {
+    padding: 1rem;
+  }
+  
+  .fight-card .result {
+    font-size: 1.6rem;
+  }
+  
+  .fight-details .method {
+    font-size: 1.1rem;
+  }
+  
+  .fight-details .date,
+  .fight-details .location {
+    font-size: 0.9rem;
+  }
+  
+  .view-all-button {
+    padding: 0.6rem 1.8rem;
+    font-size: 1.3rem;
+  }
+}

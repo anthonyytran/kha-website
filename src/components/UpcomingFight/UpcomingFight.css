@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&family=Chakra+Petch:wght@700&display=swap');
 
-/* Container Styling - Mobile First */
+/* Revised Container Styling */
 .upcoming-fight-container {
-  margin: 1.5rem auto;
-  max-width: 100%;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  position: relative; /* needed for ::before positioning */
+  position: relative;
   overflow: hidden;
-  padding: 1.5rem;
-  opacity: 0; /* Start invisible for smooth fade-in */
-  transform: translateY(20px); /* Small initial offset for fade-up effect */
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  padding: 3.5rem 1.5rem 5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease; /* Faster animation */
+  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.9));
 }
 
 /* Animation class that AOS will apply */
@@ -22,7 +22,7 @@
   transform: translateY(0);
 }
 
-/* Pseudo-element with background and lowered opacity */
+/* Background effect - stretched to see both fighters */
 .upcoming-fight-container::before {
   content: "";
   position: absolute;
@@ -37,7 +37,19 @@
 }
 
 .upcoming-fight-container.aos-animate::before {
-  opacity: 0.2;
+  opacity: 0.3; /* Increased from 0.2 for better visibility */
+}
+
+.upcoming-fight-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 70%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .upcoming-fight-container > * {
@@ -45,24 +57,46 @@
   z-index: 1;
 }
 
-/* Title and Date */
+/* Enhanced Title and Date */
 .fight-title-container {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.fight-title-container::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.6s ease, width 0.6s ease; /* Faster animation */
+}
+
+.fight-title-container.aos-animate::after {
+  opacity: 1;
+  width: 150px;
 }
 
 .fight-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem;
-  margin-bottom: 1.5rem;
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
   color: var(--color-primary);
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  letter-spacing: 3px;
+  text-shadow: 0 0 15px rgba(184, 161, 83, 0.4), 2px 2px 5px rgba(0, 0, 0, 0.8);
   position: relative;
   z-index: 1;
-  transform: translateY(30px);
+  transform: translateY(20px);
   opacity: 0;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease; 
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .fight-title.aos-animate {
@@ -71,14 +105,15 @@
 }
 
 .fight-date {
-  font-style: italic;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 1.3rem;
   margin: 0.5rem 0 0;
   color: var(--color-white);
-  letter-spacing: 1px;
-  transform: translateY(20px);
+  letter-spacing: 1.5px;
+  transform: translateY(15px);
   opacity: 0;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease; /* Faster animation */
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .fight-date.aos-animate {
@@ -86,7 +121,7 @@
   opacity: 1;
 }
 
-/* Fighters Section */
+/* Enhanced Fighters Section */
 .fight-header {
   display: flex;
   flex-direction: column;
@@ -94,6 +129,7 @@
   justify-content: center;
   gap: 1rem;
   margin: 1rem 0;
+  width: 100%;
 }
 
 .fighter {
@@ -102,10 +138,15 @@
   align-items: center;
   width: 100%;
   max-width: 280px;
-  padding: 1rem;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  padding: 1rem 0.5rem;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); /* Faster animation */
   opacity: 0;
-  transform: translateX(0);
+  transform: translateX(-40px);
+  position: relative;
+}
+
+.fighter.fighter-secondary {
+  transform: translateX(40px);
 }
 
 .fighter.fighter-main.aos-animate {
@@ -118,34 +159,97 @@
   opacity: 1;
 }
 
+.fighter::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.4s ease 0.2s; /* Faster animation */
+}
+
+.fighter.aos-animate::after {
+  width: 60%;
+}
+
 .fighter-name {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   text-align: center;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
   width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.fighter-name::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-primary);
+  transition: transform 0.3s ease;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+.fighter:hover .fighter-name::before {
+  transform: scaleY(1);
+}
+
+/* Fighter name container with gap */
+.fighter-name-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem; /* Gap between first and last name */
+  align-items: flex-start;
 }
 
 .fighter-first,
 .fighter-last {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--color-white);
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.fighter-first {
+  font-size: 1.8rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.fighter-last {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.fighter:hover .fighter-first,
+.fighter:hover .fighter-last {
+  transform: translateX(10px);
 }
 
 .australia-icon {
-  width: 20px;
+  width: 25px;
   height: auto;
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   opacity: 0;
   transform: scale(0.8);
-  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Faster animation */
 }
 
 .australia-icon.aos-animate {
@@ -153,7 +257,7 @@
   transform: scale(1);
 }
 
-/* VS Text */
+/* Enhanced VS Text */
 .vs {
   font-family: 'Chakra Petch', sans-serif;
   font-size: 2rem;
@@ -161,16 +265,64 @@
   text-transform: uppercase;
   margin: 0.5rem 0;
   color: var(--color-primary);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transform: scale(0.7);
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease; /* Faster animation */
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(184, 161, 83, 0.3);
+  background: rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.vs::before, 
+.vs::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite; /* Faster animation */
+  opacity: 0;
+  transition: opacity 0.7s ease; /* Faster animation */
+}
+
+.vs.aos-animate::before, 
+.vs.aos-animate::after {
+  opacity: 1;
+}
+
+.vs::before {
+  inset: -5px;
+  border: 1px solid rgba(184, 161, 83, 0.3);
+  animation-delay: 0.3s;
+}
+
+.vs::after {
+  inset: -10px;
+  border: 1px solid rgba(184, 161, 83, 0.2);
+  animation-delay: 0.6s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
 }
 
 .vs.aos-animate {
@@ -178,18 +330,25 @@
   transform: scale(1);
 }
 
-/* Countdown Timer Grid */
+/* Enhanced Countdown Timer Grid - positioned over the background */
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
+  gap: 0.6rem;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1.2rem;
   border-radius: 12px;
-  margin: 1rem 0;
+  margin: 0.5rem auto;
+  max-width: 460px;
+  width: 100%;
   opacity: 0;
-  transform: translateY(20px);
-  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.8s ease;
+  transform: translateY(15px);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease; /* Faster animation */
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .countdown.aos-animate {
@@ -204,7 +363,11 @@
   position: relative;
   opacity: 0;
   transform: scale(0.9);
-  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease; /* Faster animation */
+  padding: 0.7rem 0.3rem;
+  border-radius: 8px;
+  background: rgba(20, 20, 20, 0.6);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
 .countdown-item.aos-animate {
@@ -215,49 +378,57 @@
 .countdown-item:not(:last-child)::after {
   content: ":";
   position: absolute;
-  right: -5px;
-  top: 20%;
+  right: -8px;
+  top: 30%;
   transform: translateY(-50%);
   font-size: 1.8rem;
   font-family: 'Chakra Petch', sans-serif;
   color: var(--color-red);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .countdown-number {
   font-family: 'Chakra Petch', sans-serif;
-  font-size: 4rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: var(--color-red);
-  text-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+  text-shadow: 0 0 8px rgba(220, 53, 69, 0.4);
   line-height: 1;
+  position: relative;
+  display: inline-block;
+  min-width: 2.5ch;
+  text-align: center;
+}
+
+.countdown-number::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: rgba(220, 53, 69, 0.3);
+  border-radius: 2px;
 }
 
 .countdown-label {
   margin-top: 0.5rem;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   font-family: 'Bebas Neue', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--color-white);
+  opacity: 0.9;
 }
 
-.lionsden-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 4rem;
-  background: url("../../assets/images/lionsden-logo.png");
-  width: 350px;
-  height: auto;
-}
-
-/* Ticket Button */
+/* Enhanced Ticket Button */
 .ticket-button-container {
   text-align: center;
   margin-top: 1rem;
   opacity: 0;
-  transform: translateY(20px);
-  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.8s ease;
+  transform: translateY(15px);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease; /* Faster animation */
 }
 
 .ticket-button-container.aos-animate {
@@ -267,28 +438,29 @@
 
 .ticket-button {
   color: var(--color-white);
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.5rem;
-  border-radius: 12px;
+  border-radius: 50px;
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Faster animation */
   display: inline-block;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   border: none;
   position: relative;
   overflow: hidden;
   background: transparent;
   opacity: 0;
   transform: scale(0.9);
+  z-index: 1;
 }
 
 .ticket-button.aos-animate {
   opacity: 1;
   transform: scale(1);
   background: linear-gradient(145deg, var(--color-primary), #9a874a);
-  box-shadow: 0 5px 15px rgba(184, 161, 83, 0.4);
+  box-shadow: 0 5px 20px rgba(184, 161, 83, 0.4), 0 0 0 3px rgba(184, 161, 83, 0.1);
 }
 
 .ticket-button::before {
@@ -304,11 +476,12 @@
     rgba(255, 255, 255, 0.2),
     transparent
   );
-  transition: 0.5s;
+  transition: 0.4s; /* Faster animation */
 }
 
 .ticket-button:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(184, 161, 83, 0.5), 0 0 0 3px rgba(184, 161, 83, 0.2);
 }
 
 .ticket-button:hover::before {
@@ -316,29 +489,29 @@
 }
 
 .ticket-button:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 12px rgba(184, 161, 83, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(184, 161, 83, 0.4);
 }
 
 /* Tablet and up */
 @media (min-width: 768px) {
   .upcoming-fight-container {
-    padding: 2rem;
+    padding: 4rem 2rem 5rem;
     gap: 2rem;
   }
 
   .fight-title {
-    font-size: 4rem;
+    font-size: 5.5rem;
   }
 
   .fight-date {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .fight-header {
     flex-direction: row;
     justify-content: space-around;
-    gap: 2rem;
+    gap: 0;
   }
 
   .vs {
@@ -347,17 +520,22 @@
     height: 80px;
   }
 
-  .fighter-first,
+  .fighter-first {
+    font-size: 2rem;
+  }
+  
   .fighter-last {
-    font-size: 1.8rem;
+    font-size: 2.6rem;
   }
 
   .australia-icon {
-    width: 24px;
+    width: 30px;
   }
 
   .countdown {
     gap: 1rem;
+    padding: 1.5rem;
+    max-width: 500px;
   }
 
   .countdown-number {
@@ -370,22 +548,24 @@
 
   .countdown-item:not(:last-child)::after {
     font-size: 2.2rem;
-    right: -10px;
+    right: -12px;
   }
 
   .ticket-button {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    padding: 1.1rem 3rem;
   }
 }
 
 /* Desktop and up */
 @media (min-width: 1024px) {
   .upcoming-fight-container {
-    max-width: 900px;
+    max-width: 1000px;
+    padding: 5rem 2rem 6rem;
   }
 
   .fight-title {
-    font-size: 5rem;
+    font-size: 6rem;
   }
 
   .countdown-number {
@@ -396,18 +576,108 @@
     font-size: 1.2rem;
   }
 
-  .fighter-first,
-  .fighter-last {
+  .fighter-first {
     font-size: 2.2rem;
+  }
+  
+  .fighter-last {
+    font-size: 2.8rem;
   }
 
   .australia-icon {
-    width: 30px;
+    width: 35px;
   }
 
   .vs {
-    font-size: 3rem;
+    font-size: 2.8rem;
     width: 100px;
     height: 100px;
+  }
+  
+  .ticket-button {
+    font-size: 1.8rem;
+    padding: 1.2rem 3.5rem;
+  }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 480px) {
+  .upcoming-fight-container {
+    padding: 3rem 1rem 4rem;
+    gap: 1.2rem;
+  }
+  
+  .fight-title {
+    font-size: 3.8rem;
+    text-shadow: 0 0 15px rgba(184, 161, 83, 0.5), 2px 2px 5px rgba(0, 0, 0, 0.9);
+  }
+  
+  .fight-date {
+    font-size: 1.1rem;
+  }
+  
+  .fighter-first {
+    font-size: 1.6rem;
+  }
+  
+  .fighter-last {
+    font-size: 2.2rem;
+  }
+  
+  .vs {
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .countdown {
+    gap: 0.5rem;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  .countdown-number {
+    font-size: 2rem;
+  }
+  
+  .countdown-label {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+  
+  .countdown-item {
+    padding: 0.5rem 0.2rem;
+  }
+  
+  .countdown-item:not(:last-child)::after {
+    right: -6px;
+    font-size: 1.6rem;
+  }
+  
+  .ticket-button {
+    font-size: 1.3rem;
+    padding: 0.9rem 2.2rem;
+  }
+}
+
+/* FALLBACK ANIMATION - ensures elements become visible */
+/* Add this at the end of your CSS file */
+.upcoming-fight-container,
+.fight-title,
+.fight-date,
+.fighter,
+.vs,
+.countdown,
+.countdown-item,
+.ticket-button-container,
+.ticket-button,
+.australia-icon {
+  animation: ensure-visible 0.5s forwards 1.5s;
+}
+
+@keyframes ensure-visible {
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
