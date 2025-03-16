@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sponsors.css";
 
 // Existing sponsor logos
@@ -20,8 +21,6 @@ import SilverSponsor10 from "../../assets/images/jig.jpg";
 import SilverSponsor11 from "../../assets/images/mtk.jpg";
 import SilverSponsor12 from "../../assets/images/zone22.jpg";
 
-// Placeholder for new sponsors
-
 // Import Instagram icon from lucide-react
 import { Instagram } from "lucide-react";
 
@@ -33,6 +32,14 @@ interface SponsorData {
 }
 
 const Sponsors = () => {
+  const navigate = useNavigate();
+
+  // Function to handle "Contact Me" button click
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate("/contact");
+  };
+
   // Combined sponsor data with names
   const sponsors: SponsorData[] = [
     // Gold sponsors
@@ -83,7 +90,7 @@ const Sponsors = () => {
       type: "silver",
     },
     {
-      id: 15,
+      id: 16,
       name: "Zone 22 Recovery",
       logo: SilverSponsor12,
       type: "silver",
@@ -158,9 +165,10 @@ const Sponsors = () => {
           <div className="become-sponsor">
             <p>Interested in becoming a sponsor?</p>
             <div className="contact-options">
-              <a href="/contact" className="contact-button">
+              {/* Changed from anchor to button with onClick handler */}
+              <Link to="/contact" className="contact-button">
                 Contact Me
-              </a>
+              </Link>
               <a
                 href="https://www.instagram.com/_khalu/"
                 className="instagram-link"
