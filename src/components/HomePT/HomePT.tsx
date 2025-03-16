@@ -9,7 +9,7 @@ const HomePT: React.FC = () => {
         <h2 className="pt-title">Personal Training</h2>
         <div className="pt-description">
           <p>
-            Take your boxing skills to the next level with personalized
+            Take your boxing skills to the next level with personalised
             one-on-one training sessions.
           </p>
           <p>
