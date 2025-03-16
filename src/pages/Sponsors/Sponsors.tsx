@@ -5,6 +5,7 @@ import "./Sponsors.css";
 import GoldSponsor1 from "../../assets/images/elitist.jpg";
 import GoldSponsor2 from "../../assets/images/visitint.jpg";
 import GoldSponsor3 from "../../assets/images/marsh.jpg";
+import GoldSponsor4 from "../../assets/images/bosker.jpg";
 
 import SilverSponsor1 from "../../assets/images/theboxinglab.png";
 import SilverSponsor2 from "../../assets/images/a1.jpg";
@@ -33,8 +34,8 @@ const Sponsors = () => {
     // Gold sponsors
     { id: 1, name: "Elitist", logo: GoldSponsor1, type: "gold" },
     { id: 2, name: "Visit International", logo: GoldSponsor2, type: "gold" },
-    { id: 3, name: "Marsh Industries", logo: GoldSponsor3, type: "gold" },
-    { id: 4, name: "Global Fitness", logo: placeholderLogo, type: "gold" },
+    { id: 3, name: "Marsh", logo: GoldSponsor3, type: "gold" },
+    { id: 4, name: "Bosker", logo: GoldSponsor4, type: "gold" },
 
     // Silver sponsors (including previous bronze sponsors)
     { id: 5, name: "The Boxing Lab", logo: SilverSponsor1, type: "silver" },
@@ -49,17 +50,16 @@ const Sponsors = () => {
     { id: 9, name: "Studio 25", logo: SilverSponsor5, type: "silver" },
     { id: 10, name: "Rephaze", logo: SilverSponsor6, type: "silver" },
     { id: 11, name: "Dynamic Therapy", logo: SilverSponsor7, type: "silver" },
-    { id: 12, name: "Sports Alliance", logo: placeholderLogo, type: "silver" },
-    { id: 13, name: "Power Nutrition", logo: placeholderLogo, type: "silver" },
-    // Former bronze sponsors now in silver
-    { id: 14, name: "Local Fitness", logo: placeholderLogo, type: "silver" },
+    { id: 12, name: "Placeholder", logo: placeholderLogo, type: "silver" },
+    { id: 13, name: "Placeholder", logo: placeholderLogo, type: "silver" },
+    { id: 14, name: "Placeholder", logo: placeholderLogo, type: "silver" },
     {
       id: 15,
-      name: "Community Athletics",
+      name: "Placeholder",
       logo: placeholderLogo,
       type: "silver",
     },
-    { id: 16, name: "Fighter's Edge", logo: placeholderLogo, type: "silver" },
+    { id: 16, name: "Placeholder", logo: placeholderLogo, type: "silver" },
   ];
 
   // Filter sponsors by type
