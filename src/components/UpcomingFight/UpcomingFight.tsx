@@ -152,7 +152,7 @@ const UpcomingFight = () => {
               data-aos-delay="300"
             />
             <div className="fighter-name-text">
-              <span className="fighter-first">David</span>
+              <span className="fighter-first">Daniel</span>
               <span className="fighter-last">Anderson</span>
             </div>
           </div>

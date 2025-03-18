@@ -5,10 +5,13 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Scroll to top with a small delay to avoid race conditions
+    // Immediate scroll for better reliability
+    window.scrollTo(0, 0);
+
+    // Handle any edge cases with a second scroll
     const timer = setTimeout(() => {
       window.scrollTo(0, 0);
-    }, 10);
+    }, 50);
 
     return () => clearTimeout(timer);
   }, [pathname]);

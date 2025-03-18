@@ -16,6 +16,7 @@ const Navbar = () => {
 
   const location = useLocation();
   const navLinksRef = useRef(null);
+  const initialLoadTimerRef = useRef(null);
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -51,9 +52,9 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
-  // Handle scroll events
+  // Handle scroll events - with improved logic to handle early scrolling
   useEffect(() => {
-    // Initial check when component mounts or route changes
+    // Initial check when component mounts
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     setIsTransparent(scrollTop <= 20);
 
@@ -71,6 +72,13 @@ const Navbar = () => {
       // Always update transparency based on absolute position
       setIsTransparent(scrollTop <= 20);
 
+      // If user scrolls before animation completes, show navbar immediately
+      if (isInitialLoad && scrollTop > 20) {
+        clearTimeout(initialLoadTimerRef.current);
+        setShowNavbar(true);
+        setIsInitialLoad(false);
+      }
+
       // Update last scroll position
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
@@ -80,7 +88,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollTop, location]); // Added location dependency
+  }, [lastScrollTop, isInitialLoad]); // Added isInitialLoad dependency
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -95,14 +103,18 @@ const Navbar = () => {
     }, 100); // Small delay to let ScrollToTop complete
   }, [location]);
 
-  // Trigger navbar animation on mount
+  // Trigger navbar animation on mount - but with a shorter delay
   useEffect(() => {
-    const timer = setTimeout(() => {
+    initialLoadTimerRef.current = setTimeout(() => {
       setShowNavbar(true);
       setIsInitialLoad(false);
-    }, 1500); // Delay of 1.5 seconds
+    }, 800); // Reduced from 1500ms to 800ms for better responsiveness
 
-    return () => clearTimeout(timer);
+    return () => {
+      if (initialLoadTimerRef.current) {
+        clearTimeout(initialLoadTimerRef.current);
+      }
+    };
   }, []);
 
   // Set animation delay for each nav item in mobile menu
