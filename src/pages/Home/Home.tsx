@@ -30,8 +30,9 @@ const Home: React.FC = () => {
           </h2>
           <hr className="divider divider-bottom" />
           <h3 className="fade-in-champion subtext">
-            Victorian Light Flyweight Champion
+            Australian Light Flyweight Champion
           </h3>
+
           <Link to="/about" className="find-out-more-button">
             Find out more
           </Link>

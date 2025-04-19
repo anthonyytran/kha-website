@@ -1,113 +1,22 @@
 import React, { useState } from "react";
 import "./Record.css";
-
-interface Fight {
-  id: number;
-  record: string;
-  opponent: string;
-  result: string;
-  date: string;
-  weight: string;
-  venue: string;
-  method: string;
-  rounds: string;
-}
+// Import the data and interface from the separate file
+import { fights } from "../../data/fightData.tsx";
 
 const Record: React.FC = () => {
-  const fights: Fight[] = [
-    {
-      id: 1,
-      record: "7-1-0",
-      opponent: "Katsunari Takayama",
-      result: "L",
-      date: "18-12-2024",
-      weight: `${(104.25 * 0.453592).toFixed(2)} kg`,
-      venue: "Barangay Bula, General Santos City",
-      method: "Unanimous Decision",
-      rounds: "12/12",
-    },
-    {
-      id: 2,
-      record: "7-0-0",
-      opponent: "Watcharin Buacharoen",
-      result: "W",
-      date: "16-03-2024",
-      weight: `${(106.5 * 0.453592).toFixed(2)} kg`,
-      venue: "The Melbourne Pavilion, Flemington",
-      method: "Unanimous Decision",
-      rounds: "5/5",
-    },
-    {
-      id: 3,
-      record: "6-0-0",
-      opponent: "Thoedkiad Weerachon",
-      result: "W",
-      date: "02-12-2023",
-      weight: `${(102.5 * 0.453592).toFixed(2)} kg`,
-      venue: "The Melbourne Pavilion, Flemington",
-      method: "Technical Knockout",
-      rounds: "3/6",
-    },
-    {
-      id: 4,
-      record: "5-0-0",
-      opponent: "Oatkowit Kamlangcharoey",
-      result: "W",
-      date: "16-09-2023",
-      weight: `${(102.5 * 0.453592).toFixed(2)} kg`,
-      venue: "The Melbourne Pavilion, Flemington",
-      method: "Technical Knockout",
-      rounds: "1/6",
-    },
-    {
-      id: 5,
-      record: "4-0-0",
-      opponent: "Sirachat Soising",
-      result: "W",
-      date: "25-03-2023",
-      weight: `${(105.5 * 0.453592).toFixed(2)} kg`,
-      venue: "The Melbourne Pavilion, Flemington",
-      method: "Technical Knockout",
-      rounds: "2/4",
-    },
-    {
-      id: 6,
-      record: "3-0-0",
-      opponent: "Gerttipong Kumsahwat",
-      result: "W",
-      date: "16-12-2022",
-      weight: `${(103.75 * 0.453592).toFixed(2)} kg`,
-      venue: "The Melbourne Pavilion, Flemington",
-      method: "Unanimous Decision",
-      rounds: "6/6",
-    },
-    {
-      id: 7,
-      record: "2-0-0",
-      opponent: "Gerttipong Kumsahwat",
-      result: "W",
-      date: "20-08-2022",
-      weight: `${(108.75 * 0.453592).toFixed(2)} kg`,
-      venue: "The Melbourne Pavilion, Flemington",
-      method: "Unanimous Decision",
-      rounds: "4/4",
-    },
-    {
-      id: 8,
-      record: "1-0-0",
-      opponent: "Prakob Nuankaew",
-      result: "W",
-      date: "19-03-2022",
-      weight: `${(111.5 * 0.453592).toFixed(2)} kg`,
-      venue: "The Melbourne Pavilion, Flemington",
-      method: "Majority Decision",
-      rounds: "4/4",
-    },
-  ];
-
   // Format date from dd-mm-yyyy to "day month year"
   const formatDate = (dateStr: string) => {
-    const [day, month, year] = dateStr.split("-");
+    // Add a check in case dateStr is undefined or not in the expected format
+    if (!dateStr || !dateStr.includes("-")) {
+      console.warn("Invalid date format received:", dateStr);
+      return "Invalid Date"; // Or handle appropriately
+    }
+    const parts = dateStr.split("-");
+    if (parts.length !== 3) {
+      console.warn("Invalid date format received:", dateStr);
+      return "Invalid Date"; // Or handle appropriately
+    }
+    const [day, month, year] = parts;
     const monthNames = [
       "January",
       "February",
@@ -123,11 +32,20 @@ const Record: React.FC = () => {
       "December",
     ];
 
+    // Ensure month is a valid number between 1 and 12
+    const monthIndex = parseInt(month, 10) - 1;
+    if (isNaN(monthIndex) || monthIndex < 0 || monthIndex > 11) {
+      console.warn("Invalid month in date:", dateStr);
+      return "Invalid Date";
+    }
+
     // For mobile, use abbreviated month names
-    const isMobile = window.innerWidth <= 480;
+    // Note: window.innerWidth might not be reliable during SSR or initial render.
+    // Consider using a hook like useMediaQuery for better responsiveness.
+    const isMobile = typeof window !== "undefined" && window.innerWidth <= 480;
     const monthName = isMobile
-      ? monthNames[parseInt(month) - 1].substring(0, 3)
-      : monthNames[parseInt(month) - 1];
+      ? monthNames[monthIndex].substring(0, 3)
+      : monthNames[monthIndex];
 
     return `${day} ${monthName} ${year}`;
   };
@@ -139,16 +57,17 @@ const Record: React.FC = () => {
   return (
     <div className="record-container">
       <h1>Record</h1>
+      {/* Update the total record display */}
       <div className="total-record-container">
         <div className="record-grid">
           <div className="record-cell">
-            <span className="wins">7</span>
+            <span className="wins">8</span> {/* Updated Wins */}
           </div>
           <div className="record-cell">
-            <span className="losses">1</span>
+            <span className="losses">1</span> {/* Updated Losses */}
           </div>
           <div className="record-cell">
-            <span className="draws">0</span>
+            <span className="draws">0</span> {/* Updated Draws */}
           </div>
           <div className="record-cell">
             <span className="wins-label">Win</span>
@@ -173,6 +92,7 @@ const Record: React.FC = () => {
             </tr>
           </thead>
           <tbody>
+            {/* Use the imported 'fights' array */}
             {fights.map((fight) => (
               <React.Fragment key={fight.id}>
                 <tr
@@ -180,12 +100,16 @@ const Record: React.FC = () => {
                     expandedFightId === fight.id ? "expanded-row" : ""
                   }`}
                   onClick={() => toggleExpand(fight.id)}
+                  // Adding aria attributes for better accessibility
+                  aria-expanded={expandedFightId === fight.id}
+                  aria-controls={`details-${fight.id}`}
+                  tabIndex={0} // Make row focusable
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ")
+                      toggleExpand(fight.id);
+                  }} // Allow keyboard interaction
                 >
-                  <td
-                    className="result-col"
-                    data-label="Result"
-                    data-opponent={fight.opponent}
-                  >
+                  <td className="result-col" data-label="Result">
                     <div
                       className={`result-box ${
                         fight.result === "W"
@@ -209,7 +133,7 @@ const Record: React.FC = () => {
                   </td>
                 </tr>
                 {expandedFightId === fight.id && (
-                  <tr className="details-row">
+                  <tr className="details-row" id={`details-${fight.id}`}>
                     <td colSpan={4}>
                       <div className="details-content">
                         <p>

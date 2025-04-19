@@ -8,7 +8,7 @@ const HomeRecord: React.FC = () => {
       <h2 className="record-title">Record</h2>
       <div className="record-stats">
         <div className="record-item">
-          <div className="record-value wins">7</div>
+          <div className="record-value wins">8</div>
           <div className="record-label">Wins</div>
         </div>
         <div className="record-item">

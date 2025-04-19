@@ -4,134 +4,121 @@ import "./Navbar.css";
 import instagramIcon from "../../assets/images/instagram.png";
 import tiktokIcon from "../../assets/images/tiktok.png";
 import logoIcon from "../../assets/images/kha-logo2.png";
-import lionsdenLogo from "../../assets/images/kha-logo2.png";
+import lionsdenLogo from "../../assets/images/kha-logo2.png"; // Assuming same logo
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isTransparent, setIsTransparent] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [showNavbar, setShowNavbar] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const location = useLocation();
-  const navLinksRef = useRef(null);
-  const initialLoadTimerRef = useRef(null);
+  const navLinksRef = useRef<HTMLUListElement>(null);
+  const initialLoadTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Toggle mobile menu
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-
-    // When menu opens, prevent scrolling on the body
-    if (!isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.style.overflow = "visible";
   };
 
-  // Close menu when clicking outside
+  const toggleMenu = () => {
+    const nextIsOpen = !isOpen;
+    setIsOpen(nextIsOpen);
+    document.body.style.overflow = nextIsOpen ? "hidden" : "visible";
+  };
+
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         isOpen &&
         navLinksRef.current &&
-        !navLinksRef.current.contains(event.target) &&
-        !event.target.closest(".hamburger")
+        !navLinksRef.current.contains(event.target as Node) &&
+        !(event.target as Element).closest(".hamburger")
       ) {
-        setIsOpen(false);
-        document.body.style.overflow = "visible";
+        closeMenu();
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.body.style.overflow = "visible";
     };
   }, [isOpen]);
 
-  // Handle scroll events - with improved logic to handle early scrolling
   useEffect(() => {
-    // Initial check when component mounts
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    setIsTransparent(scrollTop <= 20);
-
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
-
-      // Determine scroll direction with threshold to reduce sensitivity
+      setIsScrolled(scrollTop > 20);
       if (scrollTop > lastScrollTop + 10) {
         setIsScrollingUp(false);
-      } else if (scrollTop < lastScrollTop - 10) {
+      } else if (scrollTop < lastScrollTop - 5 || scrollTop <= 10) {
         setIsScrollingUp(true);
       }
-
-      // Always update transparency based on absolute position
-      setIsTransparent(scrollTop <= 20);
-
-      // If user scrolls before animation completes, show navbar immediately
       if (isInitialLoad && scrollTop > 20) {
-        clearTimeout(initialLoadTimerRef.current);
+        if (initialLoadTimerRef.current) {
+          clearTimeout(initialLoadTimerRef.current);
+        }
         setShowNavbar(true);
         setIsInitialLoad(false);
       }
-
-      // Update last scroll position
       setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
     };
-
-    window.addEventListener("scroll", handleScroll);
-
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollTop, isInitialLoad]); // Added isInitialLoad dependency
-
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
-    document.body.style.overflow = "visible";
-
-    // Force a check of the scroll position after route change
-    setTimeout(() => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      setIsTransparent(scrollTop <= 20);
-    }, 100); // Small delay to let ScrollToTop complete
-  }, [location]);
-
-  // Trigger navbar animation on mount - but with a shorter delay
-  useEffect(() => {
-    initialLoadTimerRef.current = setTimeout(() => {
-      setShowNavbar(true);
-      setIsInitialLoad(false);
-    }, 800); // Reduced from 1500ms to 800ms for better responsiveness
-
-    return () => {
       if (initialLoadTimerRef.current) {
         clearTimeout(initialLoadTimerRef.current);
       }
     };
-  }, []);
+  }, [lastScrollTop, isInitialLoad]);
 
-  // Set animation delay for each nav item in mobile menu
-  const getNavItemStyle = (index) => {
-    return {
-      "--item-index": index,
+  useEffect(() => {
+    closeMenu();
+    setTimeout(() => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 20);
+      setIsScrollingUp(true);
+      setLastScrollTop(scrollTop);
+    }, 100);
+  }, [location]);
+
+  useEffect(() => {
+    if (isInitialLoad) {
+      initialLoadTimerRef.current = setTimeout(() => {
+        setShowNavbar(true);
+        setIsInitialLoad(false);
+      }, 800);
+    }
+    return () => {
+      if (initialLoadTimerRef.current && isInitialLoad) {
+        clearTimeout(initialLoadTimerRef.current);
+      }
     };
+  }, [isInitialLoad]);
+
+  const getNavItemStyle = (index: number) => {
+    return { "--item-index": index } as React.CSSProperties;
   };
 
+  const navbarClasses = `
+    navbar
+    ${isInitialLoad ? "navbar-initial-state" : ""}
+    ${showNavbar ? "navbar-animated" : ""}
+    ${isScrolled ? "scrolled" : "transparent"}
+    ${
+      isScrollingUp || isOpen || !isScrolled
+        ? "navbar-visible"
+        : "navbar-hidden"
+    }
+  `;
+
   return (
-    <nav
-      className={`navbar 
-        ${isInitialLoad ? "navbar-initial" : ""} 
-        ${!showNavbar ? "navbar-hidden" : "navbar-visible"} 
-        ${isTransparent ? "transparent" : "scrolled"} 
-        ${isScrollingUp || isOpen ? "" : "navbar-hidden"}`}
-    >
+    <nav className={navbarClasses.trim().replace(/\s+/g, " ")}>
       <div className="navbar-container">
         <Link to="/" className="logo">
           <img src={logoIcon} alt="Kha Lu Logo" className="logo-icon" />
@@ -142,17 +129,22 @@ const Navbar = () => {
           aria-label="Toggle menu"
           role="button"
           tabIndex={0}
+          aria-expanded={isOpen}
         >
           <span className="line"></span>
           <span className="line"></span>
           <span className="line"></span>
         </div>
+
+        {/* Apply .nav-links class to the UL */}
         <ul className={`nav-links ${isOpen ? "open" : ""}`} ref={navLinksRef}>
-          {isOpen && <hr className="nav-divider" />}
+          {/* Main Links - Rendered directly inside UL */}
+          {/* Conditional divider only needed for mobile menu */}
+          {isOpen && <hr className="nav-divider top-divider" />}
           <li style={getNavItemStyle(1)}>
             <Link
               to="/"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
               className={location.pathname === "/" ? "active" : ""}
             >
               Home
@@ -161,7 +153,7 @@ const Navbar = () => {
           <li style={getNavItemStyle(2)}>
             <Link
               to="/about"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
               className={location.pathname === "/about" ? "active" : ""}
             >
               About
@@ -170,7 +162,7 @@ const Navbar = () => {
           <li style={getNavItemStyle(3)}>
             <Link
               to="/record"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
               className={location.pathname === "/record" ? "active" : ""}
             >
               Record
@@ -179,7 +171,7 @@ const Navbar = () => {
           <li style={getNavItemStyle(4)}>
             <Link
               to="/sponsors"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
               className={location.pathname === "/sponsors" ? "active" : ""}
             >
               Sponsors
@@ -188,56 +180,62 @@ const Navbar = () => {
           <li style={getNavItemStyle(5)}>
             <Link
               to="/contact"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
               className={location.pathname === "/contact" ? "active" : ""}
             >
               Contact
             </Link>
           </li>
-          {isOpen && <hr className="nav-divider" />}
+          {/* Conditional divider only needed for mobile menu */}
+          {isOpen && <hr className="nav-divider bottom-divider" />}
+
+          {/* Footer Elements - Rendered directly inside UL only when menu is open */}
           {isOpen && (
             <>
-              <li className="lionsden-logo">
+              <li className="lionsden-logo" style={getNavItemStyle(6)}>
                 <img
                   src={lionsdenLogo}
                   alt="Lionsden Logo"
                   className="lionsden-logo-icon"
                 />
               </li>
-              <hr className="nav-divider" />
-              <div className="mobile-footer">
-                <p className="copyright">
-                  &copy; {new Date().getFullYear()} Kha Lu | All rights reserved
-                </p>
-                <div className="social-links">
-                  <a
-                    href="https://www.instagram.com/_khalu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                    aria-label="Instagram"
-                  >
-                    <img
-                      src={instagramIcon}
-                      alt="Instagram"
-                      className="social-icon"
-                    />
-                  </a>
-                  <a
-                    href="https://www.tiktok.com/@_kha.lu?lang=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                    aria-label="TikTok"
-                  >
-                    <img
-                      src={tiktokIcon}
-                      alt="TikTok"
-                      className="social-icon"
-                    />
-                  </a>
+              {/* Wrap footer content in an LI for semantics and animation */}
+              <li className="mobile-footer-wrapper" style={getNavItemStyle(7)}>
+                <hr className="nav-divider" />
+                <div className="mobile-footer-content">
+                  <p className="copyright">
+                    © {new Date().getFullYear()} Kha Lu | All rights reserved
+                  </p>
+                  <div className="social-links">
+                    <a
+                      href="https://www.instagram.com/_khalu/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-link"
+                      aria-label="Instagram"
+                    >
+                      <img
+                        src={instagramIcon}
+                        alt="Instagram"
+                        className="social-icon"
+                      />
+                    </a>
+                    <a
+                      href="https://www.tiktok.com/@_kha.lu?lang=en"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-link"
+                      aria-label="TikTok"
+                    >
+                      <img
+                        src={tiktokIcon}
+                        alt="TikTok"
+                        className="social-icon"
+                      />
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </li>
             </>
           )}
         </ul>

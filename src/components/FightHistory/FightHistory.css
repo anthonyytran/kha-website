@@ -23,7 +23,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../../assets/images/texture.png');
+  background: url('../../assets/images/texture.png'); /* Make sure this path is correct */
   opacity: 0.05;
   pointer-events: none;
 }
@@ -57,7 +57,7 @@
   max-width: 1200px;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: center; 
+  justify-content: center;
   padding: 2rem 0;
 }
 
@@ -107,23 +107,28 @@
 }
 
 .fight-details {
-  color: var(--color-primary);
+  /* color: var(--color-primary); /* Base text color is set on specific elements now */
   padding: 1.2rem;
   width: 100%;
-  font-size: 2rem;
+  /* font-size: 2rem; /* Removed base font size here */
   background: rgba(10, 10, 10, 0.85);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex; /* Ensure details layout uses flex */
+  flex-direction: column; /* Stack details vertically */
+  align-items: center; /* Center align details */
+  gap: 0.4rem; /* Adjust gap between detail elements */
 }
+
 
 .fight-card h4 {
   background-color: rgba(0, 0, 0, 0.8);
-  font-weight: 900;
+  font-weight: 900; /* Kept for consistency, but individual name parts have weights */
   font-family: 'Bebas Neue', sans-serif;
   width: 100%;
   margin: 0;
   padding: 1.2rem;
   text-transform: uppercase;
-  display: flex; 
+  display: flex;
   align-items: center;
   gap: 1rem;
   position: relative;
@@ -133,11 +138,13 @@
 .flag-icon {
   width: 70px;
   height: auto;
-  margin: 0 8px;
-  vertical-align: middle;
+  margin: 0 8px; /* Existing margin */
+  /* vertical-align: middle; /* Not needed with flex */
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
   transition: transform 0.3s ease;
+  flex-shrink: 0; /* Prevent flag from shrinking */
 }
+
 
 .fight-card:hover .flag-icon {
   transform: scale(1.1);
@@ -145,41 +152,44 @@
 
 .name-container {
   display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
-  justify-content: center; 
-  line-height: 1.2; 
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: 1.2;
+  flex-grow: 1; /* Allow name container to take available space */
+  overflow: hidden; /* Prevent long names from breaking layout */
+  text-align: left; /* Align text to the left */
 }
 
 .fight-card h4 .first-name {
-  font-size: 1.4rem; 
+  font-size: 1.4rem;
   color: var(--color-white);
   opacity: 0.85;
-  font-weight: 400;
+  font-weight: 400; /* Lighter weight for first name */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis if too long */
+  width: 100%; /* Ensure it takes full width */
 }
 
 .fight-card h4 .last-name {
-  font-size: 2rem; 
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: bold; /* Use bold or 700 */
   color: var(--color-white);
   letter-spacing: 1px;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis if too long */
+  width: 100%; /* Ensure it takes full width */
 }
 
-.fight-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem; 
-  padding: 1.2rem; 
-  width: 100%;
-}
 
 .fight-details .date {
   color: var(--color-primary);
   font-size: 1.1rem;
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 1px;
-  margin-top: 0.5rem;
+  margin-top: 0.5rem; /* Spacing from result */
 }
 
 .fight-details .method {
@@ -190,6 +200,7 @@
   letter-spacing: 0.5px;
   position: relative;
   padding-bottom: 0.5rem;
+  text-transform: uppercase; /* Ensure method is uppercase */
 }
 
 .fight-details .method::after {
@@ -204,12 +215,14 @@
 }
 
 .fight-details .location {
-  width: 100%;
-  font-weight: bold;
+  /* width: 100%; */ /* Not needed with text-align center */
+  font-weight: bold; /* Changed from 700 for consistency */
   font-size: 1rem;
   font-family: 'Chakra Petch', sans-serif;
   color: rgba(255, 255, 255, 0.7);
-  margin-top: 0.5rem;
+  margin-top: 0.5rem; /* Spacing from date */
+  text-align: center; /* Ensure location is centered */
+  padding: 0 0.5rem; /* Add padding in case location is long */
 }
 
 .fight-card .result {
@@ -230,6 +243,7 @@
   content: '';
   position: absolute;
   top: 50%;
+  transform: translateY(-50%); /* Center vertically */
   width: 20px;
   height: 2px;
 }
@@ -243,46 +257,47 @@
 }
 
 .fight-card .result.win {
-  color: #28a745;
+  color: var(--color-green); /* Use global var */
 }
 
 .fight-card .result.win::before,
 .fight-card .result.win::after {
-  background-color: #28a745;
+  background-color: var(--color-green); /* Use global var */
 }
 
 .fight-card .result.loss {
-  color: #dc3545;
+  color: var(--color-red); /* Use global var */
 }
 
 .fight-card .result.loss::before,
 .fight-card .result.loss::after {
-  background-color: #dc3545;
+  background-color: var(--color-red); /* Use global var */
 }
 
 .fight-card .result.draw {
-  color: #6c757d;
+  color: var(--color-grey); /* Use global var */
 }
 
 .fight-card .result.draw::before,
 .fight-card .result.draw::after {
-  background-color: #6c757d;
+  background-color: var(--color-grey); /* Use global var */
 }
 
 .view-all-button-container {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 2rem; /* Keep consistent margin */
 }
 
 .fights-button {
-  margin-top: 1.5rem;
+  margin-top: 1.5rem; /* Keep consistent margin */
 }
+
 
 .view-all-button {
   display: inline-block;
-  padding: 0.8rem 2.5rem; 
-  font-size: 1.5rem; 
+  padding: 0.8rem 2.5rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-white);
   background-color: transparent;
@@ -325,7 +340,7 @@
   .fight-history {
     gap: 1.5rem;
   }
-  
+
   .fight-card {
     flex: 1 1 calc(50% - 1.5rem);
     min-width: 300px;
@@ -336,7 +351,7 @@
   .fights-title {
     font-size: 4rem;
   }
-  
+
   .fight-card .result {
     font-size: 1.8rem;
   }
@@ -346,74 +361,88 @@
   .fight-history-container {
     padding: 3rem 1rem;
   }
-  
+
   .fights-title {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .fight-history {
     padding: 1rem 0;
     gap: 1.5rem;
   }
-  
+
   .fight-card {
-    min-width: 280px;
+    min-width: 280px; /* Adjust if needed */
+    max-width: calc(100% - 2rem); /* Allow cards to take width on smaller screens */
+    flex-basis: calc(50% - 1.5rem); /* Keep two columns where possible */
   }
-  
+
+
   .fight-card h4 .last-name {
     font-size: 1.8rem;
   }
-  
+
   .fight-card h4 .first-name {
     font-size: 1.2rem;
   }
-  
+
   .view-all-button {
     padding: 0.7rem 2rem;
     font-size: 1.4rem;
   }
 }
 
+@media (max-width: 600px) { /* Added breakpoint for better card stacking */
+ .fight-card {
+    flex-basis: 100%; /* Stack cards below this width */
+    max-width: 400px; /* Max width when stacked */
+    min-width: 0; /* Remove min-width constraint */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
 @media (max-width: 480px) {
   .fights-title {
     font-size: 3rem;
   }
-  
+
   .flag-icon {
-    width: 60px;
+    width: 60px; /* Slightly smaller flag */
   }
-  
+
   .fight-card {
-    min-width: 100%;
-    margin-bottom: 1rem;
+     /* Already stacked from previous breakpoint */
   }
-  
+
+
   .fight-card h4 {
     padding: 1rem;
   }
-  
+
   .fight-card .fighter-image {
     height: 220px;
   }
-  
+
   .fight-details {
     padding: 1rem;
   }
-  
+
   .fight-card .result {
     font-size: 1.6rem;
   }
-  
+
   .fight-details .method {
     font-size: 1.1rem;
   }
-  
+
   .fight-details .date,
   .fight-details .location {
     font-size: 0.9rem;
   }
-  
+
   .view-all-button {
     padding: 0.6rem 1.8rem;
     font-size: 1.3rem;
