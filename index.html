@@ -9,7 +9,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NN5Z56QR');</script>
     <!-- End Google Tag Manager -->
-    
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6HJ5WSGN5"></script>
     <script>
@@ -19,57 +19,66 @@
       gtag('config', 'G-G6HJ5WSGN5');
     </script>
     <!-- End Google Analytics -->
-    
+
     <link rel="icon" type="image/png" href="/src/assets/images/kha-logo2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- === SEO Meta Tags === -->
+    <!-- Title: Most important tag. Keep it concise, include primary keyword first. -->
+    <title>Kha Lu | Official Boxing Website</title> 
     
-    <!-- SEO Meta Tags -->
-    <title>Kha Lu | Official Website</title>
-    <meta name="description" content="Official website of Kha Lu. Explore Kha's record, achievements, and connect with the official team. The authentic online home of Kha Lu." />
-    <meta name="keywords" content="Kha Lu, athlete, sports, official website, Australia" />
+    <!-- Description: Enticing summary for search results. Include keywords naturally. -->
+    <meta name="description" content="The official website of Australian athlete Kha Lu. Explore Kha's profile, achievements, news, and connect with the official team." /> 
+    
+    <!-- Keywords: Less important for Google now, but can provide context. Keep brief. -->
+    <meta name="keywords" content="Kha Lu, athlete, sports, official website, Australia, Kha Lu achievements, Kha Lu profile" /> 
+    
     <meta name="author" content="Kha Lu" />
-    
-    <!-- Canonical URL -->
+
+    <!-- Canonical URL: Confirms the preferred version of the page. -->
     <link rel="canonical" href="https://khalu.com.au" />
-    
-    <!-- Open Graph / Facebook -->
+
+    <!-- === Open Graph / Facebook === -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://khalu.com.au" />
-    <meta property="og:title" content="Kha Lu | Official Website" />
-    <meta property="og:description" content="Official website of Kha Lu. Explore Kha's record, achievements, and connect with the official team." />
-    <meta property="og:image" content="https://khalu.com.au/kha-social-share.jpg" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://khalu.com.au" />
-    <meta property="twitter:title" content="Kha Lu | Official Website" />
-    <meta property="twitter:description" content="Official website of Kha Lu. Explore Kha's record, achievements, and connect with the official team." />
-    <meta property="twitter:image" content="https://khalu.com.au/kha-social-share.jpg" />
-    
-    <!-- Structured Data / Schema.org -->
+    <meta property="og:url" content="https://khalu.com.au/" /> 
+    <meta property="og:title" content="Kha Lu | Official Athlete Website" />
+    <meta property="og:description" content="The official website of Australian athlete Kha Lu. Explore Kha's profile, achievements, news, and connect." />
+    <meta property="og:image" content="https://khalu.com.au/kha-social-share.jpg" /> 
+    <meta property="og:site_name" content="Kha Lu Official Website" />
+
+    <!-- === Twitter Card === -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://khalu.com.au/" />
+    <meta name="twitter:title" content="Kha Lu | Official Athlete Website" />
+    <meta name="twitter:description" content="The official website of Australian athlete Kha Lu. Explore Kha's profile, achievements, news, and connect." />
+    <meta name="twitter:image" content="https://khalu.com.au/kha-social-share.jpg" /> 
+
+    <!-- === Structured Data / Schema.org === -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
+      "@type": "Person", 
       "name": "Kha Lu",
       "url": "https://khalu.com.au",
-      "image": "https://khalu.com.au/kha-profile.jpg",
-      "sameAs": [
+      "image": "https://khalu.com.au/kha-profile.jpg", // Ensure this image is representative
+      "sameAs": [ // Crucial for connecting profiles
         "https://www.instagram.com/_khalu/",
         "https://www.tiktok.com/@_kha.lu"
+        // Add links to official profiles on other platforms (Wikipedia, official team page, etc.) if they exist
       ],
-      "description": "Official website of Kha Lu",
+      "nationality": "Australian", // Be specific if relevant
+      // "knowsAbout": ["Sport Name 1", "Sport Name 2"], // Specify the sport(s)
+      "description": "Official website presence for Australian athlete Kha Lu.",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://khalu.com.au"
+        "@id": "https://khalu.com.au/" // Consistent URL with canonical
       }
     }
     </script>
+    <!-- === End SEO Meta Tags === -->
     
-    <!-- Add this script before your other scripts -->
+    <!-- GitHub Pages SPA Redirect Script (Keep as is) -->
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // This script checks for redirects from 404.html and restores the proper URL
       (function(l) {
         if (l.search[1] === '/' ) {
           var decoded = l.search.slice(1).split('&').map(function(s) { 
@@ -88,7 +97,14 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <div id="root"></div>
+    <div id="root">
+        <!-- Your React App Renders Here -->
+        <!-- IMPORTANT SEO factors below happen INSIDE your React components -->
+        <!-- 1. Semantic HTML: Use only ONE <h1> per page (likely "Kha Lu"). Use <h2>, <h3> etc. logically. -->
+        <!-- 2. Content: High-quality, unique text about Kha Lu is CRITICAL. -->
+        <!-- 3. Image Alt Text: All <img> tags MUST have descriptive alt text (e.g., alt="Kha Lu competing at [event]"). -->
+        <!-- 4. Internal Linking: Link between pages/sections naturally if you have multiple. -->
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

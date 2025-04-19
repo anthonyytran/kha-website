@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Home.css";
 
+// Import Child Components
 import UpcomingFight from "../../components/UpcomingFight/UpcomingFight";
 import HomeRecord from "../../components/HomeRecord/HomeRecord";
 import HomepageVideo from "../../components/HomeVideo/HomeVideo";
@@ -13,25 +14,26 @@ import HomePT from "../../components/HomePT/HomePT";
 
 const Home: React.FC = () => {
   useEffect(() => {
+    // Initialize AOS for components further down the page
     AOS.init({
       duration: 800,
-      easing: "ease-in-out",
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 50,
     });
+    // Ensure scroll to top on mount
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div>
+      {/* Hero Section */}
       <div className="home-container-1">
         <div className="overlay-text">
           <hr className="divider divider-top" />
-          <h2 className="fade-in-text" data-aos="fade-in">
-            KHA LU
-          </h2>
+          <h1 className="hero-title">KHA LU</h1>
           <hr className="divider divider-bottom" />
-          <h3 className="fade-in-champion subtext">
-            Australian Light Flyweight Champion
-          </h3>
+          <h2 className="hero-subtitle">Australian Light Flyweight Champion</h2>
 
           <Link to="/about" className="find-out-more-button">
             Find out more
@@ -43,23 +45,14 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Record Title Container */}
-      <HomeRecord />
-
-      {/* Video */}
-      <HomepageVideo />
-
-      {/* Upcoming Fight Section */}
-      <UpcomingFight />
-
-      {/* Fight History Section */}
-      <FightHistory />
-
-      {/* Personal Training Section */}
-      <HomePT />
-
-      {/* Sponsors Section */}
-      <HomeSponsors />
+      {/* Child Component Sections */}
+      {/* Apply data-aos attributes for scroll animations */}
+      <HomeRecord data-aos="fade-up" />
+      <HomepageVideo data-aos="fade-up" data-aos-delay="100" />
+      <UpcomingFight data-aos="fade-up" />
+      <FightHistory data-aos="fade-up" />
+      <HomePT data-aos="fade-up" />
+      <HomeSponsors data-aos="fade-up" />
     </div>
   );
 };
