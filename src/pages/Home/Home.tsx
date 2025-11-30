@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-import UpcomingFight from "../../components/UpcomingFight/UpcomingFight";
+// UpcomingFight component removed
 import HomepageVideo from "../../components/HomeVideo/HomeVideo";
 import FightHistory from "../../components/FightHistory/FightHistory";
 import HomeSponsors from "../../components/HomeSponsors/HomeSponsors";
@@ -46,7 +46,6 @@ const Home: React.FC = () => {
 
       {/* AOS removed: components render without data-aos attributes */}
       <HomepageVideo />
-      <UpcomingFight />
       <FightHistory />
       <HomePT />
       <HomeSponsors />
