@@ -20,7 +20,6 @@ const home: HomeData = homeData as unknown as HomeData;
 
 const Home: React.FC = () => {
   useEffect(() => {
-    // previously initialized AOS here; removed dependency
     window.scrollTo(0, 0);
   }, []);
 
