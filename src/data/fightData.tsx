@@ -114,4 +114,16 @@ export const fights: Fight[] = [
     method: "Majority Decision",
     rounds: "4/4",
   },
+  // Placeholder fight using lorem ipsum text
+  {
+    id: 9,
+    record: "9-1-0",
+    opponent: "Lorem Ipsum",
+    result: "W",
+    date: "01-10-2025",
+    weight: weightForNewFight,
+    venue: "Lorem Arena, Dolor Sit",
+    method: "Lorem Decision",
+    rounds: "10/10",
+  },
 ];

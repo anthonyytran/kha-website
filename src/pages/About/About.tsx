@@ -1,4 +1,3 @@
-import React from "react";
 import "./About.css";
 import khaHeadphones from "../../assets/images/kha-about.jpg";
 import khaBoxing from "../../assets/images/kha-about2.jpg";

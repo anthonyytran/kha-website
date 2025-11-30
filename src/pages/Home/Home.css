@@ -7,17 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Keep hidden */
   background-color: black;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('../../assets/images/background.jpg'); /* Make sure this path is correct! */
-  background-size: cover;
-  background-position: center 30%;
-  background-repeat: no-repeat;
-  background-blend-mode: darken;
-  /* --- Add will-change hint for background fade --- */
-  will-change: background-color, background-blend-mode;
-  animation: fadeInBackgroundColor 1.5s ease-out 0.2s forwards;
 }
 
 /* --- Overlay Text Styling --- */
@@ -33,7 +23,6 @@
   animation: fadeInOverlay 1s ease-out 0.5s forwards;
 }
 
-/* === H1 STYLES (Main Title) === */
 .hero-title {
   font-size: 4.5rem;
   font-weight: 700;
