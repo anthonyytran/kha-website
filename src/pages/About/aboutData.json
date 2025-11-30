@@ -1,0 +1,55 @@
+{
+    "biography": {
+        "title": "Biography",
+        "image": "khaHeadphones",
+        "content": [
+            {
+                "text": "<strong>Kha Lu</strong> is a 25-year-old boxer fighting out of Australia. His boxing journey begun at a young age, driven by an unwavering passion for the sport and a dedication to pushing himself beyond his limits. Over the years, <strong>Kha</strong> has trained under some of the best coaches and fought very talented fighters both domestically and internationally.",
+                "hasHtml": true
+            },
+            {
+                "text": "<strong>Kha</strong> proudly represents <strong>LionsDens</strong>, his childhood gym.",
+                "hasHtml": true
+            }
+        ]
+    },
+    "stats": {
+        "title": "Stats",
+        "image": "khaBoxing",
+        "items": [
+            {
+                "label": "Age:",
+                "value": "25"
+            },
+            {
+                "label": "Country:",
+                "value": "Australia"
+            },
+            {
+                "label": "Weight Class:",
+                "value": "Minimum & Fly"
+            },
+            {
+                "label": "Bouts:",
+                "value": "10"
+            },
+            {
+                "label": "Rounds:",
+                "value": "57"
+            },
+            {
+                "label": "Gym:",
+                "value": "Lionsden"
+            }
+        ]
+    },
+    "accomplishments": {
+        "title": "Accomplishments",
+        "image": "khaBoxing2",
+        "items": [
+            "Victorian Gold Light Flyweight Champion",
+            "Victorian Silver Light Flyweight Champion",
+            "Fight of the Night - <strong>x 3</strong>"
+        ]
+    }
+}

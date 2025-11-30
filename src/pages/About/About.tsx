@@ -2,6 +2,14 @@ import "./About.css";
 import khaHeadphones from "../../assets/images/kha-about.jpg";
 import khaBoxing from "../../assets/images/kha-about2.jpg";
 import khaBoxing2 from "../../assets/images/kha-about3.jpg";
+import aboutData from "./aboutData.json";
+
+// Image mapping
+const imageMap: { [key: string]: string } = {
+  khaHeadphones,
+  khaBoxing,
+  khaBoxing2,
+};
 
 const About = () => {
   return (
@@ -10,23 +18,17 @@ const About = () => {
       <section className="about-section">
         <div className="about-section-content">
           <div className="about-section-image">
-            <img src={khaHeadphones} alt="Kha Lu Biography" />
+            <img src={imageMap[aboutData.biography.image]} alt={`Kha Lu ${aboutData.biography.title}`} />
           </div>
           <div className="about-section-text">
-            <h2 className="section-title">Biography</h2>
+            <h2 className="section-title">{aboutData.biography.title}</h2>
             <div className="biography-content">
-              <p>
-                <strong>Kha Lu</strong> is a 24-year-old boxer fighting out of
-                Australia. His boxing journey begun at a young age, driven by an
-                unwavering passion for the sport and a dedication to pushing
-                himself beyond his limits. Over the years, <strong>Kha</strong>{" "}
-                has trained under some of the best coaches and fought very
-                talented fighters both domestically and internationally.
-              </p>
-              <p>
-                <strong>Kha</strong> proudly represents{" "}
-                <strong>LionsDens</strong> - his childhood gym.
-              </p>
+              {aboutData.biography.content.map((paragraph, index) => (
+                <p
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: paragraph.text }}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -36,44 +38,18 @@ const About = () => {
       <section className="about-section about-alt-bg">
         <div className="about-section-content">
           <div className="about-section-image">
-            <img src={khaBoxing} alt="Kha Lu Stats" />
+            <img src={imageMap[aboutData.stats.image]} alt={`Kha Lu ${aboutData.stats.title}`} />
           </div>
           <div className="about-section-text">
-            <h2 className="section-title">Stats</h2>
+            <h2 className="section-title">{aboutData.stats.title}</h2>
             <div className="stats-container">
               <ul className="stats-list">
-                <li>
-                  <span className="stat-label">Name:</span>
-                  <span className="stat-value">Kha Lu</span>
-                </li>
-                <li>
-                  <span className="stat-label">Age:</span>
-                  <span className="stat-value">24</span>
-                </li>
-                <li>
-                  <span className="stat-label">Country:</span>
-                  <span className="stat-value">Australia</span>
-                </li>
-                <li>
-                  <span className="stat-label">Weight Class:</span>
-                  <span className="stat-value">Minimumweight & Flyweight</span>
-                </li>
-                <li>
-                  <span className="stat-label">Bouts:</span>
-                  <span className="stat-value">8</span>
-                </li>
-                <li>
-                  <span className="stat-label">Rounds:</span>
-                  <span className="stat-value">25</span>
-                </li>
-                <li>
-                  <span className="stat-label">KO%:</span>
-                  <span className="stat-value">42.86%</span>
-                </li>
-                <li>
-                  <span className="stat-label">Gym:</span>
-                  <span className="stat-value">Lionsden</span>
-                </li>
+                {aboutData.stats.items.map((stat, index) => (
+                  <li key={index}>
+                    <span className="stat-label">{stat.label}</span>
+                    <span className="stat-value">{stat.value}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -84,16 +60,17 @@ const About = () => {
       <section className="about-section">
         <div className="about-section-content">
           <div className="about-section-image">
-            <img src={khaBoxing2} alt="Kha Lu Accomplishments" />
+            <img src={imageMap[aboutData.accomplishments.image]} alt={`Kha Lu ${aboutData.accomplishments.title}`} />
           </div>
           <div className="about-section-text">
-            <h2 className="section-title">Accomplishments</h2>
+            <h2 className="section-title">{aboutData.accomplishments.title}</h2>
             <ul className="accomplishments-list">
-              <li>Victorian Gold Light Flyweight Champion</li>
-              <li>Victorian Silver Light Flyweight Champion</li>
-              <li>
-                Fight of the Night - <strong>x 3</strong>
-              </li>
+              {aboutData.accomplishments.items.map((accomplishment, index) => (
+                <li
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: accomplishment }}
+                />
+              ))}
             </ul>
           </div>
         </div>
