@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
+// AOS removed — animations handled with CSS or replaced with JS-based transitions
 import "./FightHistory.css";
 import { fights } from "../../data/fightData"; // Adjusted import path assuming fightData is .ts or .js
 
@@ -62,12 +61,7 @@ const opponentImages: { [key: string]: string } = {
 
 const FightHistory: React.FC = () => {
   useEffect(() => {
-    AOS.init({
-      once: true,
-      duration: 600,
-      easing: "ease-out-cubic",
-      offset: 50,
-    });
+    // previously initialized AOS here; no-op after removal
   }, []);
 
   const displayedFights = fights.slice(0, 3);
@@ -76,7 +70,7 @@ const FightHistory: React.FC = () => {
     <div className="fight-history-container">
       <h3 className="fights-title">Past Fights</h3>
       <div className="fight-history">
-        {displayedFights.map((fight, index) => {
+  {displayedFights.map((fight) => {
           const nameParts = fight.opponent.split(" ");
           const firstName = nameParts[0] || "";
           const lastName = nameParts.slice(1).join(" ") || "";
@@ -92,12 +86,7 @@ const FightHistory: React.FC = () => {
               : "draw";
 
           return (
-            <div
-              className="fight-card"
-              key={fight.id}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
+            <div className="fight-card" key={fight.id}>
               <h4>
                 <img
                   src={flag}

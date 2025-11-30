@@ -579,3 +579,68 @@
      transform: none;
    }
  }
+
+/* --- Compatibility: treat .visible the same as .aos-animate --- */
+.upcoming-fight-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.upcoming-fight-container.visible::before {
+  opacity: 0.3;
+}
+
+.fight-title-container.visible::after {
+  opacity: 1;
+  width: 150px;
+}
+
+.fight-title.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fight-date.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fighter.fighter-main.visible,
+.fighter.fighter-secondary.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.fighter.visible::after {
+  width: 60%;
+}
+
+.australia-icon.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.vs.visible::before,
+.vs.visible::after {
+  opacity: 1;
+}
+
+.vs.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fight-outcome-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.outcome-title.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.outcome-details.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
