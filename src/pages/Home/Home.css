@@ -1,11 +1,9 @@
 :root {
-  /* spacing variables — tweak to adjust global spacing for the hero */
   --page-gutter: 1.5rem;
   --hero-vertical-padding: clamp(1rem, 2.5vw, 3rem);
   --scroll-indicator-bottom: 2rem;
 }
 
-/* --- Home Hero Section Styles --- */
 .home-container-1 {
   position: relative;
   width: 100%;
@@ -16,10 +14,9 @@
   justify-content: center;
   padding: var(--hero-vertical-padding) var(--page-gutter);
   background-color: black;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
-/* --- Overlay Text Styling --- */
 .overlay-text {
   position: relative;
   z-index: 2;
@@ -45,7 +42,6 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* === H2 STYLES (Subtitle) === */
 .hero-subtitle {
   font-size: 2rem;
   font-weight: 400;
@@ -58,7 +54,6 @@
   animation: slideUpFadeIn 1s ease-out 0.9s forwards;
 }
 
-/* Divider Styles */
 .divider {
   width: 60%;
   max-width: 300px;
@@ -71,7 +66,6 @@
   animation: scaleXFadeIn 1.2s ease-out 0.6s forwards;
 }
 
-/* Find Out More Button */
 .find-out-more-button {
   display: inline-block;
   padding: 0.7rem 1.8rem;
@@ -98,7 +92,6 @@
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 
-/* --- Keyframes (Keep as before) --- */
 @keyframes fadeInBackgroundColor {
   from { background-color: black; background-blend-mode: darken; }
   to { background-color: transparent; background-blend-mode: normal; }
@@ -116,7 +109,6 @@
   to { opacity: 1; transform: scaleX(1); }
 }
 
-/* --- Scroll Indicator Styling --- */
 .scroll-indicator {
   position: absolute;
   bottom: var(--scroll-indicator-bottom);
@@ -148,7 +140,6 @@
   opacity: 0.8;
 }
 
-/* --- Responsive adjustments (mobile-first mindset) --- */
 @media (max-width: 992px) {
   .hero-title { font-size: 4rem; }
   .hero-subtitle { font-size: 1.8rem; }
