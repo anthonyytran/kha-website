@@ -70,7 +70,7 @@ const FightHistory: React.FC = () => {
     <div className="fight-history-container">
       <h3 className="fights-title">Past Fights</h3>
       <div className="fight-history">
-  {displayedFights.map((fight) => {
+        {displayedFights.map((fight) => {
           const nameParts = fight.opponent.split(" ");
           const firstName = nameParts[0] || "";
           const lastName = nameParts.slice(1).join(" ") || "";
@@ -125,7 +125,6 @@ const FightHistory: React.FC = () => {
   );
 };
 
-// Define placeholders for missing assets
 const placeholderFlag = ""; // Optional: Path to a default flag
 const placeholderImage = ""; // Optional: Path to a default image
 
