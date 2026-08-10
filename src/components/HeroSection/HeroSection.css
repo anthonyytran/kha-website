@@ -13,13 +13,21 @@
   align-items: center;
   justify-content: center;
   padding: var(--hero-vertical-padding) var(--page-gutter);
-  background-color: transparent;
+  background-color: black;
   background-image: url('../../assets/images/background.jpg');
-  background-size: 80% auto;
-  background-position: center 70%;
-  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+.home-container-1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
 }
 
 .overlay-text {
