@@ -386,6 +386,7 @@
   }
 
   .record-table {
+    display: table;
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0;
