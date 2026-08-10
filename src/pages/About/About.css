@@ -166,7 +166,10 @@
 
 .accomplishments-list li {
   position: relative;
-  padding: 12px 15px 12px 50px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px 12px 20px;
   margin-bottom: 15px;
   background: linear-gradient(145deg, rgba(30, 30, 30, 0.7), rgba(15, 15, 15, 0.7));
   border-radius: 8px;
@@ -180,13 +183,8 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-.accomplishments-list li:before {
-  content: '🏆';
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
+.accomplishment-icon {
+  flex-shrink: 0;
   color: var(--color-primary);
 }
 
@@ -246,7 +244,7 @@
   }
 
   .accomplishments-list li {
-    padding: 12px 15px 12px 45px;
+    padding: 12px 15px;
     text-align: left;
   }
   
@@ -289,14 +287,15 @@
   }
 
   .accomplishments-list li {
-    padding: 10px 12px 10px 40px;
+    padding: 10px 12px;
+    gap: 10px;
   }
-  
-  .accomplishments-list li:before {
-    left: 10px;
-    font-size: 1.3rem;
+
+  .accomplishment-icon {
+    width: 18px;
+    height: 18px;
   }
-  
+
   .biography-content {
     padding: 1.2rem;
   }
