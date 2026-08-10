@@ -23,7 +23,7 @@
   background: linear-gradient(180deg, #101010 0%, #000 55%);
   color: var(--color-white);
   text-align: center;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -56,6 +56,7 @@
   display: inline-block;
   padding-bottom: 0.85rem;
   margin-bottom: 1.75rem;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2.5rem;
   color: var(--color-primary);
   letter-spacing: 1px;
@@ -117,6 +118,7 @@
 }
 
 .stat-number {
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2.75rem;
   font-weight: bold;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -226,10 +228,11 @@
 
 .opponent-name {
   display: block;
-  font-weight: bold;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
   color: #f8f9fa;
   font-size: 1.15rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .title-fight-badge {
@@ -325,8 +328,9 @@
 .details-content strong {
   color: var(--color-primary);
   margin-right: 0.4rem;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 0.5px;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -409,6 +413,7 @@
     padding: 1.1rem 1rem;
     text-align: left;
     text-transform: uppercase;
+    font-family: "Bebas Neue", sans-serif;
     font-weight: bold;
     letter-spacing: 0.5px;
     color: var(--color-primary);
