@@ -2,79 +2,56 @@ import "./About.css";
 import khaHeadphones from "../../assets/images/kha-about.jpg";
 import khaBoxing from "../../assets/images/kha-about2.jpg";
 import khaBoxing2 from "../../assets/images/kha-about3.jpg";
-import aboutData from "./aboutData.json";
+import rawAboutData from "./aboutData.json";
+import { AboutData } from "./types";
+import AboutSection from "./components/AboutSection";
+import StatsList from "./components/StatsList";
+import AccomplishmentsList from "./components/AccomplishmentsList";
+import FormattedText from "../../components/FormattedText/FormattedText";
 
-// Image mapping
-const imageMap: { [key: string]: string } = {
+const aboutData = rawAboutData as AboutData;
+
+const images: Record<string, string> = {
   khaHeadphones,
   khaBoxing,
   khaBoxing2,
 };
 
 const About = () => {
+  const { biography, stats, accomplishments } = aboutData;
+
   return (
     <div className="about-page-container">
-      {/* Biography Section */}
-      <section className="about-section">
-        <div className="about-section-content">
-          <div className="about-section-image">
-            <img src={imageMap[aboutData.biography.image]} alt={`Kha Lu ${aboutData.biography.title}`} />
-          </div>
-          <div className="about-section-text">
-            <h2 className="section-title">{aboutData.biography.title}</h2>
-            <div className="biography-content">
-              {aboutData.biography.content.map((paragraph, index) => (
-                <p
-                  key={index}
-                  dangerouslySetInnerHTML={{ __html: paragraph.text }}
-                />
-              ))}
-            </div>
-          </div>
+      <AboutSection
+        title={biography.title}
+        image={images[biography.image]}
+        imageAlt={`Kha Lu ${biography.title}`}
+      >
+        <div className="biography-content">
+          {biography.content.map((paragraph, index) => (
+            <p key={index}>
+              <FormattedText text={paragraph.text} />
+            </p>
+          ))}
         </div>
-      </section>
+      </AboutSection>
 
-      {/* About/Stats Section */}
-      <section className="about-section about-alt-bg">
-        <div className="about-section-content">
-          <div className="about-section-image">
-            <img src={imageMap[aboutData.stats.image]} alt={`Kha Lu ${aboutData.stats.title}`} />
-          </div>
-          <div className="about-section-text">
-            <h2 className="section-title">{aboutData.stats.title}</h2>
-            <div className="stats-container">
-              <ul className="stats-list">
-                {aboutData.stats.items.map((stat, index) => (
-                  <li key={index}>
-                    <span className="stat-label">{stat.label}</span>
-                    <span className="stat-value">{stat.value}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AboutSection
+        title={stats.title}
+        image={images[stats.image]}
+        imageAlt={`Kha Lu ${stats.title}`}
+        altBackground
+      >
+        <StatsList stats={stats.items} />
+      </AboutSection>
 
-      {/* Accomplishments Section */}
-      <section className="about-section">
-        <div className="about-section-content">
-          <div className="about-section-image">
-            <img src={imageMap[aboutData.accomplishments.image]} alt={`Kha Lu ${aboutData.accomplishments.title}`} />
-          </div>
-          <div className="about-section-text">
-            <h2 className="section-title">{aboutData.accomplishments.title}</h2>
-            <ul className="accomplishments-list">
-              {aboutData.accomplishments.items.map((accomplishment, index) => (
-                <li
-                  key={index}
-                  dangerouslySetInnerHTML={{ __html: accomplishment }}
-                />
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+      <AboutSection
+        title={accomplishments.title}
+        image={images[accomplishments.image]}
+        imageAlt={`Kha Lu ${accomplishments.title}`}
+      >
+        <AccomplishmentsList items={accomplishments.items} />
+      </AboutSection>
     </div>
   );
 };
