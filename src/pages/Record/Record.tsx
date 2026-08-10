@@ -1,73 +1,33 @@
 import React, { useState } from "react";
+import { ChevronDown, Trophy } from "lucide-react";
 import "./Record.css";
-// Import the data and interface from the separate file
 import { fights } from "../../data/fightData.tsx";
 
 const Record: React.FC = () => {
-  // Format date from dd-mm-yyyy to "day month year"
-  const formatDate = (dateStr: string) => {
-    // Add a check in case dateStr is undefined or not in the expected format
-    if (!dateStr || !dateStr.includes("-")) {
-      console.warn("Invalid date format received:", dateStr);
-      return "Invalid Date"; // Or handle appropriately
-    }
-    const parts = dateStr.split("-");
-    if (parts.length !== 3) {
-      console.warn("Invalid date format received:", dateStr);
-      return "Invalid Date"; // Or handle appropriately
-    }
-    const [day, month, year] = parts;
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    // Ensure month is a valid number between 1 and 12
-    const monthIndex = parseInt(month, 10) - 1;
-    if (isNaN(monthIndex) || monthIndex < 0 || monthIndex > 11) {
-      console.warn("Invalid month in date:", dateStr);
-      return "Invalid Date";
-    }
-
-    // For mobile, use abbreviated month names
-    // Note: window.innerWidth might not be reliable during SSR or initial render.
-    // Consider using a hook like useMediaQuery for better responsiveness.
-    const isMobile = typeof window !== "undefined" && window.innerWidth <= 480;
-    const monthName = isMobile
-      ? monthNames[monthIndex].substring(0, 3)
-      : monthNames[monthIndex];
-
-    return `${day} ${monthName} ${year}`;
-  };
-
   const [expandedFightId, setExpandedFightId] = useState<number | null>(null);
   const toggleExpand = (id: number) =>
     setExpandedFightId((prevId) => (prevId === id ? null : id));
 
+  const wins = fights.filter((f) => f.result === "W").length;
+  const losses = fights.filter((f) => f.result === "L").length;
+  const draws = fights.filter((f) => f.result === "D").length;
+
+  const resultLabel = { W: "Win", L: "Loss", D: "Draw" } as const;
+
   return (
     <div className="record-container">
       <h1>Record</h1>
-      {/* Update the total record display */}
-      <div className="total-record-container">
+
+      <div className="total-record-container" role="group" aria-label="Career record summary">
         <div className="record-grid">
           <div className="record-cell">
-            <span className="wins">8</span> {/* Updated Wins */}
+            <span className="wins">{wins}</span>
           </div>
           <div className="record-cell">
-            <span className="losses">1</span> {/* Updated Losses */}
+            <span className="losses">{losses}</span>
           </div>
           <div className="record-cell">
-            <span className="draws">0</span> {/* Updated Draws */}
+            <span className="draws">{draws}</span>
           </div>
           <div className="record-cell">
             <span className="wins-label">Win</span>
@@ -82,78 +42,110 @@ const Record: React.FC = () => {
       </div>
 
       <div className="table-wrapper">
-        <table className="record-table">
-          <thead>
-            <tr>
-              <th className="result-col">Result</th>
-              <th className="date-col">Date</th>
-              <th className="record-col">Record</th>
-              <th className="opponent-col">Opponent</th>
+        <table className="record-table" role="table">
+          <caption className="sr-only">
+            Complete professional boxing record for Kha Lu, {wins} wins, {losses} losses,{" "}
+            {draws} draws, most recent fight first
+          </caption>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader" className="result-col">
+                Result
+              </th>
+              <th scope="col" role="columnheader" className="date-col">
+                Date
+              </th>
+              <th scope="col" role="columnheader" className="opponent-col">
+                Opponent
+              </th>
+              <th scope="col" role="columnheader" className="record-col">
+                Record
+              </th>
+              <th scope="col" role="columnheader" className="toggle-col">
+                <span className="sr-only">Details</span>
+              </th>
             </tr>
           </thead>
-          <tbody>
-            {/* Use the imported 'fights' array */}
-            {fights.map((fight) => (
-              <React.Fragment key={fight.id}>
-                <tr
-                  className={`record-row ${
-                    expandedFightId === fight.id ? "expanded-row" : ""
-                  }`}
-                  onClick={() => toggleExpand(fight.id)}
-                  // Adding aria attributes for better accessibility
-                  aria-expanded={expandedFightId === fight.id}
-                  aria-controls={`details-${fight.id}`}
-                  tabIndex={0} // Make row focusable
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ")
-                      toggleExpand(fight.id);
-                  }} // Allow keyboard interaction
-                >
-                  <td className="result-col" data-label="Result">
-                    <div
-                      className={`result-box ${
-                        fight.result === "W"
-                          ? "win"
-                          : fight.result === "L"
-                          ? "loss"
-                          : ""
-                      }`}
-                    >
-                      {fight.result}
-                    </div>
-                  </td>
-                  <td className="date-col" data-label="Date">
-                    {formatDate(fight.date)}
-                  </td>
-                  <td className="record-col" data-label="Record">
-                    {fight.record}
-                  </td>
-                  <td className="opponent-col" data-label="Opponent">
-                    {fight.opponent}
-                  </td>
-                </tr>
-                {expandedFightId === fight.id && (
-                  <tr className="details-row" id={`details-${fight.id}`}>
-                    <td colSpan={4}>
+          <tbody role="rowgroup">
+            {fights.map((fight) => {
+              const isExpanded = expandedFightId === fight.id;
+              const detailsId = `details-${fight.id}`;
+              return (
+                <React.Fragment key={fight.id}>
+                  <tr
+                    role="row"
+                    className={`record-row ${isExpanded ? "expanded-row" : ""}`}
+                    onClick={() => toggleExpand(fight.id)}
+                  >
+                    <td role="cell" className="result-col">
+                      <span
+                        className={`result-box ${
+                          fight.result === "W" ? "win" : fight.result === "L" ? "loss" : "draw"
+                        }`}
+                        aria-hidden="true"
+                      >
+                        {fight.result}
+                      </span>
+                      <span className="sr-only">{resultLabel[fight.result]}</span>
+                    </td>
+                    <td role="cell" className="date-col">
+                      {fight.date}
+                    </td>
+                    <td role="cell" className="opponent-col">
+                      <span className="opponent-name">{fight.opponent}</span>
+                      {fight.title && (
+                        <span className="title-fight-badge">
+                          <Trophy size={13} aria-hidden="true" />
+                          {fight.title}
+                        </span>
+                      )}
+                    </td>
+                    <td role="cell" className="record-col">
+                      {fight.record}
+                    </td>
+                    <td role="cell" className="toggle-col">
+                      <button
+                        type="button"
+                        className="toggle-button"
+                        aria-expanded={isExpanded}
+                        aria-controls={detailsId}
+                      >
+                        <span className="sr-only">
+                          {isExpanded ? "Hide" : "Show"} fight details vs {fight.opponent}
+                        </span>
+                        <ChevronDown
+                          size={20}
+                          className={`toggle-icon ${isExpanded ? "open" : ""}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr
+                    role="row"
+                    className={`details-row ${isExpanded ? "open" : ""}`}
+                    id={detailsId}
+                    hidden={!isExpanded}
+                  >
+                    <td role="cell" colSpan={5}>
                       <div className="details-content">
                         <p>
                           <strong>Weight:</strong> {fight.weight}
                         </p>
                         <p>
-                          <strong>Method:</strong> {fight.method}
-                        </p>
-                        <p>
                           <strong>Venue:</strong> {fight.venue}
                         </p>
-                        <p>
-                          <strong>Rounds:</strong> {fight.rounds}
-                        </p>
+                        {fight.rounds && (
+                          <p>
+                            <strong>Rounds:</strong> {fight.rounds}
+                          </p>
+                        )}
                       </div>
                     </td>
                   </tr>
-                )}
-              </React.Fragment>
-            ))}
+                </React.Fragment>
+              );
+            })}
           </tbody>
         </table>
       </div>

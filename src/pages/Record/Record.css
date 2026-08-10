@@ -1,36 +1,73 @@
-/* General Page Styles */
-.record-page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* ==========================================================================
+   Record page — mobile-first
+   Base rules below target small screens; larger breakpoints progressively
+   enhance the layout via min-width media queries further down the file.
+   ========================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .record-container {
-  flex: 1;
-  padding: 2rem;
-  padding-top: 10vh;
+  position: relative;
+  padding: 1.25rem 1rem 3rem;
+  padding-top: 6.5rem;
   background-color: var(--color-black);
   color: var(--color-white);
   text-align: center;
-  font-family: 'Bebas Neue', sans-serif;
-  max-width: 1200px;
+  font-family: "Bebas Neue", sans-serif;
+  max-width: 900px;
   margin: 0 auto;
 }
 
+/* Subtle depth behind the content: soft vignette + the same faint texture
+   used elsewhere on the site (FightHistory, HomePT), fixed to the viewport
+   so it isn't clipped by the content column's max-width. */
+.record-container::before,
+.record-container::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.record-container::before {
+  background: radial-gradient(
+    ellipse 70% 50% at 50% 0%,
+    rgba(56, 55, 55, 0.5),
+    rgba(0, 0, 0, 0) 60%
+  );
+}
+
+.record-container::after {
+  background: url("../../assets/images/texture.png");
+  opacity: 0.05;
+}
+
 .record-container h1 {
-  font-size: 3rem;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
   color: var(--color-primary);
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
-/* Total Record Display */
+/* Overall record summary */
 .total-record-container {
-  margin: 3rem 0;
-  padding: 1.5rem;
+  margin: 0 0 2rem;
+  padding: 1.1rem 0.5rem;
   background-color: rgba(34, 34, 34, 0.6);
-  border-radius: 8px;
+  border: 1px solid rgba(184, 161, 83, 0.2);
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -38,8 +75,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
-  gap: 1.5rem 2rem;
-  max-width: 400px;
+  gap: 0.75rem 0.5rem;
+  max-width: 360px;
   margin: 0 auto;
 }
 
@@ -49,332 +86,354 @@
   justify-content: center;
 }
 
-.record-grid .record-cell:nth-child(-n+3) span {
-  font-size: 4rem;
+.record-grid .record-cell:nth-child(-n + 3) span {
+  font-size: 2.75rem;
   font-weight: bold;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease;
 }
 
-.record-grid .record-cell:nth-child(-n+3) span:hover {
-  transform: scale(1.1);
-}
-
-.record-grid .record-cell:nth-child(n+4) span {
-  font-size: 1.3rem;
+.record-grid .record-cell:nth-child(n + 4) span {
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: var(--color-grey);
 }
 
-.wins { color: #28a745; }
-.losses { color: #dc3545; }
-.draws { color: #fff; }
-.wins-label { color: #28a745; }
-.losses-label { color: #dc3545; }
-.draws-label { color: #fff; }
+.wins { color: var(--color-green); }
+.losses { color: var(--color-red); }
+.draws { color: var(--color-white); }
 
-/* Table Wrapper for better horizontal scrolling on mobile */
+/* Table wrapper */
 .table-wrapper {
   width: 100%;
   margin-bottom: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Table Layout */
 .record-table {
+  display: block;
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: var(--color-black);
+  border-collapse: collapse;
+  background: transparent;
   color: var(--color-white);
-  margin-bottom: 0; 
 }
 
-.record-table thead tr {
-  background: #222;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.record-table th {
-  padding: 1.2rem 1rem;
-  text-align: left;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  color: var(--color-primary);
-  font-size: 1rem;
-  position: relative;
-}
-
-.record-table th::after {
-  content: '';
+/* Header is visually hidden on mobile (card layout self-labels via the
+   opponent name being the card's primary heading) but stays in the
+   accessibility tree so screen reader users keep column context. */
+.record-table thead {
+  display: block;
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--color-primary);
-  opacity: 0.4;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.record-table td {
-  padding: 1.2rem 1rem;
+.record-table tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+/* Each fight becomes a card: badge (spanning full height) | name/date/record
+   stacked | toggle chevron (spanning full height). Column order in the DOM
+   doesn't matter — grid-area placement handles the visual layout. */
+.record-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "result opponent toggle"
+    "result date toggle"
+    "result record toggle";
+  align-items: center;
+  column-gap: 0.9rem;
+  row-gap: 0.2rem;
+  padding: 0.85rem 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid transparent;
+  border-radius: 8px;
   text-align: left;
-  vertical-align: middle;
-  border-bottom: 1px solid rgba(68, 68, 68, 0.5);
-  transition: background-color 0.2s ease;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Column Widths for Better Spacing on Desktop */
-.result-col {
-  width: 80px;
-  text-align: center;
+.record-row:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
+.record-row:has(.result-box.win) { border-left-color: var(--color-green); }
+.record-row:has(.result-box.loss) { border-left-color: var(--color-red); }
+.record-row:has(.result-box.draw) { border-left-color: var(--color-grey); }
+
+.record-row.expanded-row {
+  background: rgba(184, 161, 83, 0.08);
+  border-color: rgba(184, 161, 83, 0.35);
+}
+
+.result-col { grid-area: result; justify-self: center; }
+.opponent-col { grid-area: opponent; }
 .date-col {
-  width: 180px;
+  grid-area: date;
+  color: var(--color-grey);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
 }
-
 .record-col {
-  width: 100px;
+  grid-area: record;
+  color: var(--color-grey);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
 }
+.record-col::before { content: "Record "; }
+.toggle-col { grid-area: toggle; }
 
-.opponent-col {
-  min-width: 200px;
+.opponent-name {
+  display: block;
   font-weight: bold;
   color: #f8f9fa;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   letter-spacing: 0.5px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-  text-align: right;
-  padding-right: 1rem;
+}
+
+.title-fight-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  color: var(--color-primary);
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .result-box {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: 50%;
   color: #fff;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.result-box.win { background: linear-gradient(145deg, #2ab04a, #249e40); }
+.result-box.loss { background: linear-gradient(145deg, #e13c4c, #cc3545); }
+.result-box.draw { background: linear-gradient(145deg, #7a7a7a, #5c5c5c); }
+
+.toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-button:hover {
+  background: rgba(184, 161, 83, 0.12);
+}
+
+.toggle-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.toggle-icon {
   transition: transform 0.2s ease;
 }
 
-.result-box.win {
-  background: linear-gradient(145deg, #2ab04a, #249e40);
+.toggle-icon.open {
+  transform: rotate(180deg);
 }
 
-.result-box.loss {
-  background: linear-gradient(145deg, #e13c4c, #cc3545);
-}
-
-.result-box:hover {
-  transform: scale(1.1);
-}
-
-/* Row styling */
-.record-row {
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.record-row:hover {
-  background: rgba(51, 51, 51, 0.8);
-}
-
-.record-row.expanded-row {
-  background: #222;
-}
-
-/* Opponent styling */
-.opponent-col {
-  font-weight: bold;
-  color: #f8f9fa;
-  font-size: 1.2rem;       
-  letter-spacing: 0.5px;    
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); 
-}
-
-/* Details Row */
-.details-row {
-  background-color: #111;
+/* Details */
+.details-row td {
+  display: block;
+  padding: 0;
 }
 
 .details-content {
-  padding: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  padding: 0.9rem 1rem 1rem 1rem;
+  margin: -0.65rem 0 0.65rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
   text-align: left;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.2s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .details-content p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
+  margin: 0.35rem 0;
+  font-size: 0.95rem;
   line-height: 1.6;
-  display: flex;
-  align-items: center;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .details-content strong {
   color: var(--color-primary);
-  margin-right: 0.5rem;
-  min-width: 70px;
-  display: inline-block;
+  margin-right: 0.4rem;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.5px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 900px) {
-  .details-content {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .details-content,
+  .toggle-icon,
+  .record-row {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
-@media (max-width: 768px) {
+/* ==========================================================================
+   Tablet and up — restore a conventional table layout
+   ========================================================================== */
+@media (min-width: 700px) {
   .record-container {
-    padding: 1.5rem;
-    padding-top: 8vh;
+    padding: 2rem 2rem 3rem;
+    padding-top: 8rem;
   }
-  
+
   .record-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .record-grid {
-    gap: 1rem;
-  }
-  
-  .record-grid .record-cell:nth-child(-n+3) span {
     font-size: 3rem;
+    margin-bottom: 2rem;
   }
-  
-  .record-grid .record-cell:nth-child(n+4) span {
-    font-size: 1.1rem;
+
+  .total-record-container {
+    padding: 1.5rem;
   }
-  
-  /* Adjust table for mobile */
+
+  .record-grid {
+    max-width: 420px;
+    gap: 1.5rem 2rem;
+  }
+
+  .record-grid .record-cell:nth-child(-n + 3) span {
+    font-size: 4rem;
+  }
+
+  .record-grid .record-cell:nth-child(n + 4) span {
+    font-size: 1.15rem;
+  }
+
+  .table-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
   .record-table {
-    table-layout: fixed;
-    font-size: 0.9rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--color-black);
   }
-  
-  .record-table th, 
-  .record-table td {
-    padding: 0.8rem 0.4rem;
+
+  .record-table thead {
+    display: table-header-group;
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    clip: auto;
     white-space: normal;
+    border: 0;
   }
-  
-  .result-box {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem;
-  }
-  
-  .result-col {
-    width: 15%;
-  }
-  
-  .date-col {
-    width: 30%;
-    font-size: 0.9rem;
-  }
-  
-  .record-col {
-    width: 15%;
-  }
-  
-  .opponent-col {
-    width: 40%;
-    font-size: 1rem;
-    text-align: right;
-    padding-right: 0.5rem;
-  }
-}
 
-@media (max-width: 480px) {
-  .record-container {
+  .record-table thead tr {
+    background: #1c1c1c;
+  }
+
+  .record-table th {
+    padding: 1.1rem 1rem;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    border-bottom: 2px solid rgba(184, 161, 83, 0.4);
+  }
+
+  .record-table tbody {
+    display: table-row-group;
+    gap: 0;
+  }
+
+  .record-row {
+    display: table-row;
+    grid-template-areas: none;
+    background: transparent;
+    border: none;
+    border-left: none;
+    border-bottom: 1px solid rgba(68, 68, 68, 0.5);
+    border-radius: 0;
+    cursor: pointer;
+  }
+
+  .record-row:has(.result-box.win) { border-left: 3px solid var(--color-green); }
+  .record-row:has(.result-box.loss) { border-left: 3px solid var(--color-red); }
+  .record-row:has(.result-box.draw) { border-left: 3px solid var(--color-grey); }
+
+  .record-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .record-row.expanded-row {
+    background: rgba(184, 161, 83, 0.08);
+  }
+
+  .record-row > td {
+    display: table-cell;
     padding: 1rem;
-    padding-top: 7vh;
+    vertical-align: middle;
   }
-  
-  .record-grid .record-cell:nth-child(-n+3) span {
-    font-size: 2.5rem;
+
+  .result-col { width: 70px; text-align: center; }
+  .date-col { width: 150px; }
+  .opponent-col { width: auto; }
+  .record-col { width: 110px; }
+  .record-col::before { content: none; }
+  .toggle-col { width: 56px; text-align: center; }
+
+  .details-row td {
+    display: table-cell;
+    padding: 0 1rem;
   }
-  
-  .record-table {
-    font-size: 0.85rem;
-  }
-  
-  .record-table th, 
-  .record-table td {
-    padding: 0.7rem 0.3rem;
-  }
-  
-  .result-box {
-    width: 26px;
-    height: 26px;
-    font-size: 0.9rem;
-  }
-  
-  .date-col {
-    font-size: 0.85rem;
-  }
-  
-  .opponent-col {
-    font-size: 0.9rem;
-  }
-  
+
   .details-content {
-    padding: 1rem 0.5rem;
-  }
-  
-  .details-content p {
-    font-size: 0.9rem;
-    margin: 0.3rem 0;
-  }
-  
-  .details-content strong {
-    min-width: 60px;
+    margin: 0 0 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem 1.5rem;
+    border-radius: 6px;
   }
 }
 
-@media (min-width: 900px) {
-  .record-table {
-    width: 100%;
-    table-layout: fixed;
-  }
-
-  .result-col {
-    width: 10%;
-    text-align: center;
-  }
-
-  .date-col {
-    width: 20%;
-  }
-
-  .record-col {
-    width: 15%;
-  }
-
-  .opponent-col {
-    width: 55%;
-    text-align: right;
-    padding-right: 1rem;
+@media (min-width: 1000px) {
+  .record-container {
+    max-width: 1200px;
   }
 }

@@ -14,37 +14,6 @@ import australiaFlag from "../../assets/images/australia-icon.png";
 import thailandFlag from "../../assets/images/thailand-icon.png";
 import japanFlag from "../../assets/images/japan-icon.png";
 
-// Helper function to format date
-const formatDateForDisplay = (dateStr: string): string => {
-  if (!dateStr || !dateStr.includes("-")) {
-    return "Invalid Date";
-  }
-  const parts = dateStr.split("-");
-  if (parts.length !== 3) {
-    return "Invalid Date";
-  }
-  const [day, month, year] = parts;
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const monthIndex = parseInt(month, 10) - 1;
-  if (isNaN(monthIndex) || monthIndex < 0 || monthIndex > 11) {
-    return "Invalid Date";
-  }
-  return `${monthNames[monthIndex]} ${parseInt(day, 10)}, ${year}`;
-};
-
 // Maps opponent names to their corresponding flag assets
 const opponentFlags: { [key: string]: string } = {
   "Daniel Anderson": australiaFlag,
@@ -64,7 +33,11 @@ const FightHistory: React.FC = () => {
     // previously initialized AOS here; no-op after removal
   }, []);
 
-  const displayedFights = fights.slice(0, 3);
+  // Only opponents with dedicated photos/flags in this component are eligible
+  // for the homepage preview; pick the 3 most recent among those.
+  const displayedFights = fights
+    .filter((fight) => fight.opponent in opponentImages)
+    .slice(0, 3);
 
   return (
     <div className="fight-history-container">
@@ -100,7 +73,6 @@ const FightHistory: React.FC = () => {
               </h4>
               <img src={image} alt={fight.opponent} className="fighter-image" />
               <div className="fight-details">
-                <p className="method">{fight.method.toUpperCase()}</p>
                 <p className={`result ${resultClass}`}>
                   {fight.result === "W"
                     ? "Win"
@@ -108,7 +80,7 @@ const FightHistory: React.FC = () => {
                     ? "Loss"
                     : "Draw"}
                 </p>
-                <p className="date">{formatDateForDisplay(fight.date)}</p>
+                <p className="date">{fight.date}</p>
                 <p className="location">{fight.venue}</p>
               </div>
             </div>
