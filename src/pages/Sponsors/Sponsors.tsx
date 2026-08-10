@@ -8,7 +8,6 @@ import GoldSponsor2 from "../../assets/images/visitint.jpg";
 import GoldSponsor3 from "../../assets/images/marsh.jpg";
 import GoldSponsor4 from "../../assets/images/bosker.jpg";
 
-import SilverSponsor1 from "../../assets/images/theboxinglab.png";
 import SilverSponsor2 from "../../assets/images/a1.jpg";
 import SilverSponsor3 from "../../assets/images/nimbus.jpg";
 import SilverSponsor4 from "../../assets/images/greeneflicks.jpg";
@@ -107,6 +106,7 @@ const Sponsors = () => {
     <div className="sponsors-page-container">
       <div className="sponsors-container">
         <h1 className="sponsors-title">Sponsors</h1>
+        <div className="sponsors-title-underline" />
         <p className="sponsors-intro">
           We are incredibly grateful for the generous support of our sponsors
           and partners. Your contributions help us continue striving for
@@ -115,10 +115,15 @@ const Sponsors = () => {
 
         {/* Gold Sponsors Section */}
         <div className="sponsors-section">
-          <h2 className="sponsor-tier-title gold">Gold Sponsors</h2>
+          <div className="tier-header gold">
+            <span className="tier-line" aria-hidden="true" />
+            <h2 className="sponsor-tier-title gold">Gold Sponsors</h2>
+            <span className="tier-line" aria-hidden="true" />
+          </div>
           <div className="sponsors-grid gold-grid">
             {goldSponsors.map((sponsor) => (
               <div className="sponsor-card gold" key={sponsor.id}>
+                <span className="tier-badge">Gold</span>
                 <div className="sponsor-card-content">
                   <div className="sponsor-image-container">
                     <img
@@ -136,7 +141,11 @@ const Sponsors = () => {
 
         {/* Silver Sponsors Section */}
         <div className="sponsors-section">
-          <h2 className="sponsor-tier-title silver">Silver Sponsors</h2>
+          <div className="tier-header silver">
+            <span className="tier-line" aria-hidden="true" />
+            <h2 className="sponsor-tier-title silver">Silver Sponsors</h2>
+            <span className="tier-line" aria-hidden="true" />
+          </div>
           <div className="sponsors-grid silver-grid">
             {silverSponsors.map((sponsor) => (
               <div className="sponsor-card silver" key={sponsor.id}>
@@ -165,8 +174,11 @@ const Sponsors = () => {
           <div className="become-sponsor">
             <p>Interested in becoming a sponsor?</p>
             <div className="contact-options">
-              {/* Changed from anchor to button with onClick handler */}
-              <Link to="/contact" className="contact-button">
+              <Link
+                to="/contact"
+                className="contact-button"
+                onClick={handleContactClick}
+              >
                 Contact Me
               </Link>
               <a
@@ -175,8 +187,8 @@ const Sponsors = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>Message me on</span>
-                <Instagram size={24} />
+                <Instagram size={18} aria-hidden="true" />
+                <span>Message on Instagram</span>
               </a>
             </div>
           </div>
