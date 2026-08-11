@@ -1,22 +1,34 @@
+import { Link } from "react-router-dom";
 import "./Contact.css";
 import khaContact from "../../assets/images/kha-contact.jpg";
-import { Instagram, Mail } from "lucide-react";
+import { Instagram, Mail, Shirt, Megaphone } from "lucide-react";
 
 const Contact = () => {
   return (
     <div className="contact-page-container">
       {/* Page Header */}
       <div className="contact-header">
+        <p className="contact-eyebrow">Partnerships &amp; Enquiries</p>
         <h1>Contact</h1>
-        <p>
+        <p className="contact-subtitle">
           For sponsorship enquiries, partnership proposals, media requests or
           event bookings, message me directly on Instagram or send an email.
         </p>
       </div>
 
-      <div className="contact-single">
-        <div className="contact-card sponsorship-card">
-          <h2>Sponsorship</h2>
+      <div className="contact-grid">
+        <div className="contact-photo">
+          <img src={khaContact} alt="Kha Lu Boxing" />
+          <div className="contact-photo-caption">
+            <span className="contact-photo-name">Kha Lu</span>
+            <span className="contact-photo-role">
+              Professional Boxer — Melbourne, Australia
+            </span>
+          </div>
+        </div>
+
+        <div className="contact-card get-in-touch-card">
+          <h2>Get In Touch</h2>
           <p className="card-subtext">
             Partnership decks and tier details available on request.
           </p>
@@ -47,12 +59,64 @@ const Contact = () => {
               </span>
             </a>
           </div>
+        </div>
+      </div>
 
-          <p className="location-note">Based in Melbourne, Australia.</p>
+      {/* What Partners Receive */}
+      <div className="partners-section">
+        <div className="partners-heading">
+          <span className="heading-line" />
+          <h2>What Partners Receive</h2>
+          <span className="heading-line" />
+        </div>
 
-          <div className="contact-image">
-            <img src={khaContact} alt="Kha Lu Boxing" />
+        <div className="partners-grid">
+          <div className="partner-card">
+            <span className="partner-card-icon">
+              <Shirt size={22} />
+            </span>
+            <h3>Fight Night Branding</h3>
+            <p>
+              Your logo on fight shorts, walkout gear and corner apparel,
+              seen live and on broadcast.
+            </p>
           </div>
+
+          <div className="partner-card">
+            <span className="partner-card-icon">
+              <Megaphone size={22} />
+            </span>
+            <h3>Social &amp; Content</h3>
+            <p>
+              Dedicated posts, training footage and fight-week coverage
+              across my channels.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom CTA */}
+      <div className="next-fight-banner">
+        <div className="next-fight-text">
+          <h2>Back The Next Fight</h2>
+          <p>
+            Fifteen businesses already ride with the team. See who they are,
+            then get in touch to talk about joining them.
+          </p>
+        </div>
+        <div className="next-fight-actions">
+          <Link to="/sponsors" className="view-sponsors-button">
+            View Sponsors
+          </Link>
+          <a
+            href="https://www.instagram.com/_khalu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="message-me-button"
+          >
+            <Instagram size={18} />
+            <span>Message Me</span>
+          </a>
         </div>
       </div>
     </div>
