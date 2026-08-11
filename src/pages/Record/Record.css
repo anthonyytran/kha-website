@@ -29,7 +29,7 @@
 }
 
 /* Subtle depth behind the content: soft vignette + the same faint texture
-   used elsewhere on the site (FightHistory, HomePT), fixed to the viewport
+   used elsewhere on the site (HomeRecord, HomePT), fixed to the viewport
    so it isn't clipped by the content column's max-width. */
 .record-container::before,
 .record-container::after {
