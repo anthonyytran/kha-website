@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #1a1a1a, var(--color-grey));
+  background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
   padding: 4rem 1rem 5rem;
   color: var(--color-primary);
   position: relative;
